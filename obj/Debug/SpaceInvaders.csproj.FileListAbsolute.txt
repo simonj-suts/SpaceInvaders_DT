@@ -1,0 +1,10 @@
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\bin\Debug\SpaceInvaders.exe
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.Client.resources
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.exe
+C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.pdb
