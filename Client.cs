@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,7 +10,8 @@ namespace SpaceInvaders
     {
         #region Private fields
         int tickCount;
-        Player player;
+        Player player1; // Player 1
+        Player player2; // Player 2
         List<Missle> missles;
         List<Asteroid> asteroids;
         AsteroidFactory asteroidFactory;
@@ -34,37 +36,64 @@ namespace SpaceInvaders
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
 
-            player = new Player(playerSize, numberOfPositions, numberOfLives);
+            player1 = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player1); // create player 1
+            player2 = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player2); // create player 2
+
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
-            numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
-            scoreLabel.Text = String.Format("Score = {0:D2}", player.Score);
+            numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
+            scoreLabel.Text = String.Format("Score = {0:D2}", player1.Score);
+            
 
-            Controls.Add(player.Sprite);
+            numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
+            scoreLabel1.Text = String.Format("Score = {0:D2}", player2.Score);
+            
+
+            Controls.Add(player1.Sprite);
+            Controls.Add(player2.Sprite);
         }
         #endregion
 
         #region Core logic
+        // Positions animated objects
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (player != null) player.Reposition(this.Width, this.Height);
+            if (player1 != null) player1.Reposition(this.Width, this.Height,1);
+            if (player2 != null) player2.Reposition(this.Width, this.Height,2);
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 
+        // Controls
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // move -->
-            if (timer.Enabled && e.KeyCode == Keys.Right)
-                player.MoveRight();
+            // move player 1--> 
+            if (timer.Enabled && e.KeyCode == Keys.Right && player1.Lives != 0)
+                player1.MoveRight();
 
-            // move <--
-            if (timer.Enabled && e.KeyCode == Keys.Left) // && e.Modifiers == Keys.Control
-                player.MoveLeft();
+            // move player 1<--
+            if (timer.Enabled && e.KeyCode == Keys.Left && player1.Lives != 0) // && e.Modifiers == Keys.Control
+                player1.MoveLeft();
 
-            // shoot
-            if (timer.Enabled && e.KeyCode == Keys.Space)
+            // shoot player 1
+            if (timer.Enabled && e.KeyCode == Keys.Space && player1.Lives != 0)
             {
-                Missle missle = player.CreateMissle(missleSize, missleSpeed);
+                Missle missle = player1.CreateMissle(missleSize, missleSpeed,1);
+                missles.Add(missle);
+                Controls.Add(missle.Sprite);
+            }
+
+            // move player 2-->
+            if (timer.Enabled && e.KeyCode == Keys.D && player2.Lives != 0)
+                player2.MoveRight();
+
+            // move player 2<--
+            if (timer.Enabled && e.KeyCode == Keys.A && player2.Lives != 0) // && e.Modifiers == Keys.Control
+                player2.MoveLeft();
+
+            // shoot player 2
+            if (timer.Enabled && e.KeyCode == Keys.F && player2.Lives != 0)
+            {
+                Missle missle = player2.CreateMissle(missleSize, missleSpeed,2);
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -72,27 +101,50 @@ namespace SpaceInvaders
             // pause
             if (e.KeyCode == Keys.P)
                 timer.Enabled = !timer.Enabled;
-                
+
+            // exit
+            if (e.KeyCode == Keys.Escape)
+                Application.Exit();
+
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
             {
+                // clear everything on screen
                 Controls.Clear();
                 asteroids.Clear();
                 missles.Clear();
-                player.Lives = numberOfLives;
-                player.Reposition(this.Width, this.Height);
+                
+                // retrieve new number of lives
+                player1.Lives = numberOfLives;
+                player2.Lives = numberOfLives;
 
-                numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
-                scoreLabel.Text = String.Format("Score = {0:D2}", player.Score = 0);
-                Controls.Add(numberOfLivesLabel);
-                Controls.Add(scoreLabel);
-                Controls.Add(player.Sprite);
-                timer.Start();
+                // reset player position
+                player1.Reposition(this.Width, this.Height,1);
+                player2.Reposition(this.Width, this.Height,2);
+
+                // update number of lives display
+                numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
+                numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
+
+                // reset score
+                scoreLabel.Text = String.Format("Score = {0:D2}", player1.Score = 0);
+                scoreLabel1.Text = String.Format("Score = {0:D2}", player2.Score = 0);
+
+                // re-display
+                Controls.Add(numberOfLivesLabel);  // number of lives for player 1
+                Controls.Add(numberOfLivesLabel1); // number of lives for player 2
+                Controls.Add(scoreLabel);          // score label for player 1
+                Controls.Add(scoreLabel1);         // score label for player 2
+                Controls.Add(player1.Sprite);      // player 1
+                Controls.Add(player2.Sprite);      // player 2
+
+                timer.Start(); // restart timer
             }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+
             // create and add asteroid every tickInterval ticks
             if (tickCount % tickInterval == 0)
             {
@@ -104,33 +156,94 @@ namespace SpaceInvaders
             // asteroids
             for (int i = asteroids.Count - 1; i >= 0; i--)
             {
+                // both players died
+                if (player1.Lives == 0 && player2.Lives == 0)
+                {
+                    numberOfLivesLabel1.Text = "Game over, press enter to restart...";
+                    Controls.Add(numberOfLivesLabel1);
+                    timer.Enabled = false;
+                    break;
+                }
+
                 asteroids[i].Move();
 
-                // collision with player
-                if (asteroids[i].Sprite.Bounds.IntersectsWith(player.Sprite.Bounds))
+                // collision with player 1
+                if (asteroids[i].Sprite.Bounds.IntersectsWith(player1.Sprite.Bounds) && player1.Lives != 0)
                 {
-                    if (player.Lives > 1)
+                    if (player1.Lives > 1)
                     {
-                        Controls.Clear();
-                        asteroids.Clear();
-                        missles.Clear();
-                        player.Lives--;
-                        player.Reposition(this.Width, this.Height);
+                        // clear objects on screen
+                        for (int j = asteroids.Count - 1; j >= 0; j--)
+                        {
+                            Controls.Remove(asteroids[j].Sprite); // clear all asteroids images
+                        }
+                        Controls.Remove(numberOfLivesLabel);      // clear Number of Lives Label
+                        Controls.Remove(scoreLabel);              // clear Score label
+                        Controls.Remove(player1.Sprite);          // clear Player 1
+                        asteroids.Clear();                        // clear asteroid objects
 
-                        numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
+                        player1.Lives--;                              // reduce Player 1 live
+                        player1.Reposition(this.Width, this.Height, 1);  // reposition Player 1
+
+                        numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
                         Controls.Add(numberOfLivesLabel);
                         Controls.Add(scoreLabel);
-                        Controls.Add(player.Sprite);
+                        Controls.Add(player1.Sprite);
+                        break;
+                    } else
+                    {
+                        for (int j = asteroids.Count - 1; j >= 0; j--)
+                        {
+                            Controls.Remove(asteroids[j].Sprite);
+                        }
+                        Controls.Remove(numberOfLivesLabel);
+                        Controls.Remove(scoreLabel);
+                        Controls.Remove(player1.Sprite);
+                        asteroids.Clear();
+                        player1.Lives--;
+                        break;
+                    }
+                }
+
+                // collision with player 2
+                if (asteroids[i].Sprite.Bounds.IntersectsWith(player2.Sprite.Bounds) && player2.Lives != 0)
+                {
+                    if (player2.Lives > 1)
+                    {
+                        for (int j = asteroids.Count - 1; j >= 0; j--)
+                        {
+                            Controls.Remove(asteroids[j].Sprite);
+                        }
+                        Controls.Remove(numberOfLivesLabel1);
+                        Controls.Remove(scoreLabel1);
+                        Controls.Remove(player2.Sprite);
+                        asteroids.Clear();
+
+                        player2.Lives--;
+                        player2.Reposition(this.Width, this.Height,2);
+
+                        numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
+                        Controls.Add(numberOfLivesLabel1);
+                        Controls.Add(scoreLabel1);
+                        Controls.Add(player2.Sprite);
                         break;
                     }
                     else
                     {
-                        numberOfLivesLabel.Text = "Game over, press enter to restart...";
-                        timer.Enabled = false;
+                        for (int j = asteroids.Count - 1; j >= 0; j--)
+                        {
+                            Controls.Remove(asteroids[j].Sprite);
+                        }
+                        Controls.Remove(numberOfLivesLabel1);
+                        Controls.Remove(scoreLabel1);
+                        Controls.Remove(player2.Sprite);
+                        asteroids.Clear();
+                        player2.Lives--;
                         break;
                     }
-
-                }
+                } 
+                
+                
 
                 // remove asteroids once out of screen
                 if (asteroids[i].IsOutOfScreen(this.Height))
@@ -163,20 +276,46 @@ namespace SpaceInvaders
 
                     if (asteroids[i].Sprite.Bounds.IntersectsWith(missles[j].Sprite.Bounds))
                     {
+                        if (missles[j].PlayerNo == 1)
+                            scoreLabel.Text = String.Format("Score = {0:D2}", ++player1.Score);
+                        else
+                            scoreLabel1.Text = String.Format("Score = {0:D2}", ++player2.Score);
+
                         Controls.Remove(missles[j].Sprite);
                         missles.RemoveAt(j);
 
                         Controls.Remove(asteroids[i].Sprite);
                         asteroids.RemoveAt(i);
-
-
-                        scoreLabel.Text = String.Format("Score = {0:D2}", ++player.Score);
-
                     }
                 }
             }
             tickCount++;
         }
         #endregion
+
+        private void scoreLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numberOfLivesLabel_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+            // relatively position Player 2 Number of Lives Label
+            numberOfLivesLabel1.Location = new Point(1, 2);
+
+            // relatively position Player 2 Score Label
+            scoreLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.15));
+
+            // relatively position Player 1 Number of Lives Label
+            numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
+
+            // relatively position Player 1 Score Label
+            scoreLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), Convert.ToInt32((double)this.Height * 0.15));
+        }
     }
 }

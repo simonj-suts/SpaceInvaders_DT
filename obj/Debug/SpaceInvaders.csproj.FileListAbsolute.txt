@@ -8,13 +8,23 @@ C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\
 C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.exe
 C:\Users\Asus\Downloads\SpaceInvaders-master\SpaceInvaders-master\SpaceInvaders\obj\Debug\SpaceInvaders.pdb
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Asus\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
