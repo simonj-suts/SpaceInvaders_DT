@@ -42,8 +42,8 @@ namespace SpaceInvaders
         #region Public methods
         public void Reposition(int screenW, int screenH)
         {
-            this.screenW = screenW;
-            this.screenH = screenH;
+            this.screenW = screenW; //right or left..col
+            this.screenH = screenH; // up or down..row
 
             this.interval = screenW / numberOfPositions;
             this.speed = interval;

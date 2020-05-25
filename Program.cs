@@ -14,9 +14,12 @@ namespace SpaceInvaders
         [STAThread]
         static void Main()
         {
+            
+            //Client client1();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Client());
+            Application.Run(new Menu());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -30,16 +31,20 @@ namespace SpaceInvaders
         public Client()
         {
             InitializeComponent();
-
+          
+             
+             
+             
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
-
+            
             player = new Player(playerSize, numberOfPositions, numberOfLives);
+            //player2 = new Player(playerSize, numberOfPositions, numberOfLives);
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
             numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
             scoreLabel.Text = String.Format("Score = {0:D2}", player.Score);
-
+            
             Controls.Add(player.Sprite);
         }
         #endregion
@@ -53,6 +58,8 @@ namespace SpaceInvaders
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+
+           
             // move -->
             if (timer.Enabled && e.KeyCode == Keys.Right)
                 player.MoveRight();
@@ -72,13 +79,15 @@ namespace SpaceInvaders
             // pause
             if (e.KeyCode == Keys.P)
                 timer.Enabled = !timer.Enabled;
-                
+
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
             {
+
                 Controls.Clear();
                 asteroids.Clear();
                 missles.Clear();
+                
                 player.Lives = numberOfLives;
                 player.Reposition(this.Width, this.Height);
 
@@ -89,10 +98,17 @@ namespace SpaceInvaders
                 Controls.Add(player.Sprite);
                 timer.Start();
             }
+
+            //exit
+            if (timer.Enabled && e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            
             // create and add asteroid every tickInterval ticks
             if (tickCount % tickInterval == 0)
             {
@@ -178,5 +194,15 @@ namespace SpaceInvaders
             tickCount++;
         }
         #endregion
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
