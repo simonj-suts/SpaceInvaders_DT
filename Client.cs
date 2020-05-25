@@ -73,10 +73,6 @@ namespace SpaceInvaders
             if (e.KeyCode == Keys.P)
                 timer.Enabled = !timer.Enabled;
                 
-            //end the game
-            if (e.KeyCode == Keys.Escape)
-                Application.Exit();
-
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
             {
