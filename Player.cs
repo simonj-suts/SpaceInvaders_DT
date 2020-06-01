@@ -39,7 +39,7 @@ namespace SpaceInvaders
             Sprite.BringToFront();
         }
         #endregion
-        
+
         #region Public methods
         public void Reposition(int screenW, int screenH, int playerNo)
         {
@@ -57,7 +57,7 @@ namespace SpaceInvaders
 
             Sprite.Location = new Point(x, y);
         }
-        
+
         public void MoveLeft()
         {
             if (x <= speed) return;
@@ -68,7 +68,7 @@ namespace SpaceInvaders
 
         public void MoveRight()
         {
-            if (x >= this.screenW-150) return;
+            if (x >= this.screenW - 150) return;
 
             x += speed;
             Sprite.Left += speed;
@@ -79,7 +79,7 @@ namespace SpaceInvaders
             Missle missle = new Missle(size, speed, playerNo);
             missle.SetLocation(x + this.size.Width / 2, y);
             return missle;
-        } 
+        }
         #endregion
     }
 }

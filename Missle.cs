@@ -52,7 +52,7 @@ namespace SpaceInvaders
         public bool IsOutOfScreen()
         {
             return y < 0;
-        } 
+        }
         #endregion
     }
 }

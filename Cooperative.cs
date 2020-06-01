@@ -104,7 +104,7 @@ namespace SpaceInvaders
 
             // exit
             if (e.KeyCode == Keys.Escape)
-                Application.Exit();
+                this.Close();
 
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
