@@ -28,7 +28,7 @@ namespace SpaceInvaders
         #endregion
 
         #region Constructors factory methods
-        public Client()
+        public Client(string userName)
         {
             InitializeComponent();
           
@@ -38,7 +38,7 @@ namespace SpaceInvaders
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
             
-            player = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player1);
+            player = new Player(playerSize, numberOfPositions, numberOfLives, userName );
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
             numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
@@ -103,6 +103,16 @@ namespace SpaceInvaders
             {
                 this.Close();
             }
+
+            if (!timer.Enabled && e.KeyCode == Keys.E)
+            {
+                Scoreboard scr = new Scoreboard();
+                scr.updateScoreboard(player);
+                scr.updateFile();
+                ScoreBoardDisplay scrBoard = new ScoreBoardDisplay(scr);
+                scrBoard.Show();
+                this.Close();
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -140,7 +150,7 @@ namespace SpaceInvaders
                     }
                     else
                     {
-                        numberOfLivesLabel.Text = "Game over, press enter to restart...";
+                        numberOfLivesLabel.Text = "Game over, press enter to restart, or 'e' to return to MAIN MENU...";
                         timer.Enabled = false;
                         break;
                     }

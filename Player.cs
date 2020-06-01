@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
-    class Player
+    public class Player
     {
         #region Private fields
         Size size;
@@ -18,6 +18,7 @@ namespace SpaceInvaders
         public PictureBox Sprite { get; private set; }
         public int Lives { get; set; }
         public int Score { get; set; }
+        public string Name { get; set; }
         #endregion
 
         #region Constructors and factory methods
@@ -38,6 +39,38 @@ namespace SpaceInvaders
             };
             Sprite.BringToFront();
         }
+
+
+        public Player(Size size, int numberOfPositions, int numberOfLives, string userName)
+        {
+            Name = userName;
+            Lives = numberOfLives;
+            this.size = size;
+            this.numberOfPositions = numberOfPositions;
+
+            // initialize sprite
+            Sprite = new PictureBox
+            {
+                Tag = "player",
+                Size = size,
+                BackColor = Color.Transparent,
+                Image = Properties.Resources.player1,
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+            Sprite.BringToFront();
+        }
+
+        public Player(string name, int scores)
+        {
+            Lives = 3;
+            this.size = new Size(75, 75);
+            this.numberOfPositions = 10;
+
+            this.Name = name;
+            this.Score = scores;
+
+        }
+
         #endregion
 
         #region Public methods

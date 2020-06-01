@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    class Missle
+    public class Missle
     {
         #region Private fields
         Size size;

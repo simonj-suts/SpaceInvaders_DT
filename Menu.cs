@@ -21,8 +21,9 @@ namespace SpaceInvaders
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Client c = new Client();
-            c.Show();
+            SinglePlayerMenu s1 = new SinglePlayerMenu();
+            
+            s1.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
