@@ -1,6 +1,6 @@
 ﻿namespace SpaceInvaders
 {
-    partial class Client
+    partial class Cooperative
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,9 @@
             this.scoreLabel = new System.Windows.Forms.Label();
             this.numberOfLivesLabel = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.scoreLabel1 = new System.Windows.Forms.Label();
+            this.numberOfLivesLabel1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // scoreLabel
@@ -40,12 +43,13 @@
             this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel.Location = new System.Drawing.Point(10, 79);
+            this.scoreLabel.Location = new System.Drawing.Point(1648, 72);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Padding = new System.Windows.Forms.Padding(19, 20, 19, 20);
-            this.scoreLabel.Size = new System.Drawing.Size(173, 72);
+            this.scoreLabel.Padding = new System.Windows.Forms.Padding(20);
+            this.scoreLabel.Size = new System.Drawing.Size(175, 72);
             this.scoreLabel.TabIndex = 3;
             this.scoreLabel.Text = "Score = 0";
+            this.scoreLabel.Click += new System.EventHandler(this.scoreLabel_Click);
             // 
             // numberOfLivesLabel
             // 
@@ -53,10 +57,10 @@
             this.numberOfLivesLabel.BackColor = System.Drawing.Color.Transparent;
             this.numberOfLivesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfLivesLabel.ForeColor = System.Drawing.Color.White;
-            this.numberOfLivesLabel.Location = new System.Drawing.Point(10, 8);
+            this.numberOfLivesLabel.Location = new System.Drawing.Point(1648, 0);
             this.numberOfLivesLabel.Name = "numberOfLivesLabel";
-            this.numberOfLivesLabel.Padding = new System.Windows.Forms.Padding(19, 20, 19, 20);
-            this.numberOfLivesLabel.Size = new System.Drawing.Size(295, 72);
+            this.numberOfLivesLabel.Padding = new System.Windows.Forms.Padding(20);
+            this.numberOfLivesLabel.Size = new System.Drawing.Size(297, 72);
             this.numberOfLivesLabel.TabIndex = 2;
             this.numberOfLivesLabel.Text = "Number of lives = 0";
             this.numberOfLivesLabel.Click += new System.EventHandler(this.numberOfLivesLabel_Click);
@@ -66,18 +70,57 @@
             this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
-            // Client
+            // scoreLabel1
+            // 
+            this.scoreLabel1.AutoSize = true;
+            this.scoreLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.scoreLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel1.ForeColor = System.Drawing.Color.White;
+            this.scoreLabel1.Location = new System.Drawing.Point(-2, 72);
+            this.scoreLabel1.Name = "scoreLabel1";
+            this.scoreLabel1.Padding = new System.Windows.Forms.Padding(20);
+            this.scoreLabel1.Size = new System.Drawing.Size(175, 72);
+            this.scoreLabel1.TabIndex = 4;
+            this.scoreLabel1.Text = "Score = 0";
+            this.scoreLabel1.Click += new System.EventHandler(this.scoreLabel_Click);
+            // 
+            // numberOfLivesLabel1
+            // 
+            this.numberOfLivesLabel1.AutoSize = true;
+            this.numberOfLivesLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.numberOfLivesLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.numberOfLivesLabel1.ForeColor = System.Drawing.Color.White;
+            this.numberOfLivesLabel1.Location = new System.Drawing.Point(-2, 0);
+            this.numberOfLivesLabel1.Name = "numberOfLivesLabel1";
+            this.numberOfLivesLabel1.Padding = new System.Windows.Forms.Padding(20);
+            this.numberOfLivesLabel1.Size = new System.Drawing.Size(297, 72);
+            this.numberOfLivesLabel1.TabIndex = 5;
+            this.numberOfLivesLabel1.Text = "Number of lives = 0";
+            this.numberOfLivesLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.numberOfLivesLabel1.Click += new System.EventHandler(this.numberOfLivesLabel_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 0;
+            // 
+            // Cooperative
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1346, 640);
+            this.ClientSize = new System.Drawing.Size(1946, 672);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numberOfLivesLabel1);
+            this.Controls.Add(this.scoreLabel1);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.numberOfLivesLabel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Client";
+            this.Name = "Cooperative";
             this.ShowIcon = false;
             this.Text = "Space Invaders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -93,8 +136,10 @@
 
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label numberOfLivesLabel;
-        
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label scoreLabel1;
+        private System.Windows.Forms.Label numberOfLivesLabel1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

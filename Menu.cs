@@ -23,7 +23,6 @@ namespace SpaceInvaders
         {
             Client c = new Client();
             c.Show();
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,7 +32,8 @@ namespace SpaceInvaders
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Cooperative c = new Cooperative();
+            c.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -56,6 +56,11 @@ namespace SpaceInvaders
 
             button4.Location = new Point(Convert.ToInt32((double)this.Width * 0.45), Convert.ToInt32((double)this.Height * 0.65));
             button4.Size = new Size(200, 50);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

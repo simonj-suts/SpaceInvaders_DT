@@ -53,6 +53,12 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cooperative.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cooperative.Designer.cs">
+      <DependentUpon>Cooperative.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cooperative.resx">
+      <DependentUpon>Cooperative.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -99,10 +108,13 @@
     <None Include="Resources\missle.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\player.png" />
+    <None Include="Resources\DlJkqQwWwAUmsQW.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DlJkqQwWwAUmsQW.png" />
+    <None Include="Resources\player2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

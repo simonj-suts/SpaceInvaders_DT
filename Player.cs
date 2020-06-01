@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
@@ -12,7 +13,7 @@ namespace SpaceInvaders
         int screenW, screenH;
         int numberOfPositions;
         #endregion
-        
+
         #region Public fields
         public PictureBox Sprite { get; private set; }
         public int Lives { get; set; }
@@ -20,7 +21,7 @@ namespace SpaceInvaders
         #endregion
 
         #region Constructors and factory methods
-        public Player(Size size, int numberOfPositions, int numberOfLives)
+        public Player(Size size, int numberOfPositions, int numberOfLives, Image image)
         {
             Lives = numberOfLives;
             this.size = size;
@@ -32,28 +33,31 @@ namespace SpaceInvaders
                 Tag = "player",
                 Size = size,
                 BackColor = Color.Transparent,
-                Image = Properties.Resources.player,
+                Image = image,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
             Sprite.BringToFront();
         }
         #endregion
-        
+
         #region Public methods
-        public void Reposition(int screenW, int screenH)
+        public void Reposition(int screenW, int screenH, int playerNo)
         {
-            this.screenW = screenW; //right or left..col
-            this.screenH = screenH; // up or down..row
+            this.screenW = screenW;
+            this.screenH = screenH;
 
             this.interval = screenW / numberOfPositions;
             this.speed = interval;
 
-            this.x = (numberOfPositions / 2) * interval;
+            if (playerNo == 1)
+                this.x = screenW - 150;
+            else
+                this.x = speed;
             this.y = screenH - 150;
 
             Sprite.Location = new Point(x, y);
         }
-        
+
         public void MoveLeft()
         {
             if (x <= speed) return;
@@ -64,18 +68,18 @@ namespace SpaceInvaders
 
         public void MoveRight()
         {
-            if (x >= interval * numberOfPositions - interval) return;
+            if (x >= this.screenW - 150) return;
 
             x += speed;
             Sprite.Left += speed;
         }
 
-        public Missle CreateMissle(Size size, int speed)
+        public Missle CreateMissle(Size size, int speed, int playerNo)
         {
-            Missle missle = new Missle(size, speed);
+            Missle missle = new Missle(size, speed, playerNo);
             missle.SetLocation(x + this.size.Width / 2, y);
             return missle;
-        } 
+        }
         #endregion
     }
 }

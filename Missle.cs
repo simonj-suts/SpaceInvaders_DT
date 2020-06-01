@@ -8,17 +8,20 @@ namespace SpaceInvaders
         #region Private fields
         Size size;
         int speed, x, y;
+        int playerNo;
         #endregion
 
         #region Public fields
         public PictureBox Sprite { get; private set; }
+        public int PlayerNo { get { return playerNo; } }
         #endregion
 
         #region Constructors and factory methods
-        public Missle(Size size, int speed)
+        public Missle(Size size, int speed, int playerNo)
         {
             this.size = size;
             this.speed = speed;
+            this.playerNo = playerNo;
 
             Sprite = new PictureBox
             {
@@ -49,7 +52,7 @@ namespace SpaceInvaders
         public bool IsOutOfScreen()
         {
             return y < 0;
-        } 
+        }
         #endregion
     }
 }

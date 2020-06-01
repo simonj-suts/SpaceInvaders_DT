@@ -38,8 +38,7 @@ namespace SpaceInvaders
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
             
-            player = new Player(playerSize, numberOfPositions, numberOfLives);
-            //player2 = new Player(playerSize, numberOfPositions, numberOfLives);
+            player = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player1);
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
             numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
@@ -52,7 +51,7 @@ namespace SpaceInvaders
         #region Core logic
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (player != null) player.Reposition(this.Width, this.Height);
+            if (player != null) player.Reposition(this.Width, this.Height,1);
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 
@@ -71,7 +70,7 @@ namespace SpaceInvaders
             // shoot
             if (timer.Enabled && e.KeyCode == Keys.Space)
             {
-                Missle missle = player.CreateMissle(missleSize, missleSpeed);
+                Missle missle = player.CreateMissle(missleSize, missleSpeed,1);
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -89,7 +88,7 @@ namespace SpaceInvaders
                 missles.Clear();
                 
                 player.Lives = numberOfLives;
-                player.Reposition(this.Width, this.Height);
+                player.Reposition(this.Width, this.Height,1);
 
                 numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
                 scoreLabel.Text = String.Format("Score = {0:D2}", player.Score = 0);
@@ -131,7 +130,7 @@ namespace SpaceInvaders
                         asteroids.Clear();
                         missles.Clear();
                         player.Lives--;
-                        player.Reposition(this.Width, this.Height);
+                        player.Reposition(this.Width, this.Height,1);
 
                         numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
                         Controls.Add(numberOfLivesLabel);
@@ -201,6 +200,11 @@ namespace SpaceInvaders
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numberOfLivesLabel_Click(object sender, EventArgs e)
         {
 
         }
