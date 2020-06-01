@@ -58,6 +58,29 @@ namespace SpaceInvaders
             Sprite.Location = new Point(x, y);
         }
 
+        public void Reposition2(int screenW, int screenH, int playerNo)
+        {
+            this.screenW = screenW;
+            this.screenH = screenH;
+
+            this.interval = screenW / numberOfPositions;
+            this.speed = interval;
+
+            if (playerNo == 2)
+                this.x = screenW - 450;
+            else
+                this.x = speed;
+            this.y = screenH - 800;
+
+            Sprite.Location = new Point(x, y);
+        }
+
+        public int PlayerCoordinateY
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
         public void MoveLeft()
         {
             if (x <= speed) return;
@@ -77,6 +100,13 @@ namespace SpaceInvaders
         public Missle CreateMissle(Size size, int speed, int playerNo)
         {
             Missle missle = new Missle(size, speed, playerNo);
+            missle.SetLocation(x + this.size.Width / 2, y);
+            return missle;
+        }
+
+        public MissleVs2 CreateMissle2(Size size, int speed)
+        {
+            MissleVs2 missle = new MissleVs2(size, speed);
             missle.SetLocation(x + this.size.Width / 2, y);
             return missle;
         }
