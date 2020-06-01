@@ -1,6 +1,6 @@
 ﻿namespace SpaceInvaders
 {
-    partial class Client
+    partial class Cooperative
     {
         /// <summary>
         /// Required designer variable.

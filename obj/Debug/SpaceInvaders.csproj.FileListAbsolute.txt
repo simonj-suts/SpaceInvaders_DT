@@ -28,3 +28,13 @@ C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.
 C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
 C:\Users\Asus\Desktop\Swinburne Stuffs\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\bin\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.Cooperative.resources
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\Space stuff\SpaceInvaders_DT - coop\obj\Debug\SpaceInvaders.pdb

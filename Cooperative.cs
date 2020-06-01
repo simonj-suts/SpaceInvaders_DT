@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    public partial class Client : Form
+    public partial class Cooperative : Form
     {
         #region Private fields
         int tickCount;
@@ -29,7 +29,7 @@ namespace SpaceInvaders
         #endregion
 
         #region Constructors factory methods
-        public Client()
+        public Cooperative()
         {
             InitializeComponent();
 
