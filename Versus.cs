@@ -14,7 +14,7 @@ namespace SpaceInvaders
         Player Player1; // Player 1
         Player Player2; // Player 2
         List<Missle> missles;
-        List<MissleVs2> missles2;
+        List<Missle> missles2;
         #endregion
 
         #region Settings
@@ -33,12 +33,13 @@ namespace SpaceInvaders
             InitializeComponent();
 
             missles = new List<Missle>();
-            missles2 = new List<MissleVs2>();
+            missles2 = new List<Missle>();
             //asteroids = new List<Asteroid>();
 
-            Player1 = new Player(PlayerSize, numberOfPositions, numberOfLives, Properties.Resources.player1); // create Player 1
-            Player2 = new Player(PlayerSize, numberOfPositions, numberOfLives, Properties.Resources.playervs2); // create Player 2
-
+            Player1 = new Player(PlayerSize, numberOfPositions, numberOfLives, 1); // create Player 1
+            Player1.InitializeSprite();
+            Player2 = new Player(PlayerSize, numberOfPositions, numberOfLives, 3); // create Player 2
+            Player2.InitializeSprite();
 
             numberOfLivesLabel.Text = String.Format("Lives = {0}", Player1.Lives);  
             numberOfLivesLabel1.Text = String.Format("Lives = {0}", Player2.Lives);           
@@ -52,8 +53,16 @@ namespace SpaceInvaders
         // Positions animated objects
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (Player1 != null) Player1.Reposition(this.Width, this.Height, 1);
-            if (Player2 != null) Player2.Reposition2(this.Width, this.Height, 2);
+            if (Player1 != null)
+            {
+                Player1.Reposition(this.Width, this.Height, 1);
+                Player1.PositionSprite();
+            }
+            if (Player2 != null)
+            {
+                Player2.Reposition(this.Width, this.Height, 3);
+                Player2.PositionSprite();
+            }
         }
 
         // Controls
@@ -71,6 +80,8 @@ namespace SpaceInvaders
             if (timer.Enabled && e.KeyCode == Keys.Space && Player1.Lives != 0)
             {
                 Missle missle = Player1.CreateMissle(missleSize, missleSpeed, 1);
+                missle.InitializeSprite();
+                missle.PositionSprite();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -86,9 +97,11 @@ namespace SpaceInvaders
             // shoot Player 2
             if (timer.Enabled && e.KeyCode == Keys.F && Player2.Lives != 0)
             {
-                MissleVs2 missle2 = Player2.CreateMissle2(missleSize, missleSpeed);
-                missles2.Add(missle2);
-                Controls.Add(missle2.Sprite);
+                Missle missle = Player2.CreateMissle(missleSize, missleSpeed,3);
+                missle.InitializeSprite();
+                missle.PositionSprite();
+                missles2.Add(missle);
+                Controls.Add(missle.Sprite);
             }
 
             // pause
@@ -113,7 +126,12 @@ namespace SpaceInvaders
 
                 // reset Player position
                 Player1.Reposition(this.Width, this.Height, 1);
-                Player2.Reposition2(this.Width, this.Height, 2);
+                Player1.InitializeSprite();
+                Player1.PositionSprite();
+
+                Player2.Reposition(this.Width, this.Height, 2);
+                Player2.InitializeSprite();
+                Player2.PositionSprite();
 
                 // update number of lives display
                 numberOfLivesLabel.Text = String.Format("Lives = {0}", Player1.Lives);
@@ -136,7 +154,7 @@ namespace SpaceInvaders
                 missles[j].Move();
 
                 // remove missle once out of screen
-                if (missles[j].IsOutOfScreen())
+                if (missles[j].IsOutOfScreen(this.Width))
                 {
                     Controls.Remove(missles[j].Sprite);
                     missles.RemoveAt(j);
@@ -148,7 +166,7 @@ namespace SpaceInvaders
                 missles2[i].Move();
 
                 // remove missle once out of screen
-                if (missles2[i].IsOutOfScreen(Player1))
+                if (missles2[i].IsOutOfScreen(this.Width))
                 {
                     Controls.Remove(missles2[i].Sprite);
                     missles2.RemoveAt(i);
@@ -163,13 +181,14 @@ namespace SpaceInvaders
                 {
                     if (Player2.Lives != 0)
                     {
-
                         Controls.Remove(numberOfLivesLabel1);
 
                         Controls.Remove(Player2.Sprite);
 
                         Player2.Lives--;
-                        Player2.Reposition2(this.Width, this.Height, 2);
+                        Player2.Reposition(this.Width, this.Height, 3);
+                        Player2.InitializeSprite();
+                        Player2.PositionSprite();
 
                         numberOfLivesLabel1.Text = String.Format("Lives = {0}", Player2.Lives);
                         Controls.Add(numberOfLivesLabel1);
@@ -197,6 +216,8 @@ namespace SpaceInvaders
 
                         Player1.Lives--;                              // reduce Player 1 live
                         Player1.Reposition(this.Width, this.Height, 1);  // reposition Player 1
+                        Player1.InitializeSprite();
+                        Player1.PositionSprite();
 
                         numberOfLivesLabel.Text = String.Format("Lives = {0}", Player1.Lives);
                         Controls.Add(numberOfLivesLabel);
@@ -230,5 +251,6 @@ namespace SpaceInvaders
             numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
 
         }
+
     }
 }
