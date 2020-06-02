@@ -9,7 +9,7 @@ namespace SpaceInvaders
         #region Private fields
         Size size;
         int interval;
-        int speed, x, y;
+        public int speed, x, y;
         int screenW, screenH;
         int numberOfPositions;
         #endregion
@@ -40,15 +40,16 @@ namespace SpaceInvaders
             Sprite.BringToFront();
         }
 
-
         public Player(Size size, int numberOfPositions, int numberOfLives, string userName)
         {
             Name = userName;
             Lives = numberOfLives;
             this.size = size;
             this.numberOfPositions = numberOfPositions;
+        }
 
-            // initialize sprite
+        public void InitializeSprite()
+        {
             Sprite = new PictureBox
             {
                 Tag = "player",
@@ -59,7 +60,7 @@ namespace SpaceInvaders
             };
             Sprite.BringToFront();
         }
-
+        
         public Player(string name, int scores)
         {
             Lives = 3;
@@ -83,11 +84,13 @@ namespace SpaceInvaders
             this.speed = interval;
 
             if (playerNo == 1)
-                this.x = screenW - 150;
+                this.x = screenW - interval;
             else
                 this.x = speed;
             this.y = screenH - 150;
-
+        }
+        public void PositionSprite()
+        {
             Sprite.Location = new Point(x, y);
         }
 
@@ -100,7 +103,7 @@ namespace SpaceInvaders
             this.speed = interval;
 
             if (playerNo == 2)
-                this.x = screenW - 450;
+                this.x = screenW - interval;
             else
                 this.x = speed;
             this.y = screenH - 800;

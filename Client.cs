@@ -31,14 +31,11 @@ namespace SpaceInvaders
         public Client(string userName)
         {
             InitializeComponent();
-          
-             
-             
-             
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
             
             player = new Player(playerSize, numberOfPositions, numberOfLives, userName );
+            player.InitializeSprite();
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
             numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
@@ -51,7 +48,11 @@ namespace SpaceInvaders
         #region Core logic
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (player != null) player.Reposition(this.Width, this.Height,1);
+            if (player != null)
+            {
+                player.Reposition(this.Width, this.Height, 1);
+                player.PositionSprite();
+            }
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 
@@ -71,6 +72,8 @@ namespace SpaceInvaders
             if (timer.Enabled && e.KeyCode == Keys.Space)
             {
                 Missle missle = player.CreateMissle(missleSize, missleSpeed,1);
+                missle.InitializeSprite();
+                missle.SetSpriteLocation();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -89,6 +92,7 @@ namespace SpaceInvaders
                 
                 player.Lives = numberOfLives;
                 player.Reposition(this.Width, this.Height,1);
+                player.PositionSprite();
 
                 numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
                 scoreLabel.Text = String.Format("Score = {0:D2}", player.Score = 0);
@@ -130,6 +134,7 @@ namespace SpaceInvaders
             for (int i = asteroids.Count - 1; i >= 0; i--)
             {
                 asteroids[i].Move();
+                asteroids[i].MoveSprite();
 
                 // collision with player
                 if (asteroids[i].Sprite.Bounds.IntersectsWith(player.Sprite.Bounds))
@@ -141,6 +146,7 @@ namespace SpaceInvaders
                         missles.Clear();
                         player.Lives--;
                         player.Reposition(this.Width, this.Height,1);
+                        player.PositionSprite();
 
                         numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
                         Controls.Add(numberOfLivesLabel);
@@ -169,7 +175,7 @@ namespace SpaceInvaders
             for (int j = missles.Count - 1; j >= 0; j--)
             {
                 missles[j].Move();
-
+                missles[j].MoveSprite();
                 // remove missle once out of screen
                 if (missles[j].IsOutOfScreen())
                 {

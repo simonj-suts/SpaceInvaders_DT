@@ -58,8 +58,15 @@ namespace SpaceInvaders
         // Positions animated objects
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (player1 != null) player1.Reposition(this.Width, this.Height,1);
-            if (player2 != null) player2.Reposition(this.Width, this.Height,2);
+            if (player1 != null)
+            {
+                player1.Reposition(this.Width, this.Height, 1);
+                player1.PositionSprite();
+            }
+            if (player2 != null) {
+                player2.Reposition(this.Width, this.Height, 2);
+                player2.PositionSprite();
+            }
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 

@@ -82,3 +82,18 @@ E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\New folder\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Asus\Desktop\New folder\bin\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\New folder\bin\Debug\SpaceInvaders.pdb
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.Client.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.Cooperative.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.Menu.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.Versus.resources
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.exe
+C:\Users\Asus\Desktop\New folder\obj\Debug\SpaceInvaders.pdb

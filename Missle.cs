@@ -7,7 +7,7 @@ namespace SpaceInvaders
     {
         #region Private fields
         Size size;
-        int speed, x, y;
+        public int speed, x, y;
         int playerNo;
         #endregion
 
@@ -22,7 +22,12 @@ namespace SpaceInvaders
             this.size = size;
             this.speed = speed;
             this.playerNo = playerNo;
+        }
+        #endregion
 
+        #region Public methods
+        public void InitializeSprite()
+        {
             Sprite = new PictureBox
             {
                 Tag = "missle",
@@ -33,19 +38,25 @@ namespace SpaceInvaders
             };
             Sprite.BringToFront();
         }
-        #endregion
 
-        #region Public methods
         public void SetLocation(int x, int y)
         {
             this.x = x - size.Width / 2;
             this.y = y - size.Height / 2;
+        }
+
+        public void SetSpriteLocation()
+        {
             Sprite.Location = new Point(this.x, this.y);
         }
 
         public void Move()
         {
             y -= speed;
+        }
+
+        public void MoveSprite()
+        {
             Sprite.Top -= speed;
         }
 

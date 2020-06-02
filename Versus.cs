@@ -30,7 +30,7 @@ namespace SpaceInvaders
         #region Constructors factory methods
         public Versus()
         {
-            InitializeComponent();
+            InitializeComponents();
 
             missles = new List<Missle>();
             missles2 = new List<MissleVs2>();
@@ -52,8 +52,13 @@ namespace SpaceInvaders
         // Positions animated objects
         private void Form1_Resize(object sender, EventArgs e)
         {
-            if (Player1 != null) Player1.Reposition(this.Width, this.Height, 1);
-            if (Player2 != null) Player2.Reposition2(this.Width, this.Height, 2);
+            if (Player1 != null)
+            {
+                Player1.Reposition(this.Width, this.Height, 1);
+                Player1.PositionSprite();
+            }
+            if (Player2 != null)
+                Player2.Reposition2(this.Width, this.Height, 1);
         }
 
         // Controls
@@ -71,6 +76,8 @@ namespace SpaceInvaders
             if (timer.Enabled && e.KeyCode == Keys.Space && Player1.Lives != 0)
             {
                 Missle missle = Player1.CreateMissle(missleSize, missleSpeed, 1);
+                missle.InitializeSprite();
+                missle.SetSpriteLocation();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -134,7 +141,7 @@ namespace SpaceInvaders
             for (int j = missles.Count - 1; j >= 0; j--)
             {
                 missles[j].Move();
-
+                missles[j].MoveSprite();
                 // remove missle once out of screen
                 if (missles[j].IsOutOfScreen())
                 {
@@ -146,7 +153,6 @@ namespace SpaceInvaders
             for (int i = missles2.Count - 1; i >= 0; i--)
             {
                 missles2[i].Move();
-
                 // remove missle once out of screen
                 if (missles2[i].IsOutOfScreen(Player1))
                 {
@@ -197,7 +203,7 @@ namespace SpaceInvaders
 
                         Player1.Lives--;                              // reduce Player 1 live
                         Player1.Reposition(this.Width, this.Height, 1);  // reposition Player 1
-
+                        Player1.PositionSprite();
                         numberOfLivesLabel.Text = String.Format("Lives = {0}", Player1.Lives);
                         Controls.Add(numberOfLivesLabel);
                         Controls.Add(Player1.Sprite);
@@ -228,6 +234,24 @@ namespace SpaceInvaders
 
             // relatively position Player 1 Number of Lives Label
             numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
+
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Versus
+            // 
+            this.ClientSize = new System.Drawing.Size(278, 244);
+            this.Name = "Versus";
+            this.Load += new System.EventHandler(this.Versus_Load_1);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Versus_Load_1(object sender, EventArgs e)
+        {
 
         }
     }
