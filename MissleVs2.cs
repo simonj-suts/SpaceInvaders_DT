@@ -51,7 +51,7 @@ namespace SpaceInvaders
 
         public bool IsOutOfScreen(Player player)
         {
-            return y > player.PlayerCoordinateY;
+            return y > player.Y;
         }
 
 

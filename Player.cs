@@ -1,63 +1,39 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SpaceInvaders
 {
-    public class Player
+    public class Player : AnimatedObject
     {
         #region Private fields
-        Size size;
         int interval;
-        int speed, x, y;
         int screenW, screenH;
         int numberOfPositions;
+        int playerNo;
         #endregion
 
         #region Public fields
-        public PictureBox Sprite { get; private set; }
         public int Lives { get; set; }
         public int Score { get; set; }
         public string Name { get; set; }
         #endregion
 
         #region Constructors and factory methods
-        public Player(Size size, int numberOfPositions, int numberOfLives, Image image)
+        public Player(Size size, int numberOfPositions, int numberOfLives, int aPlayerNo) : base(size)
         {
             Lives = numberOfLives;
-            this.size = size;
             this.numberOfPositions = numberOfPositions;
-
-            // initialize sprite
-            Sprite = new PictureBox
-            {
-                Tag = "player",
-                Size = size,
-                BackColor = Color.Transparent,
-                Image = image,
-                SizeMode = PictureBoxSizeMode.StretchImage
-            };
-            Sprite.BringToFront();
+            playerNo = aPlayerNo;
         }
 
-
-        public Player(Size size, int numberOfPositions, int numberOfLives, string userName)
+        public Player(Size size, int numberOfPositions, int numberOfLives, string userName) : base(size)
         {
             Name = userName;
             Lives = numberOfLives;
-            this.size = size;
             this.numberOfPositions = numberOfPositions;
-
-            // initialize sprite
-            Sprite = new PictureBox
-            {
-                Tag = "player",
-                Size = size,
-                BackColor = Color.Transparent,
-                Image = Properties.Resources.player1,
-                SizeMode = PictureBoxSizeMode.StretchImage
-            };
-            Sprite.BringToFront();
+            playerNo = 1;
         }
 
         public Player(string name, int scores)
@@ -65,15 +41,40 @@ namespace SpaceInvaders
             Lives = 3;
             this.size = new Size(75, 75);
             this.numberOfPositions = 10;
-
             this.Name = name;
             this.Score = scores;
-
         }
 
         #endregion
 
         #region Public methods
+        public override void InitializeSprite()
+        {
+            Image img;
+            if (playerNo == 1)
+            {
+                img = Properties.Resources.player1;
+            }
+            else if (playerNo == 2)
+            {
+                img = Properties.Resources.player2;
+            } else
+            {
+                img = Properties.Resources.playervs2;
+            }
+
+            Sprite = new PictureBox
+            {
+                Tag = "player",
+                Size = size,
+                BackColor = Color.Transparent,
+                Image = img,
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+
+            Sprite.BringToFront();
+        }
+
         public void Reposition(int screenW, int screenH, int playerNo)
         {
             this.screenW = screenW;
@@ -83,35 +84,20 @@ namespace SpaceInvaders
             this.speed = interval;
 
             if (playerNo == 1)
-                this.x = screenW - 150;
-            else
+            {
+                this.x = screenW - interval;
+                this.y = screenH - 150;
+            }
+            else if (playerNo == 2)
+            {
                 this.x = speed;
-            this.y = screenH - 150;
-
-            Sprite.Location = new Point(x, y);
-        }
-
-        public void Reposition2(int screenW, int screenH, int playerNo)
-        {
-            this.screenW = screenW;
-            this.screenH = screenH;
-
-            this.interval = screenW / numberOfPositions;
-            this.speed = interval;
-
-            if (playerNo == 2)
-                this.x = screenW - 450;
-            else
+                this.y = screenH - 150;
+            }
+            else if (playerNo == 3)
+            {
                 this.x = speed;
-            this.y = screenH - 800;
-
-            Sprite.Location = new Point(x, y);
-        }
-
-        public int PlayerCoordinateY
-        {
-            get { return y; }
-            set { y = value; }
+                this.y = screenH - 800;
+            }
         }
 
         public void MoveLeft()
@@ -133,13 +119,6 @@ namespace SpaceInvaders
         public Missle CreateMissle(Size size, int speed, int playerNo)
         {
             Missle missle = new Missle(size, speed, playerNo);
-            missle.SetLocation(x + this.size.Width / 2, y);
-            return missle;
-        }
-
-        public MissleVs2 CreateMissle2(Size size, int speed)
-        {
-            MissleVs2 missle = new MissleVs2(size, speed);
             missle.SetLocation(x + this.size.Width / 2, y);
             return missle;
         }

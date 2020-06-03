@@ -3,23 +3,19 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    class Asteroid
+    public class Asteroid : AnimatedObject
     {
-        #region Private fields
-        Size size;              // size
-        int speed, x, y;        // speed and position
-        #endregion
-
-        #region Private fields
-        public PictureBox Sprite { get; private set; }
-        #endregion
-
         #region Constructors and factory methods
         public Asteroid(Size size, int speed)
         {
             this.size = size;
             this.speed = speed;
+        }
+        #endregion
 
+        #region Public methods
+        public override void InitializeSprite()
+        {
             Sprite = new PictureBox
             {
                 Size = size,
@@ -29,14 +25,11 @@ namespace SpaceInvaders
             };
             Sprite.BringToFront();
         }
-        #endregion
-        
-        #region Public methods
+
         public void SetLocation(int x, int y)
         {
             this.x = x - size.Width / 2;
             this.y = y - size.Width / 2;
-            Sprite.Location = new Point(this.x, this.y);
         }
 
         public void Move()
