@@ -3,30 +3,27 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    public class Missle
+    public class Missle : AnimatedObject
     {
         #region Private fields
-        Size size;
-        public int speed, x, y;
         int playerNo;
         #endregion
 
         #region Public fields
-        public PictureBox Sprite { get; private set; }
         public int PlayerNo { get { return playerNo; } }
+
         #endregion
 
         #region Constructors and factory methods
-        public Missle(Size size, int speed, int playerNo)
+        public Missle(Size size, int speed, int playerNo) : base(size)
         {
-            this.size = size;
             this.speed = speed;
             this.playerNo = playerNo;
         }
         #endregion
 
         #region Public methods
-        public void InitializeSprite()
+        public override void InitializeSprite()
         {
             Sprite = new PictureBox
             {
@@ -45,24 +42,26 @@ namespace SpaceInvaders
             this.y = y - size.Height / 2;
         }
 
-        public void SetSpriteLocation()
-        {
-            Sprite.Location = new Point(this.x, this.y);
-        }
-
         public void Move()
         {
-            y -= speed;
+            if (playerNo == 3)
+            {
+                y += speed;
+                Sprite.Top += speed;
+            }
+            else
+            {
+                y -= speed;
+                Sprite.Top -= speed;
+            }
         }
 
-        public void MoveSprite()
+        public bool IsOutOfScreen(int width)
         {
-            Sprite.Top -= speed;
-        }
-
-        public bool IsOutOfScreen()
-        {
-            return y < 0;
+            if (playerNo == 3)
+                return y > width;
+            else
+                return y < 0;
         }
         #endregion
     }

@@ -34,7 +34,7 @@ namespace SpaceInvaders
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
             
-            player = new Player(playerSize, numberOfPositions, numberOfLives, userName );
+            player = new Player(playerSize, numberOfPositions, numberOfLives, userName);
             player.InitializeSprite();
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
@@ -53,13 +53,12 @@ namespace SpaceInvaders
                 player.Reposition(this.Width, this.Height, 1);
                 player.PositionSprite();
             }
-            if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
+            if (asteroidFactory != null) 
+                asteroidFactory.ScreenW = this.Width;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
-           
             // move -->
             if (timer.Enabled && e.KeyCode == Keys.Right)
                 player.MoveRight();
@@ -73,7 +72,7 @@ namespace SpaceInvaders
             {
                 Missle missle = player.CreateMissle(missleSize, missleSpeed,1);
                 missle.InitializeSprite();
-                missle.SetSpriteLocation();
+                missle.PositionSprite();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -92,6 +91,7 @@ namespace SpaceInvaders
                 
                 player.Lives = numberOfLives;
                 player.Reposition(this.Width, this.Height,1);
+                player.InitializeSprite();
                 player.PositionSprite();
 
                 numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
@@ -134,7 +134,6 @@ namespace SpaceInvaders
             for (int i = asteroids.Count - 1; i >= 0; i--)
             {
                 asteroids[i].Move();
-                asteroids[i].MoveSprite();
 
                 // collision with player
                 if (asteroids[i].Sprite.Bounds.IntersectsWith(player.Sprite.Bounds))
@@ -146,6 +145,7 @@ namespace SpaceInvaders
                         missles.Clear();
                         player.Lives--;
                         player.Reposition(this.Width, this.Height,1);
+                        player.InitializeSprite();
                         player.PositionSprite();
 
                         numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
@@ -175,9 +175,9 @@ namespace SpaceInvaders
             for (int j = missles.Count - 1; j >= 0; j--)
             {
                 missles[j].Move();
-                missles[j].MoveSprite();
+
                 // remove missle once out of screen
-                if (missles[j].IsOutOfScreen())
+                if (missles[j].IsOutOfScreen(this.Width))
                 {
                     Controls.Remove(missles[j].Sprite);
                     missles.RemoveAt(j);

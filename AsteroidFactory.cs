@@ -28,7 +28,7 @@ namespace SpaceInvaders
             Asteroid asteroid = new Asteroid(size, speed);
             asteroid.InitializeSprite();
             asteroid.SetLocation(RandomizeX(), -100);
-            asteroid.SetSpriteLocation();
+            asteroid.PositionSprite();
             return asteroid;
         }
         #endregion

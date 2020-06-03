@@ -36,8 +36,10 @@ namespace SpaceInvaders
             missles = new List<Missle>();
             asteroids = new List<Asteroid>();
 
-            player1 = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player1); // create player 1
-            player2 = new Player(playerSize, numberOfPositions, numberOfLives, Properties.Resources.player2); // create player 2
+            player1 = new Player(playerSize, numberOfPositions, numberOfLives, 1); // create player 1
+            player1.InitializeSprite();
+            player2 = new Player(playerSize, numberOfPositions, numberOfLives, 2); // create player 2
+            player2.InitializeSprite();
 
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
@@ -63,7 +65,8 @@ namespace SpaceInvaders
                 player1.Reposition(this.Width, this.Height, 1);
                 player1.PositionSprite();
             }
-            if (player2 != null) {
+            if (player2 != null)
+            {
                 player2.Reposition(this.Width, this.Height, 2);
                 player2.PositionSprite();
             }
@@ -85,6 +88,8 @@ namespace SpaceInvaders
             if (timer.Enabled && e.KeyCode == Keys.Space && player1.Lives != 0)
             {
                 Missle missle = player1.CreateMissle(missleSize, missleSpeed,1);
+                missle.InitializeSprite();
+                missle.PositionSprite();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -101,6 +106,8 @@ namespace SpaceInvaders
             if (timer.Enabled && e.KeyCode == Keys.F && player2.Lives != 0)
             {
                 Missle missle = player2.CreateMissle(missleSize, missleSpeed,2);
+                missle.InitializeSprite();
+                missle.PositionSprite();
                 missles.Add(missle);
                 Controls.Add(missle.Sprite);
             }
@@ -127,7 +134,9 @@ namespace SpaceInvaders
 
                 // reset player position
                 player1.Reposition(this.Width, this.Height,1);
+                player1.InitializeSprite();
                 player2.Reposition(this.Width, this.Height,2);
+                player2.InitializeSprite();
 
                 // update number of lives display
                 numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
@@ -191,6 +200,7 @@ namespace SpaceInvaders
 
                         player1.Lives--;                              // reduce Player 1 live
                         player1.Reposition(this.Width, this.Height, 1);  // reposition Player 1
+                        player1.PositionSprite();
 
                         numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
                         Controls.Add(numberOfLivesLabel);
@@ -228,6 +238,7 @@ namespace SpaceInvaders
 
                         player2.Lives--;
                         player2.Reposition(this.Width, this.Height,2);
+                        player2.PositionSprite();
 
                         numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
                         Controls.Add(numberOfLivesLabel1);
@@ -266,7 +277,7 @@ namespace SpaceInvaders
                 missles[j].Move();
 
                 // remove missle once out of screen
-                if (missles[j].IsOutOfScreen())
+                if (missles[j].IsOutOfScreen(this.Width))
                 {
                     Controls.Remove(missles[j].Sprite);
                     missles.RemoveAt(j);
