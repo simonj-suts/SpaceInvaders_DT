@@ -6,6 +6,7 @@ namespace SpaceInvaders
     public class Missle : AnimatedObject
     {
         #region Private fields
+        //indicates the game mode (1-Single Player, 2- Co-op, 3- Multiplayer)
         int playerNo;
         #endregion
 

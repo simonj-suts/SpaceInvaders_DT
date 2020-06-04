@@ -45,3 +45,29 @@ C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCo
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Buffers.dll
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Memory.dll
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.dll
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.dll
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Buffers.xml
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Memory.xml
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.xml
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.xml
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Cooperative.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Menu.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Versus.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
