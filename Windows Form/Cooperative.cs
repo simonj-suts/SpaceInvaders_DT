@@ -73,44 +73,67 @@ namespace SpaceInvaders
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 
+        
+
         // Controls
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // move player 1--> 
-            if (timer.Enabled && e.KeyCode == Keys.Right && player1.Lives != 0)
-                player1.MoveRight();
-
-            // move player 1<--
-            if (timer.Enabled && e.KeyCode == Keys.Left && player1.Lives != 0) // && e.Modifiers == Keys.Control
-                player1.MoveLeft();
-
-            // shoot player 1
-            if (timer.Enabled && e.KeyCode == Keys.Space && player1.Lives != 0)
+            if (timer.Enabled && player1.Lives != 0) // player 1 still alive
             {
-                Missle missle = player1.CreateMissle(missleSize, missleSpeed,1);
-                missle.InitializeSprite();
-                missle.PositionSprite();
-                missles.Add(missle);
-                Controls.Add(missle.Sprite);
+                // move right 
+                if (e.KeyCode == Keys.Right)
+                    player1.MoveRight();
+                // move left 
+                if (e.KeyCode == Keys.Left)
+                    player1.MoveLeft();
+                // move up 
+                if (e.KeyCode == Keys.Up)
+                    player1.MoveUp();
+                // move down 
+                if (e.KeyCode == Keys.Down)
+                    player1.MoveDown();
+                // move sprite
+                if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+                    player1.MoveSprite();
+                // shoot missile
+                if (e.KeyCode == Keys.Space)
+                {
+                    Missle missle = player1.CreateMissle(missleSize, missleSpeed, 1);
+                    missle.InitializeSprite();
+                    missle.PositionSprite();
+                    missles.Add(missle);
+                    Controls.Add(missle.Sprite);
+                }
             }
 
-            // move player 2-->
-            if (timer.Enabled && e.KeyCode == Keys.D && player2.Lives != 0)
-                player2.MoveRight();
-
-            // move player 2<--
-            if (timer.Enabled && e.KeyCode == Keys.A && player2.Lives != 0) // && e.Modifiers == Keys.Control
-                player2.MoveLeft();
-
-            // shoot player 2
-            if (timer.Enabled && e.KeyCode == Keys.F && player2.Lives != 0)
+            if (timer.Enabled && player2.Lives != 0) // player 2 still alive
             {
-                Missle missle = player2.CreateMissle(missleSize, missleSpeed,2);
-                missle.InitializeSprite();
-                missle.PositionSprite();
-                missles.Add(missle);
-                Controls.Add(missle.Sprite);
+                // move right 
+                if (e.KeyCode == Keys.D)
+                    player2.MoveRight();
+                // move left 
+                if (e.KeyCode == Keys.A)
+                    player2.MoveLeft();
+                // move up 
+                if (e.KeyCode == Keys.W)
+                    player2.MoveUp();
+                // move down 
+                if (e.KeyCode == Keys.S)
+                    player2.MoveDown();
+                // move sprite
+                if (e.KeyCode == Keys.D || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.W)
+                    player2.MoveSprite();
+                // shoot missile
+                if (e.KeyCode == Keys.F)
+                {
+                    Missle missle = player2.CreateMissle(missleSize, missleSpeed, 2);
+                    missle.InitializeSprite();
+                    missle.PositionSprite();
+                    missles.Add(missle);
+                    Controls.Add(missle.Sprite);
+                }
             }
+
 
             // pause
             if (e.KeyCode == Keys.P)

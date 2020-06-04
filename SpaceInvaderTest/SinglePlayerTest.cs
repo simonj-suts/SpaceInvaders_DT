@@ -60,8 +60,6 @@ namespace SpaceInvaderTest
 
             Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
             p1.Reposition(1920, 1080, 1);
-            
-
 
             Asteroid ars = new Asteroid(asteroidSize, asteroidSpeed);
             ars.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize.Width / 2, p1.Y);
@@ -80,6 +78,37 @@ namespace SpaceInvaderTest
 
            Assert.AreEqual(true, hit);
            Assert.AreEqual(1, p1.Score);
+        }
+
+        [TestMethod]
+        public void TestMovement()
+        {
+            Size playerSize = new Size(75, 75);
+            int numberOfPositions = 10;
+            int numberOfLives = 3;
+            string username1 = "Johanna";
+
+
+            Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
+            p1.Reposition(1920, 1080, 1);
+
+            int initialPositionY = p1.Y;
+            int initialPositionX = p1.X;
+
+            Assert.AreEqual(initialPositionY, p1.Y);
+            Assert.AreEqual(initialPositionX, p1.X);
+
+            p1.MoveUp();
+            Assert.AreEqual(initialPositionY - (1080/numberOfPositions), p1.Y);
+
+            p1.MoveDown();
+            Assert.AreEqual(initialPositionY, p1.Y);
+
+            p1.MoveLeft();
+            Assert.AreEqual(initialPositionX - (1920 / numberOfPositions), p1.X);
+
+            p1.MoveRight();
+            Assert.AreEqual(initialPositionX, p1.X);
         }
     }
 }

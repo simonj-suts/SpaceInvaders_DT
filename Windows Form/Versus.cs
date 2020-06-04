@@ -68,40 +68,59 @@ namespace SpaceInvaders
         // Controls
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // move Player 1--> 
-            if (timer.Enabled && e.KeyCode == Keys.Right && Player1.Lives != 0)
-                Player1.MoveRight();
-
-            // move Player 1<--
-            if (timer.Enabled && e.KeyCode == Keys.Left && Player1.Lives != 0) // && e.Modifiers == Keys.Control
-                Player1.MoveLeft();
-
-            // shoot Player 1
-            if (timer.Enabled && e.KeyCode == Keys.Space && Player1.Lives != 0)
+            if (timer.Enabled && Player1.Lives != 0) // player 1 still alive
             {
-                Missle missle = Player1.CreateMissle(missleSize, missleSpeed, 1);
-                missle.InitializeSprite();
-                missle.PositionSprite();
-                missles.Add(missle);
-                Controls.Add(missle.Sprite);
+                // move right 
+                if (e.KeyCode == Keys.Right)
+                    Player1.MoveRight();
+                // move left 
+                if (e.KeyCode == Keys.Left)
+                    Player1.MoveLeft();
+                // move up 
+                if (e.KeyCode == Keys.Up)
+                    Player1.MoveUp();
+                // move down 
+                if (e.KeyCode == Keys.Down)
+                    Player1.MoveDown();
+                if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+                    Player1.MoveSprite();
+                // shoot missile
+                if (e.KeyCode == Keys.Space)
+                {
+                    Missle missle = Player1.CreateMissle(missleSize, missleSpeed, 1);
+                    missle.InitializeSprite();
+                    missle.PositionSprite();
+                    missles.Add(missle);
+                    Controls.Add(missle.Sprite);
+                }
             }
 
-            // move Player 2-->
-            if (timer.Enabled && e.KeyCode == Keys.D && Player2.Lives != 0)
-                Player2.MoveRight();
-
-            // move Player 2<--
-            if (timer.Enabled && e.KeyCode == Keys.A && Player2.Lives != 0) // && e.Modifiers == Keys.Control
-                Player2.MoveLeft();
-
-            // shoot Player 2
-            if (timer.Enabled && e.KeyCode == Keys.F && Player2.Lives != 0)
+            if (timer.Enabled && Player2.Lives != 0) // player 2 still alive
             {
-                Missle missle = Player2.CreateMissle(missleSize, missleSpeed,3);
-                missle.InitializeSprite();
-                missle.PositionSprite();
-                missles2.Add(missle);
-                Controls.Add(missle.Sprite);
+                // move right 
+                if (e.KeyCode == Keys.D)
+                    Player2.MoveRight();
+                // move left 
+                if (e.KeyCode == Keys.A)
+                    Player2.MoveLeft();
+                // move up 
+                if (e.KeyCode == Keys.W)
+                    Player2.MoveUp();
+                // move down 
+                if (e.KeyCode == Keys.S)
+                    Player2.MoveDown();
+                // move sprite
+                if (e.KeyCode == Keys.D || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.W)
+                    Player2.MoveSprite();
+                // shoot missile
+                if (e.KeyCode == Keys.F)
+                {
+                    Missle missle = Player2.CreateMissle(missleSize, missleSpeed, 3);
+                    missle.InitializeSprite();
+                    missle.PositionSprite();
+                    missles2.Add(missle);
+                    Controls.Add(missle.Sprite);
+                }
             }
 
             // pause
@@ -234,8 +253,6 @@ namespace SpaceInvaders
             tickCount++;
         }
         #endregion
-        
-
 
         private void numberOfLivesLabel_Click(object sender, EventArgs e)
         {
@@ -251,6 +268,5 @@ namespace SpaceInvaders
             numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
 
         }
-
     }
 }

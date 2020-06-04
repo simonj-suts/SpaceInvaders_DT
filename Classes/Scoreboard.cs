@@ -37,7 +37,6 @@ namespace SpaceInvaders
             else
             {
                 StreamWriter score = File.CreateText(scoreDataPath);
-                 
                 score.Close();
             }
 

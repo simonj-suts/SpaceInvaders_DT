@@ -59,13 +59,32 @@ namespace SpaceInvaders
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // move -->
+            // move right
             if (timer.Enabled && e.KeyCode == Keys.Right)
+            {
                 player.MoveRight();
+                player.MoveSprite();
+            }
 
-            // move <--
-            if (timer.Enabled && e.KeyCode == Keys.Left) // && e.Modifiers == Keys.Control
+            // move left
+            if (timer.Enabled && e.KeyCode == Keys.Left)
+            {
                 player.MoveLeft();
+                player.MoveSprite();
+            }
+            // move up
+            if (timer.Enabled && e.KeyCode == Keys.Up)
+            {
+                player.MoveUp();
+                player.MoveSprite();
+            }
+
+            // move down
+            if (timer.Enabled && e.KeyCode == Keys.Down)
+            {
+                player.MoveDown();
+                player.MoveSprite();
+            }
 
             // shoot
             if (timer.Enabled && e.KeyCode == Keys.Space)
@@ -221,6 +240,11 @@ namespace SpaceInvaders
         }
 
         private void numberOfLivesLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void scoreLabel_Click(object sender, EventArgs e)
         {
 
         }

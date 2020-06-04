@@ -8,10 +8,12 @@ namespace SpaceInvaders
     public class Player : AnimatedObject
     {
         #region Private fields
-        int interval;
+        int intervalX;
+        int intervalY;
         int screenW, screenH;
         int numberOfPositions;
         int playerNo;
+        int SpritePosition;
         #endregion
 
         #region Public fields
@@ -80,40 +82,73 @@ namespace SpaceInvaders
             this.screenW = screenW;
             this.screenH = screenH;
 
-            this.interval = screenW / numberOfPositions;
-            this.speed = interval;
+            this.intervalX = screenW / numberOfPositions;
+            this.intervalY = screenH / numberOfPositions;
+            this.speed = intervalX;
 
             if (playerNo == 1)
             {
-                this.x = screenW - interval;
-                this.y = screenH - 150;
+                this.x = screenW - intervalX;
+                this.y = screenH - intervalY;
             }
             else if (playerNo == 2)
             {
                 this.x = speed;
-                this.y = screenH - 150;
+                this.y = screenH - intervalY;
             }
             else if (playerNo == 3)
             {
                 this.x = speed;
-                this.y = screenH - 800;
+                this.y = intervalY;
             }
+        }
+
+        public void MoveSprite()
+        {
+            switch (SpritePosition)
+            {
+                case 1:
+                    Sprite.Left -= speed;
+                    break;
+                case 2:
+                    Sprite.Left += speed;
+                    break;
+                case 3:
+                    Sprite.Top -= intervalY;
+                    break;
+                case 4:
+                    Sprite.Top += intervalY;
+                    break;
+            }
+            SpritePosition = 0;
         }
 
         public void MoveLeft()
         {
             if (x <= speed) return;
-
             x -= speed;
-            Sprite.Left -= speed;
+            SpritePosition = 1;
         }
 
         public void MoveRight()
         {
-            if (x >= this.screenW - 150) return;
-
+            if (x >= this.screenW - intervalX) return;
             x += speed;
-            Sprite.Left += speed;
+            SpritePosition = 2;
+        }
+
+        public void MoveUp()
+        {
+            if (y <= intervalY) return;
+            y -= intervalY;
+            SpritePosition = 3;
+        }
+
+        public void MoveDown()
+        {
+            if (y >= this.screenH - intervalY) return;
+            y += intervalY;
+            SpritePosition = 4;
         }
 
         public Missle CreateMissle(Size size, int speed, int playerNo)

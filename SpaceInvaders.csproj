@@ -81,56 +81,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimatedObject.cs" />
-    <Compile Include="Asteroid.cs" />
-    <Compile Include="AsteroidFactory.cs" />
-    <Compile Include="Client.cs">
+    <Compile Include="Classes\AnimatedObject.cs" />
+    <Compile Include="Classes\Asteroid.cs" />
+    <Compile Include="Classes\AsteroidFactory.cs" />
+    <Compile Include="Windows Form\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Client.Designer.cs">
+    <Compile Include="Windows Form\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cooperative.cs">
+    <Compile Include="Windows Form\Cooperative.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cooperative.Designer.cs">
+    <Compile Include="Windows Form\Cooperative.Designer.cs">
       <DependentUpon>Cooperative.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="Windows Form\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Windows Form\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Missle.cs" />
-    <Compile Include="MissleVs2.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Classes\Missle.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scoreboard.cs" />
-    <Compile Include="ScoreBoardDisplay.cs">
+    <Compile Include="Classes\Scoreboard.cs" />
+    <Compile Include="Windows Form\ScoreBoardDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScoreBoardDisplay.Designer.cs">
+    <Compile Include="Windows Form\ScoreBoardDisplay.Designer.cs">
       <DependentUpon>ScoreBoardDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="SinglePlayerMenu.cs">
+    <Compile Include="Windows Form\SinglePlayerMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SinglePlayerMenu.Designer.cs">
+    <Compile Include="Windows Form\SinglePlayerMenu.Designer.cs">
       <DependentUpon>SinglePlayerMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Versus.cs">
+    <Compile Include="Windows Form\Versus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Versus.Designer.cs" />
-    <EmbeddedResource Include="Client.resx">
+    <Compile Include="Windows Form\Versus.Designer.cs" />
+    <EmbeddedResource Include="Windows Form\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cooperative.resx">
+    <EmbeddedResource Include="Windows Form\Cooperative.resx">
       <DependentUpon>Cooperative.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="Windows Form\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -143,13 +142,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScoreBoardDisplay.resx">
+    <EmbeddedResource Include="Windows Form\ScoreBoardDisplay.resx">
       <DependentUpon>ScoreBoardDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SinglePlayerMenu.resx">
+    <EmbeddedResource Include="Windows Form\SinglePlayerMenu.resx">
       <DependentUpon>SinglePlayerMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Versus.resx" />
+    <EmbeddedResource Include="Windows Form\Versus.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

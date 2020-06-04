@@ -6081,19 +6081,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joanna Wong\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\GitHubClones\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\New folder (2)\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
       "projectName": "SpaceInvaderTest",
-      "projectPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\GitHubClones\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
-      "packagesPath": "C:\\Users\\Joanna Wong\\.nuget\\packages\\",
-      "outputPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\GitHubClones\\SpaceInvaders_DT\\SpaceInvaderTest\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\Desktop\\New folder (2)\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\Desktop\\New folder (2)\\SpaceInvaderTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Joanna Wong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6106,8 +6106,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\GitHubClones\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
-              "projectPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\GitHubClones\\SpaceInvaders_DT\\SpaceInvaders.csproj"
+            "C:\\Users\\Asus\\Desktop\\New folder (2)\\SpaceInvaders.csproj": {
+              "projectPath": "C:\\Users\\Asus\\Desktop\\New folder (2)\\SpaceInvaders.csproj"
             }
           }
         }
@@ -6181,7 +6181,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

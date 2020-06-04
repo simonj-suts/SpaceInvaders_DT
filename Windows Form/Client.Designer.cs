@@ -46,6 +46,7 @@
             this.scoreLabel.Size = new System.Drawing.Size(173, 72);
             this.scoreLabel.TabIndex = 3;
             this.scoreLabel.Text = "Score = 0";
+            this.scoreLabel.Click += new System.EventHandler(this.scoreLabel_Click);
             // 
             // numberOfLivesLabel
             // 
