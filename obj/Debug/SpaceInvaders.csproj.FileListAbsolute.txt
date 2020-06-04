@@ -19,3 +19,29 @@ C:\Users\Asus\Documents\Git\Test2\obj\Debug\SpaceInvaders.csproj.CoreCompileInpu
 C:\Users\Asus\Documents\Git\Test2\obj\Debug\SpaceInvaders.csproj.CopyComplete
 C:\Users\Asus\Documents\Git\Test2\obj\Debug\SpaceInvaders.exe
 C:\Users\Asus\Documents\Git\Test2\obj\Debug\SpaceInvaders.pdb
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe.config
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.exe
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\SpaceInvaders.pdb
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Buffers.dll
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Memory.dll
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.dll
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Buffers.xml
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Memory.xml
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.xml
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Cooperative.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Menu.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Versus.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
