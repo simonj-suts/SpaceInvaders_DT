@@ -72,12 +72,14 @@ namespace SpaceInvaderTest
 
             bool hit = false;
             Assert.AreEqual(false, hit);
+            Assert.AreEqual(0, p1.Score);
 
-            
             if (missleArea.IntersectsWith(asteroidArea))
                 hit = true;
-                
+                p1.Score++;
+
            Assert.AreEqual(true, hit);
+           Assert.AreEqual(1, p1.Score);
         }
     }
 }
