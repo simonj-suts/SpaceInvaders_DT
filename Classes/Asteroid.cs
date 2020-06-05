@@ -7,6 +7,8 @@ namespace SpaceInvaders
     {
         #region public fields
         public bool Hit { get; set; }
+        public int healthBar;
+        public int astScore;
         #endregion
         #region Constructors and factory methods
         public Asteroid(Size size, int speed)
@@ -14,20 +16,65 @@ namespace SpaceInvaders
             this.size = size;
             this.speed = speed;
             Hit = false;
+            healthBar = SetHealthBar();
+            astScore = healthBar;
         }
         #endregion
 
         #region Public methods
         public override void InitializeSprite()
         {
-            Sprite = new PictureBox
+            if (size.Height > 100)
             {
-                Size = size,
-                BackColor = Color.Transparent,
-                Image = Properties.Resources.asteroid,
-                SizeMode = PictureBoxSizeMode.StretchImage
-            };
+                Sprite = new PictureBox
+                {
+                    Size = size,
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources.asteroid3,
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
+
+            }
+            else if (size.Height > 80 && size.Height <= 100)
+            {
+                Sprite = new PictureBox
+                {
+                    Size = size,
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources.asteroid2,
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
+            }
+            else
+            {
+                Sprite = new PictureBox
+                {
+                    Size = size,
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources.asteroid,
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
+            }
             Sprite.BringToFront();
+        }
+
+        public int SetHealthBar()
+        {
+            if (size.Height > 100)
+            {
+                healthBar = 3;
+
+            }
+            else if (size.Height > 80 && size.Height <= 100)
+            {
+                healthBar = 2;
+            }
+            else
+            {
+                healthBar = 1;
+            }
+            return healthBar;
+
         }
 
         public void SetLocation(int x, int y)

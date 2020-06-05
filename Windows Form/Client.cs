@@ -20,10 +20,10 @@ namespace SpaceInvaders
         #endregion
 
         #region Settings
-        int tickInterval = 5;
+        int tickInterval = 10;
         int numberOfPositions = 10;
         int numberOfLives = 3;
-        int asteroidSpeed = 40;
+        int asteroidSpeed = 30;
         int missleSpeed = 50;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
@@ -245,7 +245,19 @@ namespace SpaceInvaders
                         break;
                     if (asteroids[j].Sprite.Bounds.IntersectsWith(ammo[i].Sprite.Bounds))
                     {
-                        asteroids[j].Hit = true;
+                        if (asteroids[j].healthBar != 1)
+                        {
+                            asteroids[j].healthBar--;
+
+                        }
+                        else
+                        {
+
+                            player.Score += asteroids[j].astScore;
+
+                            asteroids[j].Hit = true;
+                            
+                        }
                         ammo[i].Hit = true;
                     }
                 }

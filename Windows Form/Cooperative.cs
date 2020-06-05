@@ -19,10 +19,10 @@ namespace SpaceInvaders
         #endregion
 
         #region Settings
-        int tickInterval = 5;
+        int tickInterval = 10;
         int numberOfPositions = 10;
         int numberOfLives = 3;
-        int asteroidSpeed = 40;
+        int asteroidSpeed = 30;
         int missleSpeed = 50;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
@@ -171,8 +171,10 @@ namespace SpaceInvaders
                 // reset player position
                 player1.Reposition(this.Width, this.Height,1);
                 player1.InitializeSprite();
+                player1.PositionSprite();
                 player2.Reposition(this.Width, this.Height,2);
                 player2.InitializeSprite();
+                player2.PositionSprite();
 
                 // update number of lives display
                 numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
@@ -270,8 +272,8 @@ namespace SpaceInvaders
                         {
                             Controls.Remove(asteroids[j].Sprite);
                         }
-                        Controls.Remove(numberOfLivesLabel);
-                        Controls.Remove(scoreLabel);
+                        //Controls.Remove(numberOfLivesLabel);
+                       // Controls.Remove(scoreLabel);
                         Controls.Remove(player1.Sprite);
                         asteroids.Clear();
                         player1.Lives--;
@@ -309,8 +311,8 @@ namespace SpaceInvaders
                         {
                             Controls.Remove(asteroids[j].Sprite);
                         }
-                        Controls.Remove(numberOfLivesLabel1);
-                        Controls.Remove(scoreLabel1);
+                        //Controls.Remove(numberOfLivesLabel1);
+                        //Controls.Remove(scoreLabel1);
                         Controls.Remove(player2.Sprite);
                         asteroids.Clear();
                         player2.Lives--;
@@ -355,8 +357,28 @@ namespace SpaceInvaders
                         break;
                     if (asteroids[j].Sprite.Bounds.IntersectsWith(missles[i].Sprite.Bounds))
                     {
-                        asteroids[j].Hit = true;
+                        
+
+                        if (asteroids[j].healthBar != 1)
+                        {
+                            asteroids[j].healthBar--;
+
+                        }
+                        else
+                        {
+                            if (missles[i].PlayerNo == 1)
+                            {
+                                player1.Score += asteroids[j].astScore;
+                            }
+                            else { 
+                                player2.Score+= asteroids[j].astScore;
+                            }
+                            asteroids[j].Hit = true;
+                            
+                        }
                         missles[i].Hit = true;
+                        //asteroids[j].Hit = true;
+
                     }
                 }
                 // remove all cummulative asteroids that got hit
@@ -395,17 +417,26 @@ namespace SpaceInvaders
 
         private void Client_Load(object sender, EventArgs e)
         {
+
+            // relatively position Player 2's label
+            label2.Location = new Point(1, 2);
+
             // relatively position Player 2 Number of Lives Label
-            numberOfLivesLabel1.Location = new Point(1, 2);
+            numberOfLivesLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.15));
 
             // relatively position Player 2 Score Label
-            scoreLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.15));
+            scoreLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.3));
+
+            // relatively position Player 1's label
+            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
 
             // relatively position Player 1 Number of Lives Label
-            numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
+            numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), Convert.ToInt32((double)this.Height * 0.15));
 
             // relatively position Player 1 Score Label
-            scoreLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), Convert.ToInt32((double)this.Height * 0.15));
+            scoreLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), Convert.ToInt32((double)this.Height * 0.3));
+
+            
         }
     }
 }

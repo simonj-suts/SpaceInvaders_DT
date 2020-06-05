@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
     class AsteroidFactory
     {
         #region Private fields
+        static int randomNum;
         Size size;
         int speed;
         int numberOfPositions;
+        List<int> randNum = new List<int> { 120, 75, 90 };
         #endregion
 
         #region Public fields
@@ -25,11 +28,21 @@ namespace SpaceInvaders
 
         public Asteroid CreateAsteroid()
         {
-            Asteroid asteroid = new Asteroid(size, speed);
+            if (randomNum >= 3 || String.IsNullOrEmpty(randomNum.ToString()))
+            {
+                randomNum = 0;
+            }
+
+            //randomize types of asteroids
+            int astPos = randNum[randomNum];
+            Asteroid asteroid = new Asteroid(new Size(astPos, astPos), speed);
+
             asteroid.InitializeSprite();
             asteroid.SetLocation(RandomizeX(), -100);
             asteroid.PositionSprite();
+            randomNum++;
             return asteroid;
+
         }
         #endregion
 

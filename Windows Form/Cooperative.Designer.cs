@@ -35,6 +35,8 @@
             this.scoreLabel1 = new System.Windows.Forms.Label();
             this.numberOfLivesLabel1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // scoreLabel
@@ -43,10 +45,10 @@
             this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel.Location = new System.Drawing.Point(1648, 72);
+            this.scoreLabel.Location = new System.Drawing.Point(1469, 132);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Padding = new System.Windows.Forms.Padding(20);
-            this.scoreLabel.Size = new System.Drawing.Size(175, 72);
+            this.scoreLabel.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
+            this.scoreLabel.Size = new System.Drawing.Size(152, 61);
             this.scoreLabel.TabIndex = 3;
             this.scoreLabel.Text = "Score = 0";
             this.scoreLabel.Click += new System.EventHandler(this.scoreLabel_Click);
@@ -57,10 +59,10 @@
             this.numberOfLivesLabel.BackColor = System.Drawing.Color.Transparent;
             this.numberOfLivesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfLivesLabel.ForeColor = System.Drawing.Color.White;
-            this.numberOfLivesLabel.Location = new System.Drawing.Point(1648, 0);
+            this.numberOfLivesLabel.Location = new System.Drawing.Point(1469, 71);
             this.numberOfLivesLabel.Name = "numberOfLivesLabel";
-            this.numberOfLivesLabel.Padding = new System.Windows.Forms.Padding(20);
-            this.numberOfLivesLabel.Size = new System.Drawing.Size(297, 72);
+            this.numberOfLivesLabel.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
+            this.numberOfLivesLabel.Size = new System.Drawing.Size(256, 61);
             this.numberOfLivesLabel.TabIndex = 2;
             this.numberOfLivesLabel.Text = "Number of lives = 0";
             this.numberOfLivesLabel.Click += new System.EventHandler(this.numberOfLivesLabel_Click);
@@ -76,10 +78,10 @@
             this.scoreLabel1.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel1.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel1.Location = new System.Drawing.Point(-2, 72);
+            this.scoreLabel1.Location = new System.Drawing.Point(-2, 132);
             this.scoreLabel1.Name = "scoreLabel1";
-            this.scoreLabel1.Padding = new System.Windows.Forms.Padding(20);
-            this.scoreLabel1.Size = new System.Drawing.Size(175, 72);
+            this.scoreLabel1.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
+            this.scoreLabel1.Size = new System.Drawing.Size(152, 61);
             this.scoreLabel1.TabIndex = 4;
             this.scoreLabel1.Text = "Score = 0";
             this.scoreLabel1.Click += new System.EventHandler(this.scoreLabel_Click);
@@ -90,10 +92,10 @@
             this.numberOfLivesLabel1.BackColor = System.Drawing.Color.Transparent;
             this.numberOfLivesLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.numberOfLivesLabel1.ForeColor = System.Drawing.Color.White;
-            this.numberOfLivesLabel1.Location = new System.Drawing.Point(-2, 0);
+            this.numberOfLivesLabel1.Location = new System.Drawing.Point(-2, 71);
             this.numberOfLivesLabel1.Name = "numberOfLivesLabel1";
-            this.numberOfLivesLabel1.Padding = new System.Windows.Forms.Padding(20);
-            this.numberOfLivesLabel1.Size = new System.Drawing.Size(297, 72);
+            this.numberOfLivesLabel1.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
+            this.numberOfLivesLabel1.Size = new System.Drawing.Size(256, 61);
             this.numberOfLivesLabel1.TabIndex = 5;
             this.numberOfLivesLabel1.Text = "Number of lives = 0";
             this.numberOfLivesLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -103,15 +105,39 @@
             // 
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.Size = new System.Drawing.Size(89, 18);
             this.label1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(22, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 29);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Player 2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label3.Location = new System.Drawing.Point(1490, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 29);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Player 1";
             // 
             // Cooperative
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1946, 672);
+            this.ClientSize = new System.Drawing.Size(1726, 538);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numberOfLivesLabel1);
             this.Controls.Add(this.scoreLabel1);
@@ -140,6 +166,8 @@
         private System.Windows.Forms.Label scoreLabel1;
         private System.Windows.Forms.Label numberOfLivesLabel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
