@@ -39,7 +39,6 @@ C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Menu.resource
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
-C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Versus.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
@@ -97,3 +96,4 @@ C:\Users\Asus\Desktop\New folder (2)\obj\Debug\SpaceInvaders.csproj.CopyComplete
 C:\Users\Asus\Desktop\New folder (2)\obj\Debug\SpaceInvaders.exe
 C:\Users\Asus\Desktop\New folder (2)\obj\Debug\SpaceInvaders.pdb
 C:\Users\Asus\Desktop\New folder (2)\obj\Debug\SpaceInvaders.Windows_Form.Versus.resources
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.Versus.resources

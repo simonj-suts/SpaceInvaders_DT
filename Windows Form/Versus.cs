@@ -216,8 +216,17 @@ namespace SpaceInvaders
                     }
                     else
                     {
-                        //gameover screen
-                        //to be added
+                        this.Close();
+                        VersusGameOverScreen g = new VersusGameOverScreen();
+                        g.winner(1);
+                        g.Show();
+                        Controls.Remove(numberOfLivesLabel);
+                        Controls.Remove(numberOfLivesLabel1);
+                        Controls.Remove(scoreLabel1);
+                        Controls.Remove(Player1.Sprite);
+                        Controls.Remove(Player2.Sprite);
+                        timer.Enabled = false;
+                        break;
                     }                 
                 }
             }
@@ -245,8 +254,17 @@ namespace SpaceInvaders
                     }
                     else
                     {
-                        //gameover screen
-                        //to be added
+                        this.Close();
+                        VersusGameOverScreen g = new VersusGameOverScreen();
+                        g.winner(2);
+                        g.Show();
+                        Controls.Remove(numberOfLivesLabel);
+                        Controls.Remove(numberOfLivesLabel1);
+                        Controls.Remove(scoreLabel1);
+                        Controls.Remove(Player1.Sprite);
+                        Controls.Remove(Player2.Sprite);
+                        timer.Enabled = false;
+                        break;
                     }
                 }
             }

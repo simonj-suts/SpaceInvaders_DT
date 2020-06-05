@@ -123,6 +123,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Windows Form\Versus.Designer.cs" />
+    <Compile Include="Windows Form\VersusGameOverScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Form\VersusGameOverScreen.Designer.cs">
+      <DependentUpon>VersusGameOverScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows Form\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,4 +1,5 @@
 asd 21
+gg 13
 ad 1
 joanna 0
 sda 0
