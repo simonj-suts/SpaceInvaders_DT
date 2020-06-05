@@ -26,11 +26,11 @@ namespace SpaceInvaderTest
 
             Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
             p1.Reposition(1920, 1080, 1);
-            playerArea = new Rectangle(p1.X, p1.Y, 75, 75);
+            playerArea = new Rectangle((int)p1.X, (int)p1.Y, 75, 75);
 
             Asteroid ars = new Asteroid(asteroidSize, asteroidSpeed);
             ars.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize.Width / 2, p1.Y);
-            asteroidArea = new Rectangle(ars.X, ars.Y, 75, 75);
+            asteroidArea = new Rectangle((int)ars.X, (int)ars.Y, 75, 75);
 
             Assert.AreEqual(3, p1.Lives);
 
@@ -65,10 +65,10 @@ namespace SpaceInvaderTest
 
             Asteroid ars = new Asteroid(asteroidSize, asteroidSpeed);
             ars.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize.Width / 2, p1.Y);
-            asteroidArea = new Rectangle(ars.X, ars.Y, 75, 75);
+            asteroidArea = new Rectangle((int)ars.X, (int)ars.Y, 75, 75);
 
             Weapon miss = p1.CreateWeapon(missleSpeed, 1);
-            missleArea = new Rectangle(miss.X, miss.Y, 75, 75);
+            missleArea = new Rectangle((int)miss.X, (int)miss.Y, 75, 75);
 
             bool hit = false;
             Assert.AreEqual(false, hit);
@@ -97,8 +97,8 @@ namespace SpaceInvaderTest
             Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
             p1.Reposition(1920, 1080, 1);
 
-            int initialPositionY = p1.Y;
-            int initialPositionX = p1.X;
+            int initialPositionY = (int)p1.Y;
+            int initialPositionX = (int)p1.X;
 
             Assert.AreEqual(initialPositionY, p1.Y);
             Assert.AreEqual(initialPositionX, p1.X);
@@ -143,15 +143,15 @@ namespace SpaceInvaderTest
             p1.weaponType = WeaponType.laser;
 
             Weapon miss = p1.CreateWeapon(missleSpeed, 1);
-            missleArea = new Rectangle(miss.X, miss.Y, 75, screenH);
+            missleArea = new Rectangle((int)miss.X, (int)miss.Y, 75, screenH);
 
             Asteroid ars1 = new Asteroid(asteroidSize, asteroidSpeed);
             ars1.SetLocation((numberOfPositions - 1) * (screenW / numberOfPositions) + asteroidSize.Width / 2, p1.Y);
-            Rectangle asteroidArea1 = new Rectangle(ars1.X, ars1.Y, 75, 75);
+            Rectangle asteroidArea1 = new Rectangle((int)ars1.X, (int)ars1.Y, 75, 75);
 
             Asteroid ars2 = new Asteroid(asteroidSize, asteroidSpeed);
             ars2.SetLocation((numberOfPositions - 1) * (screenW / numberOfPositions) + asteroidSize.Width / 2, 100);
-            Rectangle asteroidArea2 = new Rectangle(ars2.X, ars2.Y, 75, 75);
+            Rectangle asteroidArea2 = new Rectangle((int)ars2.X, (int)ars2.Y, 75, 75);
 
             asteroids.Add(asteroidArea1);
             asteroids.Add(asteroidArea2);

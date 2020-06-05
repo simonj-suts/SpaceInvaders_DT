@@ -47,12 +47,12 @@ namespace SpaceInvaders
             if (playerNo == 3)
             {
                 y += speed;
-                Sprite.Top += speed;
+                Sprite.Top += (int)speed;
             }
             else
             {
                 y -= speed;
-                Sprite.Top -=speed;
+                Sprite.Top -= (int)speed;
             }
         }
 

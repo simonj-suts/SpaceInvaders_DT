@@ -10,6 +10,7 @@ namespace SpaceInvaders
         public int healthBar;
         public int astScore;
         #endregion
+
         #region Constructors and factory methods
         public Asteroid(Size size, int speed)
         {
@@ -77,7 +78,7 @@ namespace SpaceInvaders
 
         }
 
-        public void SetLocation(int x, int y)
+        public void SetLocation(double x, double y)
         {
             this.x = x - size.Width / 2;
             this.y = y - size.Width / 2;
@@ -86,7 +87,7 @@ namespace SpaceInvaders
         public void Move()
         {
             y += speed;
-            Sprite.Top += speed;
+            Sprite.Top += (int)speed;
         }
 
         public bool IsOutOfScreen(int screenH)

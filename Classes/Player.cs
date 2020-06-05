@@ -9,11 +9,11 @@ namespace SpaceInvaders
     public class Player : AnimatedObject
     {
         #region Private fields
-        int intervalX;
-        int intervalY;
-        int screenW, screenH;
-        int numberOfPositions;
-        int SpritePosition;
+        double intervalX;
+        double intervalY;
+        double screenW, screenH;
+        double numberOfPositions;
+        double SpritePosition;
         #endregion
 
         #region Public fields
@@ -81,7 +81,7 @@ namespace SpaceInvaders
             Sprite.BringToFront();
         }
 
-        public void Reposition(int screenW, int screenH, int playerNo)
+        public void Reposition(double screenW, double screenH, int playerNo)
         {
             this.screenW = screenW;
             this.screenH = screenH;
@@ -90,20 +90,16 @@ namespace SpaceInvaders
             this.intervalY = screenH / numberOfPositions;
             this.speed = intervalX;
 
-            if (playerNo == 1)
+            this.x = screenW - intervalX;
+            this.y = screenH - intervalY;
+           if (playerNo == 2)
             {
-                this.x = screenW - intervalX;
-                this.y = screenH - intervalY;
+                this.x -= speed * 8;
             }
-            else if (playerNo == 2)
+            if (playerNo == 3)
             {
-                this.x = speed;
-                this.y = screenH - intervalY;
-            }
-            else if (playerNo == 3)
-            {
-                this.x = speed;
-                this.y = intervalY;
+                this.x -= speed * 8;
+                this.y -= intervalY*8;
             }
         }
 
@@ -112,16 +108,16 @@ namespace SpaceInvaders
             switch (SpritePosition)
             {
                 case 1:
-                    Sprite.Left -= speed;
+                    Sprite.Left -= (int)speed;
                     break;
                 case 2:
-                    Sprite.Left += speed;
+                    Sprite.Left += (int)speed;
                     break;
                 case 3:
-                    Sprite.Top -= intervalY;
+                    Sprite.Top -= (int)intervalY;
                     break;
                 case 4:
-                    Sprite.Top += intervalY;
+                    Sprite.Top += (int)intervalY;
                     break;
             }
             SpritePosition = 0;
@@ -159,18 +155,18 @@ namespace SpaceInvaders
         {
             Weapon weapon;
             Size weaponsize;
-            int weaponPosY = y;
+            double weaponPosY = y;
             switch (weaponType)
             {
                 case WeaponType.laser:
                     if (playerNo == 3)
                     {
-                        weaponsize = new Size(15, screenH - this.Y - 5);
+                        weaponsize = new Size(15, (int)(screenH - this.Y - 5));
                         weaponPosY = screenH - 10;
                     }
                     else
                     {
-                        weaponsize = new Size(15, (screenH - (screenH - this.y)));
+                        weaponsize = new Size(15, (int)(screenH - (screenH - this.y)));
                         weaponPosY += 2;
                     }
                     weapon =  new Laser(weaponsize, speed, playerNo);
@@ -180,7 +176,7 @@ namespace SpaceInvaders
                     weapon = new Missile(weaponsize, speed, playerNo);
                     break;
             }
-            weapon.SetLocation(x + this.size.Width / 2, weaponPosY);
+            weapon.SetLocation((int)(x + this.size.Width / 2), (int)weaponPosY);
             return weapon;
         }
         #endregion

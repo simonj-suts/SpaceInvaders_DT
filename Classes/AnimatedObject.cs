@@ -12,13 +12,13 @@ namespace SpaceInvaders
     {
         #region Protected fields
         protected Size size;
-        protected int speed, x, y;
+        protected double speed, x, y;
         #endregion
 
         #region Public fields
         public PictureBox Sprite { get; protected set; }
-        public int X { get { return x; } }
-        public int Y { get { return y; } }
+        public double X { get { return x; } }
+        public double Y { get { return y; } }
         #endregion
 
         #region Constructors
@@ -34,7 +34,7 @@ namespace SpaceInvaders
         
         public void PositionSprite()
         {
-            Sprite.Location = new Point(x, y);
+            Sprite.Location = new Point((int)x, (int)y);
         }
         #endregion
     }

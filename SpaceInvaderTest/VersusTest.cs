@@ -22,18 +22,18 @@ namespace SpaceInvaderTest
 
             Player player1 = new Player(playerSize, numberOfPositions, numberOfLives, 1); // create player 1
             player1.Reposition(1920, 1080, 1);
-            Rectangle playerArea = new Rectangle(player1.X, player1.Y, 75, 75);
+            Rectangle playerArea = new Rectangle((int)player1.X, (int)player1.Y, 75, 75);
 
             Player player2 = new Player(playerSize, numberOfPositions, numberOfLives, 3); // create player 2
             player2.Reposition(1920, 1080, 3);
-            Rectangle playerArea2 = new Rectangle(player2.X, player2.Y, 75, 75);
+            Rectangle playerArea2 = new Rectangle((int)player2.X, (int)player2.Y, 75, 75);
 
             Weapon missle = player1.CreateWeapon(missleSpeed, 1);
-            Rectangle missle1Area = new Rectangle(missle.X, missle.Y, 75, 75);
+            Rectangle missle1Area = new Rectangle((int)missle.X, (int)missle.Y, 75, 75);
             missles.Add(missle);
 
             Weapon missle2 = player2.CreateWeapon(missleSpeed, 3);
-            Rectangle missle2Area = new Rectangle(missle2.X, missle2.Y, 75, 75);
+            Rectangle missle2Area = new Rectangle((int)missle2.X, (int)missle2.Y, 75, 75);
             missles2.Add(missle2);
 
             bool missleHit = false;
