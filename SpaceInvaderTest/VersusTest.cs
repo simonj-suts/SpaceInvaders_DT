@@ -17,8 +17,8 @@ namespace SpaceInvaderTest
             Size missleSize = new Size(15, 45);
             int missleSpeed = 50;
 
-            List<Missle> missles = new List<Missle>();
-            List<Missle> missles2 = new List<Missle>();
+            List<Weapon> missles = new List<Weapon>();
+            List<Weapon> missles2 = new List<Weapon>();
 
             Player player1 = new Player(playerSize, numberOfPositions, numberOfLives, 1); // create player 1
             player1.Reposition(1920, 1080, 1);
@@ -28,11 +28,11 @@ namespace SpaceInvaderTest
             player2.Reposition(1920, 1080, 3);
             Rectangle playerArea2 = new Rectangle(player2.X, player2.Y, 75, 75);
 
-            Missle missle = player1.CreateMissle(missleSize, missleSpeed, 1);
+            Weapon missle = player1.CreateWeapon(missleSpeed, 1);
             Rectangle missle1Area = new Rectangle(missle.X, missle.Y, 75, 75);
             missles.Add(missle);
 
-            Missle missle2 = player2.CreateMissle(missleSize, missleSpeed, 3);
+            Weapon missle2 = player2.CreateWeapon(missleSpeed, 3);
             Rectangle missle2Area = new Rectangle(missle2.X, missle2.Y, 75, 75);
             missles2.Add(missle2);
 

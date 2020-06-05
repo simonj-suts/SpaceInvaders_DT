@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using SpaceInvaders.Classes;
 
 namespace SpaceInvaders
 {
@@ -12,7 +13,6 @@ namespace SpaceInvaders
         int intervalY;
         int screenW, screenH;
         int numberOfPositions;
-        int playerNo;
         int SpritePosition;
         #endregion
 
@@ -20,6 +20,8 @@ namespace SpaceInvaders
         public int Lives { get; set; }
         public int Score { get; set; }
         public string Name { get; set; }
+        public WeaponType weaponType { get; set; }
+        public int playerNo { get; set; }
         #endregion
 
         #region Constructors and factory methods
@@ -28,6 +30,7 @@ namespace SpaceInvaders
             Lives = numberOfLives;
             this.numberOfPositions = numberOfPositions;
             playerNo = aPlayerNo;
+            weaponType = WeaponType.missle;
         }
 
         public Player(Size size, int numberOfPositions, int numberOfLives, string userName) : base(size)
@@ -36,6 +39,7 @@ namespace SpaceInvaders
             Lives = numberOfLives;
             this.numberOfPositions = numberOfPositions;
             playerNo = 1;
+            weaponType = WeaponType.missle;
         }
 
         public Player(string name, int scores)
@@ -151,11 +155,33 @@ namespace SpaceInvaders
             SpritePosition = 4;
         }
 
-        public Missle CreateMissle(Size size, int speed, int playerNo)
+        public Weapon CreateWeapon(int speed, int playerNo)
         {
-            Missle missle = new Missle(size, speed, playerNo);
-            missle.SetLocation(x + this.size.Width / 2, y);
-            return missle;
+            Weapon weapon;
+            Size weaponsize;
+            int weaponPosY = y;
+            switch (weaponType)
+            {
+                case WeaponType.laser:
+                    if (playerNo == 3)
+                    {
+                        weaponsize = new Size(15, screenH - this.Y - 5);
+                        weaponPosY = screenH - 10;
+                    }
+                    else
+                    {
+                        weaponsize = new Size(15, (screenH - (screenH - this.y)));
+                        weaponPosY += 2;
+                    }
+                    weapon =  new Laser(weaponsize, speed, playerNo);
+                    break;
+                default:
+                    weaponsize = new Size(15, 45);
+                    weapon = new Missile(weaponsize, speed, playerNo);
+                    break;
+            }
+            weapon.SetLocation(x + this.size.Width / 2, weaponPosY);
+            return weapon;
         }
         #endregion
     }

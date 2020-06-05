@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceInvaders.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,13 +7,13 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    public partial class Cooperative : Form
+    public partial class Cooperative : Client
     {
         #region Private fields
         int tickCount;
         Player player1; // Player 1
         Player player2; // Player 2
-        List<Missle> missles;
+        List<Weapon> missles;
         List<Asteroid> asteroids;
         AsteroidFactory asteroidFactory;
         #endregion
@@ -25,7 +26,6 @@ namespace SpaceInvaders
         int missleSpeed = 50;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
-        Size missleSize = new Size(15, 45);
         #endregion
 
         #region Constructors factory methods
@@ -33,7 +33,7 @@ namespace SpaceInvaders
         {
             InitializeComponent();
 
-            missles = new List<Missle>();
+            missles = new List<Weapon>();
             asteroids = new List<Asteroid>();
 
             player1 = new Player(playerSize, numberOfPositions, numberOfLives, 1); // create player 1
@@ -95,14 +95,21 @@ namespace SpaceInvaders
                 // move sprite
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
                     player1.MoveSprite();
+                // select missile
+                if (e.KeyCode == Keys.D8)
+                    player1.weaponType = WeaponType.missle;
+                // select laser
+                if (e.KeyCode == Keys.D9)
+                    player1.weaponType = WeaponType.laser;
+
                 // shoot missile
-                if (e.KeyCode == Keys.Space)
+                if (e.KeyCode == Keys.ControlKey)
                 {
-                    Missle missle = player1.CreateMissle(missleSize, missleSpeed, 1);
-                    missle.InitializeSprite();
-                    missle.PositionSprite();
-                    missles.Add(missle);
-                    Controls.Add(missle.Sprite);
+                    Weapon weapon = player1.CreateWeapon(missleSpeed, 1);
+                    weapon.InitializeSprite();
+                    weapon.PositionSprite();
+                    missles.Add(weapon);
+                    Controls.Add(weapon.Sprite);
                 }
             }
 
@@ -123,14 +130,20 @@ namespace SpaceInvaders
                 // move sprite
                 if (e.KeyCode == Keys.D || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.W)
                     player2.MoveSprite();
+                // select missile
+                if (e.KeyCode == Keys.D1)
+                    player2.weaponType = WeaponType.missle;
+                // select laser
+                if (e.KeyCode == Keys.D2)
+                    player2.weaponType = WeaponType.laser;
                 // shoot missile
                 if (e.KeyCode == Keys.F)
                 {
-                    Missle missle = player2.CreateMissle(missleSize, missleSpeed, 2);
-                    missle.InitializeSprite();
-                    missle.PositionSprite();
-                    missles.Add(missle);
-                    Controls.Add(missle.Sprite);
+                    Weapon weapon = player2.CreateWeapon(missleSpeed, 2);
+                    weapon.InitializeSprite();
+                    weapon.PositionSprite();
+                    missles.Add(weapon);
+                    Controls.Add(weapon.Sprite);
                 }
             }
 
@@ -183,15 +196,35 @@ namespace SpaceInvaders
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            // create asteroid
+            CreateAsteroid();
 
-            // create and add asteroid every tickInterval ticks
+            // asteroid collision with players
+            PlayerAsteroidCollision();
+
+            // remove weapon out of screen
+            RemoveAmmoOutOfScreen();
+
+            // check if players successfully shoots asteroid
+            WeaponAsteroidCollision();
+
+            tickCount++;
+        }
+        #endregion
+
+        #region Extra Core Logic
+        private void CreateAsteroid()
+        {
             if (tickCount % tickInterval == 0)
             {
                 Asteroid asteroid = asteroidFactory.CreateAsteroid();
                 asteroids.Add(asteroid);
                 Controls.Add(asteroid.Sprite);
             }
+        }
 
+        private void PlayerAsteroidCollision()
+        {
             // asteroids
             for (int i = asteroids.Count - 1; i >= 0; i--)
             {
@@ -230,7 +263,8 @@ namespace SpaceInvaders
                         Controls.Add(scoreLabel);
                         Controls.Add(player1.Sprite);
                         break;
-                    } else
+                    }
+                    else
                     {
                         for (int j = asteroids.Count - 1; j >= 0; j--)
                         {
@@ -260,7 +294,7 @@ namespace SpaceInvaders
                         asteroids.Clear();
 
                         player2.Lives--;
-                        player2.Reposition(this.Width, this.Height,2);
+                        player2.Reposition(this.Width, this.Height, 2);
                         player2.PositionSprite();
 
                         numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
@@ -282,9 +316,9 @@ namespace SpaceInvaders
                         player2.Lives--;
                         break;
                     }
-                } 
-                
-                
+                }
+
+
 
                 // remove asteroids once out of screen
                 if (asteroids[i].IsOutOfScreen(this.Height))
@@ -293,46 +327,61 @@ namespace SpaceInvaders
                     asteroids.RemoveAt(i);
                 }
             }
+        }
 
-            // missles
+        private void RemoveAmmoOutOfScreen()
+        {
             for (int j = missles.Count - 1; j >= 0; j--)
             {
                 missles[j].Move();
-
-                // remove missle once out of screen
-                if (missles[j].IsOutOfScreen(this.Width))
+                // remove weapon once out of screen
+                if (missles[j].IsOutOfScreen(this.Height))
                 {
                     Controls.Remove(missles[j].Sprite);
                     missles.RemoveAt(j);
                 }
             }
+        }
 
-            // check if missle collides with asteroid
-            for (int i = asteroids.Count - 1; i >= 0; i--)
+        private void WeaponAsteroidCollision()
+        {
+            // check if weapon collides with asteroid
+            for (int i = missles.Count - 1; i >= 0; i--)
             {
-                for (int j = missles.Count - 1; j >= 0; j--)
+                // count and accummulate how many asteroids got hit
+                for (int j = asteroids.Count - 1; j >= 0; j--)
                 {
-                    if (i > asteroids.Count - 1 || j > missles.Count - 1)
+                    if (j > asteroids.Count - 1 || i > missles.Count - 1)
                         break;
-
-                    if (asteroids[i].Sprite.Bounds.IntersectsWith(missles[j].Sprite.Bounds))
+                    if (asteroids[j].Sprite.Bounds.IntersectsWith(missles[i].Sprite.Bounds))
                     {
-                        if (missles[j].PlayerNo == 1)
+                        asteroids[j].Hit = true;
+                        missles[i].Hit = true;
+                    }
+                }
+                // remove all cummulative asteroids that got hit
+                for (int j = asteroids.Count - 1; j >= 0; j--)
+                {
+                    if (asteroids[j].Hit)
+                    {
+                        Controls.Remove(asteroids[j].Sprite);
+                        asteroids.RemoveAt(j);
+                        if (missles[i].PlayerNo == 1)
                             scoreLabel.Text = String.Format("Score = {0:D2}", ++player1.Score);
                         else
                             scoreLabel1.Text = String.Format("Score = {0:D2}", ++player2.Score);
-
-                        Controls.Remove(missles[j].Sprite);
-                        missles.RemoveAt(j);
-
-                        Controls.Remove(asteroids[i].Sprite);
-                        asteroids.RemoveAt(i);
                     }
                 }
+                // remove ammo that hit the asteroids
+                if (missles[i].Hit && player1.weaponType != WeaponType.laser && player2.weaponType != WeaponType.laser)
+                {
+                    Controls.Remove(missles[i].Sprite);
+                    missles.RemoveAt(i);
+                }
             }
-            tickCount++;
         }
         #endregion
+
 
         private void scoreLabel_Click(object sender, EventArgs e)
         {

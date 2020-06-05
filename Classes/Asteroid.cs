@@ -5,11 +5,15 @@ namespace SpaceInvaders
 {
     public class Asteroid : AnimatedObject
     {
+        #region public fields
+        public bool Hit { get; set; }
+        #endregion
         #region Constructors and factory methods
         public Asteroid(Size size, int speed)
         {
             this.size = size;
             this.speed = speed;
+            Hit = false;
         }
         #endregion
 
