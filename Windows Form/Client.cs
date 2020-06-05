@@ -1,7 +1,10 @@
-﻿using System;
+﻿using SpaceInvaders.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SpaceInvaders
@@ -9,9 +12,9 @@ namespace SpaceInvaders
     public partial class Client : Form
     {
         #region Private fields
-        int tickCount;
+        static int tickCount;
         Player player;
-        List<Missle> missles;
+        List<Weapon> ammo;
         List<Asteroid> asteroids;
         AsteroidFactory asteroidFactory;
         #endregion
@@ -24,14 +27,14 @@ namespace SpaceInvaders
         int missleSpeed = 50;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
-        Size missleSize = new Size(15, 45);
         #endregion
 
         #region Constructors factory methods
+        public Client() { }
         public Client(string userName)
         {
             InitializeComponent();
-            missles = new List<Missle>();
+            ammo = new List<Weapon>();
             asteroids = new List<Asteroid>();
             
             player = new Player(playerSize, numberOfPositions, numberOfLives, userName);
@@ -72,6 +75,7 @@ namespace SpaceInvaders
                 player.MoveLeft();
                 player.MoveSprite();
             }
+
             // move up
             if (timer.Enabled && e.KeyCode == Keys.Up)
             {
@@ -86,14 +90,22 @@ namespace SpaceInvaders
                 player.MoveSprite();
             }
 
+            // select missile
+            if (timer.Enabled && e.KeyCode == Keys.D1)
+                player.weaponType = WeaponType.missle;
+
+            // select laser
+            if (timer.Enabled && e.KeyCode == Keys.D2)
+                player.weaponType = WeaponType.laser;
+
             // shoot
             if (timer.Enabled && e.KeyCode == Keys.Space)
             {
-                Missle missle = player.CreateMissle(missleSize, missleSpeed,1);
-                missle.InitializeSprite();
-                missle.PositionSprite();
-                missles.Add(missle);
-                Controls.Add(missle.Sprite);
+                Weapon weapon = player.CreateWeapon(missleSpeed, 1);
+                weapon.InitializeSprite();
+                weapon.PositionSprite();
+                ammo.Add(weapon);
+                Controls.Add(weapon.Sprite);
             }
 
             // pause
@@ -106,7 +118,7 @@ namespace SpaceInvaders
 
                 Controls.Clear();
                 asteroids.Clear();
-                missles.Clear();
+                ammo.Clear();
                 
                 player.Lives = numberOfLives;
                 player.Reposition(this.Width, this.Height,1);
@@ -140,16 +152,32 @@ namespace SpaceInvaders
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            
             // create and add asteroid every tickInterval ticks
+            CreateAsteroid(asteroids,tickInterval,tickCount);
+
+            // detect asteroid collision with player
+            PlayerAsteroidCollision(player);
+
+            // remove ammo that goes out of screen
+            RemoveAmmoOutOfScreen(ammo);
+
+            // detect asteroid collision with ammo
+            WeaponAsteroidCollision(ammo,asteroids);
+            tickCount++;
+        }
+        
+        private void CreateAsteroid(List<Asteroid> asteroids, int tickInterval, int tickCount)
+        {
             if (tickCount % tickInterval == 0)
             {
                 Asteroid asteroid = asteroidFactory.CreateAsteroid();
                 asteroids.Add(asteroid);
                 Controls.Add(asteroid.Sprite);
             }
+        }
 
-            // asteroids
+        private void PlayerAsteroidCollision(Player player)
+        {
             for (int i = asteroids.Count - 1; i >= 0; i--)
             {
                 asteroids[i].Move();
@@ -161,9 +189,9 @@ namespace SpaceInvaders
                     {
                         Controls.Clear();
                         asteroids.Clear();
-                        missles.Clear();
+                        ammo.Clear();
                         player.Lives--;
-                        player.Reposition(this.Width, this.Height,1);
+                        player.Reposition(this.Width, this.Height, 1);
                         player.InitializeSprite();
                         player.PositionSprite();
 
@@ -189,64 +217,67 @@ namespace SpaceInvaders
                     asteroids.RemoveAt(i);
                 }
             }
+        }
 
-            // missles
-            for (int j = missles.Count - 1; j >= 0; j--)
+        private  void RemoveAmmoOutOfScreen(List<Weapon> ammo)
+        {
+            for (int j = ammo.Count - 1; j >= 0; j--)
             {
-                missles[j].Move();
-
-                // remove missle once out of screen
-                if (missles[j].IsOutOfScreen(this.Width))
+                ammo[j].Move();
+                // remove weapon once out of screen
+                if (ammo[j].IsOutOfScreen(this.Height))
                 {
-                    Controls.Remove(missles[j].Sprite);
-                    missles.RemoveAt(j);
+                    Controls.Remove(ammo[j].Sprite);
+                    ammo.RemoveAt(j);
                 }
             }
-
-            // check if missle collides with asteroid
-            for (int i = asteroids.Count - 1; i >= 0; i--)
+        }
+        
+        private void WeaponAsteroidCollision(List<Weapon> ammo, List<Asteroid> asteroids)
+        {
+            // check if weapon collides with asteroid
+            for (int i = ammo.Count - 1; i >= 0; i--)
             {
-                for (int j = missles.Count - 1; j >= 0; j--)
+                // count and accummulate how many asteroids got hit
+                for (int j = asteroids.Count - 1; j >= 0; j--)
                 {
-                    if (i > asteroids.Count - 1 || j > missles.Count - 1)
+                    if (j > asteroids.Count - 1 || i > ammo.Count - 1)
                         break;
-
-                    if (asteroids[i].Sprite.Bounds.IntersectsWith(missles[j].Sprite.Bounds))
+                    if (asteroids[j].Sprite.Bounds.IntersectsWith(ammo[i].Sprite.Bounds))
                     {
-                        Controls.Remove(missles[j].Sprite);
-                        missles.RemoveAt(j);
-
-                        Controls.Remove(asteroids[i].Sprite);
-                        asteroids.RemoveAt(i);
-
-
-                        scoreLabel.Text = String.Format("Score = {0:D2}", ++player.Score);
-
+                        asteroids[j].Hit = true;
+                        ammo[i].Hit = true;
                     }
                 }
+                // remove all cummulative asteroids that got hit
+                for (int j = asteroids.Count - 1; j >= 0; j--)
+                {
+                    if (asteroids[j].Hit)
+                    {
+                        Controls.Remove(asteroids[j].Sprite);
+                        asteroids.RemoveAt(j);
+                        scoreLabel.Text = String.Format("Score = {0:D2}", ++player.Score);
+                    }
+                }
+                // remove ammo that hit the asteroids
+                if (ammo[i].Hit && player.weaponType != WeaponType.laser)
+                {
+                    Controls.Remove(ammo[i].Sprite);
+                    ammo.RemoveAt(i);
+                }
             }
-            tickCount++;
         }
         #endregion
+        private void Client_Load(object sender, EventArgs e){
+            // relatively position Player 1 Number of Lives Label
+            numberOfLivesLabel.Location = new Point(1, 2);
 
-        private void Client_Load(object sender, EventArgs e)
-        {
-
+            // relatively position Player 1 Score Label
+            scoreLabel.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.15));
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void numberOfLivesLabel_Click(object sender, EventArgs e){}
 
-        }
-
-        private void numberOfLivesLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void scoreLabel_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void scoreLabel_Click(object sender, EventArgs e){}
     }
 }

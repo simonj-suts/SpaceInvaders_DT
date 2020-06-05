@@ -3,23 +3,24 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    public class Missle : AnimatedObject
+    public abstract class Weapon : AnimatedObject
     {
         #region Private fields
         //indicates the game mode (1-Single Player, 2- Co-op, 3- Multiplayer)
-        int playerNo;
+        protected int playerNo;
         #endregion
 
         #region Public fields
         public int PlayerNo { get { return playerNo; } }
-
+        public bool Hit { get; set; }
         #endregion
 
         #region Constructors and factory methods
-        public Missle(Size size, int speed, int playerNo) : base(size)
+        public Weapon(Size size, int speed, int playerNo) : base(size)
         {
             this.speed = speed;
             this.playerNo = playerNo;
+            Hit = false;
         }
         #endregion
 
@@ -28,22 +29,20 @@ namespace SpaceInvaders
         {
             Sprite = new PictureBox
             {
-                Tag = "missle",
                 Size = size,
                 BackColor = Color.Transparent,
-                Image = Properties.Resources.missle,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
             Sprite.BringToFront();
         }
 
-        public void SetLocation(int x, int y)
+        public virtual void SetLocation(int x, int y)
         {
             this.x = x - size.Width / 2;
             this.y = y - size.Height / 2;
         }
 
-        public void Move()
+        public virtual void Move()
         {
             if (playerNo == 3)
             {
@@ -53,14 +52,14 @@ namespace SpaceInvaders
             else
             {
                 y -= speed;
-                Sprite.Top -= speed;
+                Sprite.Top -=speed;
             }
         }
 
-        public bool IsOutOfScreen(int width)
+        public virtual bool IsOutOfScreen(int height)
         {
             if (playerNo == 3)
-                return y > width;
+                return y > height;
             else
                 return y < 0;
         }

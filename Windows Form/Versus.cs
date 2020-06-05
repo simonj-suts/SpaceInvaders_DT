@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceInvaders.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -13,8 +14,8 @@ namespace SpaceInvaders
         int tickCount;
         Player Player1; // Player 1
         Player Player2; // Player 2
-        List<Missle> missles;
-        List<Missle> missles2;
+        List<Weapon> missles;
+        List<Weapon> missles2;
         #endregion
 
         #region Settings
@@ -32,8 +33,8 @@ namespace SpaceInvaders
         {
             InitializeComponent();
 
-            missles = new List<Missle>();
-            missles2 = new List<Missle>();
+            missles = new List<Weapon>();
+            missles2 = new List<Weapon>();
             //asteroids = new List<Asteroid>();
 
             Player1 = new Player(PlayerSize, numberOfPositions, numberOfLives, 1); // create Player 1
@@ -84,14 +85,20 @@ namespace SpaceInvaders
                     Player1.MoveDown();
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
                     Player1.MoveSprite();
+                // select missile
+                if (e.KeyCode == Keys.D8)
+                    Player1.weaponType = WeaponType.missle;
+                // select laser
+                if (e.KeyCode == Keys.D9)
+                    Player1.weaponType = WeaponType.laser;
                 // shoot missile
                 if (e.KeyCode == Keys.Space)
                 {
-                    Missle missle = Player1.CreateMissle(missleSize, missleSpeed, 1);
-                    missle.InitializeSprite();
-                    missle.PositionSprite();
-                    missles.Add(missle);
-                    Controls.Add(missle.Sprite);
+                    Weapon Weapon = Player1.CreateWeapon(missleSpeed, 1);
+                    Weapon.InitializeSprite();
+                    Weapon.PositionSprite();
+                    missles.Add(Weapon);
+                    Controls.Add(Weapon.Sprite);
                 }
             }
 
@@ -109,17 +116,23 @@ namespace SpaceInvaders
                 // move down 
                 if (e.KeyCode == Keys.S)
                     Player2.MoveDown();
+                // select missile
+                if (e.KeyCode == Keys.D1)
+                    Player2.weaponType = WeaponType.missle;
+                // select laser
+                if (e.KeyCode == Keys.D2)
+                    Player2.weaponType = WeaponType.laser;
                 // move sprite
                 if (e.KeyCode == Keys.D || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.W)
                     Player2.MoveSprite();
                 // shoot missile
                 if (e.KeyCode == Keys.F)
                 {
-                    Missle missle = Player2.CreateMissle(missleSize, missleSpeed, 3);
-                    missle.InitializeSprite();
-                    missle.PositionSprite();
-                    missles2.Add(missle);
-                    Controls.Add(missle.Sprite);
+                    Weapon Weapon = Player2.CreateWeapon(missleSpeed, 3);
+                    Weapon.InitializeSprite();
+                    Weapon.PositionSprite();
+                    missles2.Add(Weapon);
+                    Controls.Add(Weapon.Sprite);
                 }
             }
 
@@ -136,7 +149,6 @@ namespace SpaceInvaders
             {
                 // clear everything on screen
                 Controls.Clear();
-                //asteroids.Clear();
                 missles.Clear();
                 
                 // retrieve new number of lives
@@ -148,7 +160,7 @@ namespace SpaceInvaders
                 Player1.InitializeSprite();
                 Player1.PositionSprite();
 
-                Player2.Reposition(this.Width, this.Height, 2);
+                Player2.Reposition(this.Width, this.Height, 3);
                 Player2.InitializeSprite();
                 Player2.PositionSprite();
 
@@ -172,8 +184,8 @@ namespace SpaceInvaders
             {
                 missles[j].Move();
 
-                // remove missle once out of screen
-                if (missles[j].IsOutOfScreen(this.Width))
+                // remove Weapon once out of screen
+                if (missles[j].IsOutOfScreen(this.Height))
                 {
                     Controls.Remove(missles[j].Sprite);
                     missles.RemoveAt(j);
@@ -184,8 +196,8 @@ namespace SpaceInvaders
             {
                 missles2[i].Move();
 
-                // remove missle once out of screen
-                if (missles2[i].IsOutOfScreen(this.Width))
+                // remove Weapon once out of screen
+                if (missles2[i].IsOutOfScreen(this.Height))
                 {
                     Controls.Remove(missles2[i].Sprite);
                     missles2.RemoveAt(i);
