@@ -77,12 +77,12 @@ namespace SpaceInvaderTest
             if (missleArea.IntersectsWith(asteroidArea))
             {
                 hit = true;
-                p1.Score++;
+               
             }
                
 
            Assert.AreEqual(true, hit);
-           Assert.AreEqual(1, p1.Score);
+          
         }
 
         [TestMethod]
@@ -177,6 +177,84 @@ namespace SpaceInvaderTest
             }
 
             Assert.AreEqual(2,count);
+        }
+
+        [TestMethod]
+        public void TestScoreEarned() {
+            Size playerSize = new Size(75, 75);
+
+
+            Size asteroidSize1 = new Size(75, 75);
+            Rectangle asteroidArea1;
+
+            Size asteroidSize2 = new Size(90, 90);
+            Rectangle asteroidArea2;
+
+            Size asteroidSize3 = new Size(110, 110);
+            Rectangle asteroidArea3;
+
+            Size missleSize = new Size(75, 75);
+            Rectangle missleArea;
+            Rectangle missleArea2;  
+            Rectangle missleArea3;
+
+            int asteroidSpeed = 40;
+            int numberOfPositions = 10;
+            int numberOfLives = 3;
+            string username1 = "Johanna";
+
+            int missleSpeed = 40;
+
+
+            Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
+            p1.Reposition(1920, 1080, 1);
+
+            Asteroid ars = new Asteroid(asteroidSize1, asteroidSpeed);
+            ars.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize1.Width / 2, p1.Y);
+            asteroidArea1 = new Rectangle((int)ars.X, (int)ars.Y, 75, 75);
+
+            Asteroid ars2 = new Asteroid(asteroidSize2, asteroidSpeed);
+            ars2.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize2.Width / 2, p1.Y);
+            asteroidArea2 = new Rectangle((int)ars2.X, (int)ars2.Y, 75, 75);
+
+            Asteroid ars3 = new Asteroid(asteroidSize3, asteroidSpeed);
+            ars3.SetLocation((numberOfPositions - 1) * (1920 / numberOfPositions) + asteroidSize3.Width / 2, p1.Y);
+            asteroidArea3 = new Rectangle((int)ars3.X, (int)ars3.Y, 75, 75);
+
+            Weapon miss = p1.CreateWeapon(missleSpeed, 1);
+            missleArea = new Rectangle((int)miss.X, (int)miss.Y, 75, 75);
+
+            missleArea2 = new Rectangle((int)ars2.X, (int)ars2.Y, 75, 75);
+
+            missleArea3 = new Rectangle((int)ars3.X, (int)ars3.Y, 75, 75);
+
+
+
+            bool hit = false;
+            Assert.AreEqual(false, hit);
+            Assert.AreEqual(0, p1.Score);
+
+            if (missleArea.IntersectsWith(asteroidArea1))
+            {
+        
+                p1.Score+= ars.healthBar;
+            }
+            Assert.AreEqual(1, p1.Score);
+            if (missleArea2.IntersectsWith(asteroidArea2))
+            {
+
+                p1.Score += ars2.healthBar;
+            }
+            Assert.AreEqual(3, p1.Score);
+            if (missleArea3.IntersectsWith(asteroidArea3))
+            {
+
+                p1.Score += ars3.healthBar;
+            }
+            Assert.AreEqual(6, p1.Score);
+
+            
+
         }
     }
 }
