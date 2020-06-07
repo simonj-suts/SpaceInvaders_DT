@@ -271,9 +271,11 @@ namespace SpaceInvaders
         {
             if (tickCount % tickInterval1 == 0)
             {
+                Random rand = new Random();
                 ammodrop = new Ammo(ammoDropSize, ammoSpeed, this.Width, this.Height);
                 ammodrop.InitializeSprite();
                 ammodrop.SetLocation(ammodrop.RandomizeX(), ammodrop.RandomizeY());
+                ammodrop.RandomMove();
                 ammodrop.PositionSprite();
                 ammunition.Add(ammodrop);
                 Controls.Add(ammodrop.Sprite);

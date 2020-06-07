@@ -46,8 +46,6 @@ namespace SpaceInvaders
             this.x = x - size.Width / 2;
             this.y = y - size.Height / 2;
         }
-
-
         public bool IsOutOfScreen(int screenH)
         {
             return y > screenH;
@@ -67,13 +65,26 @@ namespace SpaceInvaders
         public int RandomizeY()
         {
             int interval = ScreenH / 10;
-            return new Random().Next(1, 10) * interval + size.Height / 2;
+            return new Random().Next(1, 9) * interval + size.Height / 2;
         }
 
-        public void Move()
+        public void RandomMove()
         {
-            y += speed;
-            Sprite.Top += (int)speed;
+            int interval = ScreenH / 10;
+            double newspeed = new Random().Next(1, 5) * interval;
+            if (y + newspeed > ScreenH - interval || y - newspeed < interval) return;
+            Random random = new Random();
+            if (random.Next(2) == 0)
+            {
+                y += newspeed;
+                Sprite.Top += (int)newspeed;
+            }
+            else if (random.Next(2) == 1)
+            {
+                y -= newspeed;
+                Sprite.Top -= (int)newspeed;
+            }
+            
         }
         #endregion
     }
