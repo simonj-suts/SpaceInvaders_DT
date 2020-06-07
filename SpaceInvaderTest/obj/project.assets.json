@@ -6081,19 +6081,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joey Tan\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Documents\\Git\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
       "projectName": "SpaceInvaderTest",
-      "projectPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
-      "packagesPath": "C:\\Users\\Joey Tan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\Documents\\Git\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\Documents\\Git\\SpaceInvaders_DT\\SpaceInvaderTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Joey Tan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6106,8 +6106,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
-              "projectPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj"
+            "C:\\Users\\Asus\\Documents\\Git\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
+              "projectPath": "C:\\Users\\Asus\\Documents\\Git\\SpaceInvaders_DT\\SpaceInvaders.csproj"
             }
           }
         }

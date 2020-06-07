@@ -9,6 +9,7 @@ namespace SpaceInvaders.Classes
     public enum WeaponType
     {
         missle,
-        laser
+        laser,
+        nuke
     }
 }

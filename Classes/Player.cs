@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using SpaceInvaders.Classes;
+using System.Runtime.InteropServices;
+using System;
 
 namespace SpaceInvaders
 {
@@ -14,11 +16,17 @@ namespace SpaceInvaders
         double screenW, screenH;
         double numberOfPositions;
         double SpritePosition;
+        int _energy;
         #endregion
 
         #region Public fields
         public int Lives { get; set; }
         public int Score { get; set; }
+        public int Energy
+        {
+            get { return _energy; }
+            set { _energy = Math.Min(value, 10); }
+        }
         public string Name { get; set; }
         public WeaponType weaponType { get; set; }
         public int playerNo { get; set; }
@@ -31,6 +39,7 @@ namespace SpaceInvaders
             this.numberOfPositions = numberOfPositions;
             playerNo = aPlayerNo;
             weaponType = WeaponType.missle;
+            _energy = 0;
         }
 
         public Player(Size size, int numberOfPositions, int numberOfLives, string userName) : base(size)
@@ -40,6 +49,7 @@ namespace SpaceInvaders
             this.numberOfPositions = numberOfPositions;
             playerNo = 1;
             weaponType = WeaponType.missle;
+            _energy = 0;
         }
 
         public Player(string name, int scores)
@@ -64,7 +74,8 @@ namespace SpaceInvaders
             else if (playerNo == 2)
             {
                 img = Properties.Resources.player2;
-            } else
+            }
+            else
             {
                 img = Properties.Resources.playervs2;
             }
@@ -91,15 +102,15 @@ namespace SpaceInvaders
             this.speed = intervalX;
 
             this.x = screenW - intervalX;
-            this.y = screenH - intervalY;
-           if (playerNo == 2)
+            this.y = screenH - intervalY * 2;
+            if (playerNo == 2)
             {
                 this.x -= speed * 8;
             }
             if (playerNo == 3)
             {
                 this.x -= speed * 8;
-                this.y -= intervalY*8;
+                this.y -= intervalY * 8;
             }
         }
 
@@ -146,7 +157,7 @@ namespace SpaceInvaders
 
         public void MoveDown()
         {
-            if (y >= this.screenH - intervalY) return;
+            if (y + intervalY >= this.screenH - intervalY) return;
             y += intervalY;
             SpritePosition = 4;
         }
@@ -169,7 +180,7 @@ namespace SpaceInvaders
                         weaponsize = new Size(15, (int)(screenH - (screenH - this.y)));
                         weaponPosY += 2;
                     }
-                    weapon =  new Laser(weaponsize, speed, playerNo);
+                    weapon = new Laser(weaponsize, speed, playerNo);
                     break;
                 default:
                     weaponsize = new Size(15, 45);

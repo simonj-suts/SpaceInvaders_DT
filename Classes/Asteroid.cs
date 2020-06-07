@@ -92,7 +92,7 @@ namespace SpaceInvaders
 
         public bool IsOutOfScreen(int screenH)
         {
-            return y > screenH;
+            return y > screenH - speed * 5;
         }
 
         public bool IsCollision(Rectangle rect)

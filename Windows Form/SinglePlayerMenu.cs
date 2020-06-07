@@ -28,8 +28,14 @@ namespace SpaceInvaders
             {
                 Client c = new Client(textBox1.Text);
                 c.Show();
-                this.Close();
+                pictureBox1.Show();
+                c.FormClosing += new FormClosingEventHandler(Close);
             }
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -39,6 +45,8 @@ namespace SpaceInvaders
 
         private void SinglePlayerMenu_Load(object sender, EventArgs e)
         {
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Size = new Size(this.Width, this.Height);
             label2.Location = new Point(Convert.ToInt32((double)this.Width * 0.40), Convert.ToInt32((double)this.Height * 0.15));
             textBox1.Location = new Point(Convert.ToInt32((double)this.Width * 0.42), Convert.ToInt32((double)this.Height * 0.35));
             button1.Location = new Point(Convert.ToInt32((double)this.Width * 0.45), Convert.ToInt32((double)this.Height * 0.55));
