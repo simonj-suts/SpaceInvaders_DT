@@ -22,6 +22,7 @@ namespace SpaceInvaders
         #region Public fields
         public int Lives { get; set; }
         public int Score { get; set; }
+        public bool Nuke { get; set; }
         public int Energy
         {
             get { return _energy; }
@@ -40,6 +41,7 @@ namespace SpaceInvaders
             playerNo = aPlayerNo;
             weaponType = WeaponType.missle;
             _energy = 0;
+            Nuke = false;
         }
 
         public Player(Size size, int numberOfPositions, int numberOfLives, string userName) : base(size)

@@ -35,7 +35,9 @@ namespace SpaceInvaders
         private void button3_Click(object sender, EventArgs e)
         {
             Cooperative c = new Cooperative();
+            blackbackground.Show();
             c.Show();
+            c.FormClosing += new FormClosingEventHandler(HideBlackBackground);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -43,8 +45,16 @@ namespace SpaceInvaders
             Application.Exit();
         }
 
+        private void HideBlackBackground(object sender, EventArgs e)
+        {
+            blackbackground.Hide();
+        }
+
         private void Menu_Load(object sender, EventArgs e)
         {
+            blackbackground.Location = new Point(0, 0);
+            blackbackground.Size = new Size(this.Width, this.Height);
+
             label1.Location = new Point(Convert.ToInt32((double)this.Width * 0.20), Convert.ToInt32((double)this.Height * 0.15));
             
             button1.Location = new Point(Convert.ToInt32((double)this.Width * 0.45), Convert.ToInt32((double)this.Height * 0.35));
