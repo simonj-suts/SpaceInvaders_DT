@@ -5,29 +5,18 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders
 {
-    public class Ammo : AnimatedObject
+    public class Live : AnimatedObject
     {
-        #region Private fields
-        //indicates the game mode (1-Single Player, 2- Co-op, 3- Multiplayer)
         public int ScreenW { private get; set; }
         public int ScreenH { private get; set; }
-        int ammoNumber;
-        #endregion
 
-        #region Public fields
-
-        #endregion
-
-        #region Constructors and factory methods
-        public Ammo(Size size, int speed, int width, int height) : base(size)
+        public Live(Size size, int speed, int width, int height) : base(size)
         {
             this.speed = speed;
             ScreenW = width;
             ScreenH = height;
         }
-        #endregion
 
-        #region Public methods
         public override void InitializeSprite()
         {
             Sprite = new PictureBox
@@ -35,7 +24,7 @@ namespace SpaceInvaders
                 Tag = "ammo",
                 Size = size,
                 BackColor = Color.Transparent,
-                Image = Properties.Resources.ammo,
+                Image = Properties.Resources.live,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
             Sprite.BringToFront();
@@ -75,6 +64,5 @@ namespace SpaceInvaders
             y += speed;
             Sprite.Top += (int)speed;
         }
-        #endregion
     }
 }

@@ -15,25 +15,30 @@ namespace SpaceInvaders
         static int tickCount;
         Player player;
         Ammo ammodrop;
+        Live extralive;
         List<Weapon> ammo;
         List<Asteroid> asteroids;
         AsteroidFactory asteroidFactory;
         List<Ammo> ammunition;
+        List<Live> extralives;
         #endregion
 
         #region Settings
         int tickInterval = 10;
         int tickInterval1 = 100;
+        int tickInterval2 = 150;
         int numberOfPositions = 10;
         int numberOfLives = 3;
         int asteroidSpeed = 30;
         int missleSpeed = 50;
         int ammoSpeed = 40;
+        int extraLiveSpeed = 40;
         int missleAmmo = 20;
         int laserAmmo = 5;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
         Size ammoDropSize = new Size(75, 75);
+        Size extraLiveSize = new Size(75, 75);
         #endregion
 
         #region Constructors factory methods
@@ -44,6 +49,7 @@ namespace SpaceInvaders
             ammo = new List<Weapon>();
             asteroids = new List<Asteroid>();
             ammunition = new List<Ammo>();
+            extralives = new List<Live>();
             
             player = new Player(playerSize, numberOfPositions, numberOfLives, userName);
             player.InitializeSprite();
@@ -195,7 +201,14 @@ namespace SpaceInvaders
             //ammunition drop
             ammunitionDrop();
 
+            //detect player receive ammo
             ammunitionDropCollision();
+
+            // extra lives
+            extralivesDrop();
+
+            //detect player receive extra live
+            extralivesCollision();
 
             // detect asteroid collision with ammo
             WeaponAsteroidCollision(ammo,asteroids);
@@ -231,7 +244,36 @@ namespace SpaceInvaders
                 }
             }
         }
-        
+
+        private void extralivesDrop()
+        {
+            if (tickCount % tickInterval2 == 0)
+            {
+                extralive = new Live(extraLiveSize, extraLiveSpeed, this.Width, this.Height);
+                extralive.InitializeSprite();
+                extralive.SetLocation(extralive.RandomizeX(), -100);
+                extralive.PositionSprite();
+                extralives.Add(extralive);
+                Controls.Add(extralive.Sprite);
+            }
+        }
+
+        private void extralivesCollision()
+        {
+            for (int v = extralives.Count - 1; v >= 0; v--)
+            {
+                extralives[v].Move();
+
+                if (extralives[v].Sprite.Bounds.IntersectsWith(player.Sprite.Bounds))
+                {
+                    Controls.Remove(extralives[v].Sprite);
+                    extralives.RemoveAt(v);
+                    player.Lives++;
+                    numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
+                }
+            }
+        }
+
         private void CreateAsteroid(List<Asteroid> asteroids, int tickInterval, int tickCount)
         {
             if (tickCount % tickInterval == 0)

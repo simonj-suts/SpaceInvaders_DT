@@ -14,20 +14,24 @@ namespace SpaceInvaders
         Player player1; // Player 1
         Player player2; // Player 2
         Ammo ammodrop;
+        Live extralive;
         List<Weapon> missles;
         List<Asteroid> asteroids;
         List<Ammo> ammunition;
         AsteroidFactory asteroidFactory;
+        List<Live> extralives;
         #endregion
 
         #region Settings
         int tickInterval = 10;
         int tickInterval1 = 100;
+        int tickInterval2 = 150;
         int numberOfPositions = 10;
         int numberOfLives = 3;
         int asteroidSpeed = 30;
         int missleSpeed = 50;
         int ammoSpeed = 40;
+        int extraLiveSpeed = 40;
         int missleAmmo1 = 20;
         int laserAmmo1 = 5;
         int missleAmmo2 = 20;
@@ -35,6 +39,7 @@ namespace SpaceInvaders
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
         Size ammoDropSize = new Size(75, 75);
+        Size extraLiveSize = new Size(75, 75);
         #endregion
 
         #region Constructors factory methods
@@ -45,6 +50,7 @@ namespace SpaceInvaders
             missles = new List<Weapon>();
             asteroids = new List<Asteroid>();
             ammunition = new List<Ammo>();
+            extralives = new List<Live>();
 
             player1 = new Player(playerSize, numberOfPositions, numberOfLives, 1); // create player 1
             player1.InitializeSprite();
@@ -272,6 +278,10 @@ namespace SpaceInvaders
 
             ammunitionDropCollision();
 
+            extralivesDrop();
+
+            extralivesCollision();
+
             // check if players successfully shoots asteroid
             WeaponAsteroidCollision();
 
@@ -325,6 +335,43 @@ namespace SpaceInvaders
                     laserAmmo2 += 5;
                     missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
                     laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
+                }
+            }
+        }
+
+        private void extralivesDrop()
+        {
+            if (tickCount % tickInterval2 == 0)
+            {
+                extralive = new Live(extraLiveSize, extraLiveSpeed, this.Width, this.Height);
+                extralive.InitializeSprite();
+                extralive.SetLocation(extralive.RandomizeX(), -100);
+                extralive.PositionSprite();
+                extralives.Add(extralive);
+                Controls.Add(extralive.Sprite);
+            }
+        }
+
+        private void extralivesCollision()
+        {
+            for (int v = extralives.Count - 1; v >= 0; v--)
+            {
+                extralives[v].Move();
+
+                if (extralives[v].Sprite.Bounds.IntersectsWith(player1.Sprite.Bounds))
+                {
+                    Controls.Remove(extralives[v].Sprite);
+                    extralives.RemoveAt(v);
+                    player1.Lives++;
+                    numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player1.Lives);
+                }
+
+                else if (extralives[v].Sprite.Bounds.IntersectsWith(player2.Sprite.Bounds))
+                {
+                    Controls.Remove(extralives[v].Sprite);
+                    extralives.RemoveAt(v);
+                    player2.Lives++;
+                    numberOfLivesLabel1.Text = String.Format("Number of lives = {0}", player2.Lives);
                 }
             }
         }

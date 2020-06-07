@@ -122,3 +122,4 @@ C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCo
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.pdb
+C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
