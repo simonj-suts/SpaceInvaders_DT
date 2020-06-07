@@ -262,14 +262,20 @@ namespace SpaceInvaders
                         player.PositionSprite();
 
                         numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
+                        missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+                        laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
                         Controls.Add(numberOfLivesLabel);
                         Controls.Add(scoreLabel);
+                        Controls.Add(missleAmmoLabel);
+                        Controls.Add(laserAmmoLabel);
                         Controls.Add(player.Sprite);
                         break;
                     }
                     else
                     {
+                        Controls.Clear();
                         numberOfLivesLabel.Text = "Game over, press enter to restart, or 'e' to return to MAIN MENU...";
+                        Controls.Add(numberOfLivesLabel);
                         timer.Enabled = false;
                         break;
                     }

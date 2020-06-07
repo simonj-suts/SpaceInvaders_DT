@@ -37,6 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.missleAmmoLabel1 = new System.Windows.Forms.Label();
+            this.laserAmmoLabel1 = new System.Windows.Forms.Label();
+            this.missleAmmoLabel2 = new System.Windows.Forms.Label();
+            this.laserAmmoLabel2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // scoreLabel
@@ -45,7 +49,7 @@
             this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel.Location = new System.Drawing.Point(1469, 132);
+            this.scoreLabel.Location = new System.Drawing.Point(1469, 242);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
             this.scoreLabel.Size = new System.Drawing.Size(152, 61);
@@ -78,7 +82,7 @@
             this.scoreLabel1.BackColor = System.Drawing.Color.Transparent;
             this.scoreLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel1.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel1.Location = new System.Drawing.Point(-2, 132);
+            this.scoreLabel1.Location = new System.Drawing.Point(-2, 242);
             this.scoreLabel1.Name = "scoreLabel1";
             this.scoreLabel1.Padding = new System.Windows.Forms.Padding(18, 16, 18, 16);
             this.scoreLabel1.Size = new System.Drawing.Size(152, 61);
@@ -130,6 +134,62 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Player 1";
             // 
+            // missleAmmoLabel1
+            // 
+            this.missleAmmoLabel1.AutoSize = true;
+            this.missleAmmoLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.missleAmmoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.missleAmmoLabel1.ForeColor = System.Drawing.Color.White;
+            this.missleAmmoLabel1.Location = new System.Drawing.Point(1469, 132);
+            this.missleAmmoLabel1.Name = "missleAmmoLabel1";
+            this.missleAmmoLabel1.Padding = new System.Windows.Forms.Padding(15, 13, 15, 13);
+            this.missleAmmoLabel1.Size = new System.Drawing.Size(268, 55);
+            this.missleAmmoLabel1.TabIndex = 2;
+            this.missleAmmoLabel1.Text = "Number of ammo = 0";
+            this.missleAmmoLabel1.Click += new System.EventHandler(this.missleAmmorLabel1_Click);
+            // 
+            // laserAmmoLabel1
+            // 
+            this.laserAmmoLabel1.AutoSize = true;
+            this.laserAmmoLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.laserAmmoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laserAmmoLabel1.ForeColor = System.Drawing.Color.White;
+            this.laserAmmoLabel1.Location = new System.Drawing.Point(1469, 187);
+            this.laserAmmoLabel1.Name = "laserAmmoLabel1";
+            this.laserAmmoLabel1.Padding = new System.Windows.Forms.Padding(15, 13, 15, 13);
+            this.laserAmmoLabel1.Size = new System.Drawing.Size(268, 55);
+            this.laserAmmoLabel1.TabIndex = 2;
+            this.laserAmmoLabel1.Text = "Number of ammo = 0";
+            this.laserAmmoLabel1.Click += new System.EventHandler(this.missleAmmorLabel1_Click);
+            // 
+            // missleAmmoLabel2
+            // 
+            this.missleAmmoLabel2.AutoSize = true;
+            this.missleAmmoLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.missleAmmoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.missleAmmoLabel2.ForeColor = System.Drawing.Color.White;
+            this.missleAmmoLabel2.Location = new System.Drawing.Point(22, 132);
+            this.missleAmmoLabel2.Name = "missleAmmoLabel2";
+            this.missleAmmoLabel2.Padding = new System.Windows.Forms.Padding(15, 13, 15, 13);
+            this.missleAmmoLabel2.Size = new System.Drawing.Size(268, 55);
+            this.missleAmmoLabel2.TabIndex = 2;
+            this.missleAmmoLabel2.Text = "Number of ammo = 0";
+            this.missleAmmoLabel2.Click += new System.EventHandler(this.missleAmmorLabel2_Click);
+            // 
+            // laserAmmoLabel2
+            // 
+            this.laserAmmoLabel2.AutoSize = true;
+            this.laserAmmoLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.laserAmmoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laserAmmoLabel2.ForeColor = System.Drawing.Color.White;
+            this.laserAmmoLabel2.Location = new System.Drawing.Point(22, 187);
+            this.laserAmmoLabel2.Name = "laserAmmoLabel2";
+            this.laserAmmoLabel2.Padding = new System.Windows.Forms.Padding(15, 13, 15, 13);
+            this.laserAmmoLabel2.Size = new System.Drawing.Size(268, 55);
+            this.laserAmmoLabel2.TabIndex = 2;
+            this.laserAmmoLabel2.Text = "Number of ammo = 0";
+            this.laserAmmoLabel2.Click += new System.EventHandler(this.missleAmmorLabel2_Click);
+            // 
             // Cooperative
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,6 +203,10 @@
             this.Controls.Add(this.scoreLabel1);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.numberOfLivesLabel);
+            this.Controls.Add(this.missleAmmoLabel1);
+            this.Controls.Add(this.laserAmmoLabel1);
+            this.Controls.Add(this.missleAmmoLabel2);
+            this.Controls.Add(this.laserAmmoLabel2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -168,6 +232,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+
+        private System.Windows.Forms.Label missleAmmoLabel1;
+        private System.Windows.Forms.Label laserAmmoLabel1;
+        private System.Windows.Forms.Label missleAmmoLabel2;
+        private System.Windows.Forms.Label laserAmmoLabel2;
     }
 }
 

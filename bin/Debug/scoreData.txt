@@ -2,7 +2,9 @@ qds 70
 asd 21
 qwe 15
 ad 1
+d 0
 joanna 0
 sda 0
 sdf 0
 sad 0
+f 0
