@@ -14,19 +14,26 @@ namespace SpaceInvaders
         #region Private fields
         static int tickCount;
         Player player;
+        Ammo ammodrop;
         List<Weapon> ammo;
         List<Asteroid> asteroids;
         AsteroidFactory asteroidFactory;
+        List<Ammo> ammunition;
         #endregion
 
         #region Settings
         int tickInterval = 10;
+        int tickInterval1 = 100;
         int numberOfPositions = 10;
         int numberOfLives = 3;
         int asteroidSpeed = 30;
         int missleSpeed = 50;
+        int ammoSpeed = 40;
+        int missleAmmo = 20;
+        int laserAmmo = 5;
         Size playerSize = new Size(75, 75);
         Size asteroidSize = new Size(75, 75);
+        Size ammoDropSize = new Size(75, 75);
         #endregion
 
         #region Constructors factory methods
@@ -36,6 +43,7 @@ namespace SpaceInvaders
             InitializeComponent();
             ammo = new List<Weapon>();
             asteroids = new List<Asteroid>();
+            ammunition = new List<Ammo>();
             
             player = new Player(playerSize, numberOfPositions, numberOfLives, userName);
             player.InitializeSprite();
@@ -43,7 +51,9 @@ namespace SpaceInvaders
 
             numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
             scoreLabel.Text = String.Format("Score = {0:D2}", player.Score);
-            
+            missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+            laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
+
             Controls.Add(player.Sprite);
         }
         #endregion
@@ -101,11 +111,30 @@ namespace SpaceInvaders
             // shoot
             if (timer.Enabled && e.KeyCode == Keys.Space)
             {
-                Weapon weapon = player.CreateWeapon(missleSpeed, 1);
-                weapon.InitializeSprite();
-                weapon.PositionSprite();
-                ammo.Add(weapon);
-                Controls.Add(weapon.Sprite);
+                if (player.weaponType == WeaponType.missle && missleAmmo > 0)
+                {
+                    Weapon weapon = player.CreateWeapon(missleSpeed, 1);
+                    weapon.InitializeSprite();
+                    weapon.PositionSprite();
+                    ammo.Add(weapon);
+                    Controls.Add(weapon.Sprite);
+                    missleAmmo--;
+                    missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+                    laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
+                }
+
+                else if (player.weaponType == WeaponType.laser && laserAmmo > 0)
+                {
+                    Weapon weapon = player.CreateWeapon(missleSpeed, 1);
+                    weapon.InitializeSprite();
+                    weapon.PositionSprite();
+                    ammo.Add(weapon);
+                    Controls.Add(weapon.Sprite);
+                    laserAmmo--;
+                    missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+                    laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
+                }
+                
             }
 
             // pause
@@ -127,6 +156,8 @@ namespace SpaceInvaders
 
                 numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player.Lives);
                 scoreLabel.Text = String.Format("Score = {0:D2}", player.Score = 0);
+                missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+                laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
                 Controls.Add(numberOfLivesLabel);
                 Controls.Add(scoreLabel);
                 Controls.Add(player.Sprite);
@@ -161,9 +192,44 @@ namespace SpaceInvaders
             // remove ammo that goes out of screen
             RemoveAmmoOutOfScreen(ammo);
 
+            //ammunition drop
+            ammunitionDrop();
+
+            ammunitionDropCollision();
+
             // detect asteroid collision with ammo
             WeaponAsteroidCollision(ammo,asteroids);
             tickCount++;
+
+        }
+
+        private void ammunitionDrop()
+        {
+            if (tickCount % tickInterval1 == 0)
+            {
+                ammodrop = new Ammo(ammoDropSize, ammoSpeed, this.Width, this.Height);
+                ammodrop.InitializeSprite();
+                ammodrop.SetLocation(ammodrop.RandomizeX(), ammodrop.RandomizeY());
+                ammodrop.PositionSprite();
+                ammunition.Add(ammodrop);
+                Controls.Add(ammodrop.Sprite);
+            }           
+        }
+
+        private void ammunitionDropCollision()
+        {
+            for (int a = ammunition.Count - 1; a >= 0; a--)
+            {
+                if (ammunition[a].Sprite.Bounds.IntersectsWith(player.Sprite.Bounds))
+                {
+                    Controls.Remove(ammunition[a].Sprite);
+                    ammunition.RemoveAt(a);
+                    missleAmmo += 20;
+                    laserAmmo += 5;
+                    missleAmmoLabel.Text = String.Format("Missle Ammo = {0}", missleAmmo);
+                    laserAmmoLabel.Text = String.Format("Laser Ammo = {0}", laserAmmo);
+                }
+            }
         }
         
         private void CreateAsteroid(List<Asteroid> asteroids, int tickInterval, int tickCount)
@@ -291,5 +357,10 @@ namespace SpaceInvaders
         private void numberOfLivesLabel_Click(object sender, EventArgs e){}
 
         private void scoreLabel_Click(object sender, EventArgs e){}
+
+        private void missleAmmorLabel_Click(object sender, EventArgs e){}
+
+        private void laserAmmorLabel_Click(object sender, EventArgs e) { }
     }
 }
+

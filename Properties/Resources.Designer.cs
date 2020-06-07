@@ -63,6 +63,16 @@ namespace SpaceInvaders.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ammo {
+            get {
+                object obj = ResourceManager.GetObject("ammo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap asteroid {
             get {
                 object obj = ResourceManager.GetObject("asteroid", resourceCulture);
@@ -149,5 +159,6 @@ namespace SpaceInvaders.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
     }
 }

@@ -1,31 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj": {}
+    "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj": {}
   },
   "projects": {
-    "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
-      "version": "1.0.0",
+    "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
       "restore": {
-        "projectUniqueName": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaders.csproj",
+        "projectUniqueName": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj",
         "projectName": "SpaceInvaders",
-        "projectPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaders.csproj"
+        "projectPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj": {
+    "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+        "projectUniqueName": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
         "projectName": "SpaceInvaderTest",
-        "projectPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
-        "packagesPath": "C:\\Users\\Joanna Wong\\.nuget\\packages\\",
-        "outputPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaderTest\\obj\\",
+        "projectPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\SpaceInvaderTest.csproj",
+        "packagesPath": "C:\\Users\\Joey Tan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaderTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Joanna Wong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Joey Tan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,8 +37,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
-                "projectPath": "E:\\DEGREE YEAR 2 SEM 1\\DP1\\GITHUB\\SpaceInvaders_DT\\SpaceInvaders.csproj"
+              "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj": {
+                "projectPath": "C:\\Users\\Joey Tan\\Desktop\\SpaceInvaders_DT\\SpaceInvaders.csproj"
               }
             }
           }
@@ -113,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
