@@ -27,13 +27,9 @@ namespace SpaceInvaders
         {
             if (textBox1.Text != "")
             {
-                
-
                 InstructionSinglePlayer mode1 = new InstructionSinglePlayer(textBox1.Text);
                 mode1.Show();
-                
                 mode1.FormClosing += new FormClosingEventHandler(Close);
-                
             }
         }
 

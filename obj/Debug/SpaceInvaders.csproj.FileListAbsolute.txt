@@ -152,3 +152,6 @@ C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.Copy
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
+C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
+C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
+C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources

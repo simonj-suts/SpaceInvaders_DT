@@ -49,32 +49,22 @@ namespace SpaceInvaders.Windows_Form
 
             //labels for weapons
             label8.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.75));
-            
-            
 
             button1.Location = new Point(Convert.ToInt32((double)this.Width * 0.60), Convert.ToInt32((double)this.Height * 0.80));
-            
+
+            blackBackground.Location = new Point(0, 0);
+            blackBackground.Size = new Size(this.Width,this.Height);        
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Client c = new Client(username);
             c.Show();
-            pictureBox1.Show();
+            blackBackground.Show();
             c.FormClosing += new FormClosingEventHandler(Close);
         }
 
         private void Close(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }

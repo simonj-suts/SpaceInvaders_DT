@@ -17,10 +17,15 @@ namespace SpaceInvaders
         double numberOfPositions;
         double SpritePosition;
         int _energy;
+        int _lives;
         #endregion
 
         #region Public fields
-        public int Lives { get; set; }
+        public int Lives
+        {
+            get { return _lives; }
+            set { _lives = Math.Min(value, 3); }
+        }
         public int Score { get; set; }
         public bool Nuke { get; set; }
         public int Energy

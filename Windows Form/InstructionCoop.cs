@@ -49,14 +49,16 @@ namespace SpaceInvaders.Windows_Form
 
 
             button1.Location = new Point(Convert.ToInt32((double)this.Width * 0.60), Convert.ToInt32((double)this.Height * 0.89));
+
+            blackBackground.Location = new Point(0, 0);
+            blackBackground.Size = new Size(this.Width, this.Height);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Cooperative c = new Cooperative();
-            
             c.Show();
-            //c.FormClosing += new FormClosingEventHandler(HideBlackBackground);
+            blackBackground.Show();
             c.FormClosing += new FormClosingEventHandler(Close);
         }
 
@@ -64,9 +66,5 @@ namespace SpaceInvaders.Windows_Form
         {
             this.Close();
         }
-        /*private void HideBlackBackground(object sender, EventArgs e)
-        {
-            blackbackground.Hide();
-        }*/
     }
 }

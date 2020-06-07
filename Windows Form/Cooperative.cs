@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 
 namespace SpaceInvaders
@@ -23,8 +24,6 @@ namespace SpaceInvaders
         #endregion
 
         #region Settings
-        bool nukeP1 = false;
-        bool nukeP2 = false;
         Timer nukeAnimationTime = new Timer();
         int tickInterval = 10;
         int tickInterval1 = 100;
@@ -62,16 +61,16 @@ namespace SpaceInvaders
 
             asteroidFactory = new AsteroidFactory(asteroidSize, asteroidSpeed, numberOfPositions);
 
-            numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
-            scoreLabel.Text = String.Format("Score = {0:D2}", player1.Score);
-            missleAmmoLabel1.Text = String.Format("Missle Ammo = {0}", missleAmmo1);
-            laserAmmoLabel1.Text = String.Format("Laser Ammo = {0}", laserAmmo1);
+            numberOfLivesLabel.Text = String.Format("x {0}", player1.Lives);
+            scoreLabel.Text = String.Format("SCORE : {0:D2}", player1.Score);
+            missleAmmoLabel1.Text = Convert.ToString(missleAmmo1);
+            laserAmmoLabel1.Text = Convert.ToString(laserAmmo1);
 
 
-            numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
-            scoreLabel1.Text = String.Format("Score = {0:D2}", player2.Score);
-            missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
-            laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
+            numberOfLivesLabel1.Text = String.Format("x {0}", player2.Lives);
+            scoreLabel1.Text = String.Format("SCORE : {0:D2}", player2.Score);
+            missleAmmoLabel2.Text = Convert.ToString(missleAmmo2);
+            laserAmmoLabel2.Text = Convert.ToString(laserAmmo2);
 
 
             Controls.Add(player1.Sprite);
@@ -96,7 +95,7 @@ namespace SpaceInvaders
             if (asteroidFactory != null) asteroidFactory.ScreenW = this.Width;
         }
 
-        
+
 
         // Controls
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -118,15 +117,34 @@ namespace SpaceInvaders
                 // move sprite
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
                     player1.MoveSprite();
+
                 // select missile
-                if (e.KeyCode == Keys.D8)
+                if (timer.Enabled && e.KeyCode == Keys.D8)
+                {
                     player1.weaponType = WeaponType.missle;
+                    laser1.BorderStyle = BorderStyle.None;
+                    nuke1.BorderStyle = BorderStyle.None;
+                    missle1.BorderStyle = BorderStyle.Fixed3D;
+                }
+
                 // select laser
-                if (e.KeyCode == Keys.D9)
+                if (timer.Enabled && e.KeyCode == Keys.D9)
+                {
                     player1.weaponType = WeaponType.laser;
-                // select laser
-                if (e.KeyCode == Keys.D0 && player1.Nuke)
+                    laser1.BorderStyle = BorderStyle.Fixed3D;
+                    nuke1.BorderStyle = BorderStyle.None;
+                    missle1.BorderStyle = BorderStyle.None;
+                }
+
+
+                // select nuke
+                if (timer.Enabled && e.KeyCode == Keys.D0 && player1.Nuke)
+                {
                     player1.weaponType = WeaponType.nuke;
+                    laser1.BorderStyle = BorderStyle.None;
+                    missle1.BorderStyle = BorderStyle.None;
+                    nuke1.BorderStyle = BorderStyle.Fixed3D;
+                }
 
                 // shoot missile
                 if (e.KeyCode == Keys.Space)
@@ -172,12 +190,12 @@ namespace SpaceInvaders
                         nuke1.Hide();
                         player1.weaponType = WeaponType.missle; // set to default weapon
                         player1.Score += total;
-                        //laserImg.BorderStyle = BorderStyle.None;
-                        //nukeImg.BorderStyle = BorderStyle.None;
-                        //missleImg.BorderStyle = BorderStyle.Fixed3D;
+                        laser1.BorderStyle = BorderStyle.None;
+                        nuke1.BorderStyle = BorderStyle.None;
+                        missle1.BorderStyle = BorderStyle.Fixed3D;
                     }
-                    missleAmmoLabel1.Text = String.Format("Missle Ammo = {0}", missleAmmo1);
-                    laserAmmoLabel1.Text = String.Format("Laser Ammo = {0}", laserAmmo1);
+                    missleAmmoLabel1.Text = Convert.ToString(missleAmmo1);
+                    laserAmmoLabel1.Text = Convert.ToString(laserAmmo1);
                 }
             }
 
@@ -199,14 +217,32 @@ namespace SpaceInvaders
                 if (e.KeyCode == Keys.D || e.KeyCode == Keys.A || e.KeyCode == Keys.S || e.KeyCode == Keys.W)
                     player2.MoveSprite();
                 // select missile
-                if (e.KeyCode == Keys.D1)
+                if (timer.Enabled && e.KeyCode == Keys.D1)
+                {
                     player2.weaponType = WeaponType.missle;
+                    laser2.BorderStyle = BorderStyle.None;
+                    nuke2.BorderStyle = BorderStyle.None;
+                    missle2.BorderStyle = BorderStyle.Fixed3D;
+                }
+
                 // select laser
-                if (e.KeyCode == Keys.D2)
+                if (timer.Enabled && e.KeyCode == Keys.D2)
+                {
                     player2.weaponType = WeaponType.laser;
+                    laser2.BorderStyle = BorderStyle.Fixed3D;
+                    nuke2.BorderStyle = BorderStyle.None;
+                    missle2.BorderStyle = BorderStyle.None;
+                }
+
+
                 // select nuke
-                if (e.KeyCode == Keys.D3 && player2.Nuke)
+                if (timer.Enabled && e.KeyCode == Keys.D3 && player2.Nuke)
+                {
                     player2.weaponType = WeaponType.nuke;
+                    laser2.BorderStyle = BorderStyle.None;
+                    missle2.BorderStyle = BorderStyle.None;
+                    nuke2.BorderStyle = BorderStyle.Fixed3D;
+                }
 
                 // shoot missile
                 if (e.KeyCode == Keys.F)
@@ -219,8 +255,6 @@ namespace SpaceInvaders
                         missles.Add(weapon);
                         Controls.Add(weapon.Sprite);
                         missleAmmo2--;
-                        missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
-                        laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
                     }
 
                     else if (player2.weaponType == WeaponType.laser && laserAmmo2 > 0)
@@ -231,8 +265,6 @@ namespace SpaceInvaders
                         missles.Add(weapon);
                         Controls.Add(weapon.Sprite);
                         laserAmmo2--;
-                        missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
-                        laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
                     }
 
                     else if (player2.weaponType == WeaponType.nuke)
@@ -257,10 +289,12 @@ namespace SpaceInvaders
                         player2.Nuke = false;
                         nuke2.Hide();
                         player2.weaponType = WeaponType.missle; // set to default weapon
-                        //laserImg.BorderStyle = BorderStyle.None;
-                        //nukeImg.BorderStyle = BorderStyle.None;
-                        //missleImg.BorderStyle = BorderStyle.Fixed3D;
+                        laser2.BorderStyle = BorderStyle.None;
+                        nuke2.BorderStyle = BorderStyle.None;
+                        missle2.BorderStyle = BorderStyle.Fixed3D;
                     }
+                    missleAmmoLabel1.Text = Convert.ToString(missleAmmo1);
+                    laserAmmoLabel1.Text = Convert.ToString(laserAmmo1);
                 }
             }
 
@@ -276,38 +310,41 @@ namespace SpaceInvaders
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
             {
+                numberOfLivesLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.05), Convert.ToInt32((double)this.Height * 0.07));
+
                 // clear everything on screen
                 Controls.Clear();
                 asteroids.Clear();
                 missles.Clear();
-                
+
                 // retrieve new number of lives
                 player1.Lives = numberOfLives;
                 player2.Lives = numberOfLives;
 
                 // reset player position
-                player1.Reposition(this.Width, this.Height,1);
+                player1.Reposition(this.Width, this.Height, 1);
                 player1.InitializeSprite();
                 player1.PositionSprite();
-                player2.Reposition(this.Width, this.Height,2);
+                player2.Reposition(this.Width, this.Height, 2);
                 player2.InitializeSprite();
                 player2.PositionSprite();
 
                 // update number of lives display
-                numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
-                numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
+                numberOfLivesLabel.Text = String.Format("x {0}", player1.Lives);
+                numberOfLivesLabel1.Text = String.Format("x {0}", player2.Lives);
 
                 // reset score
-                scoreLabel.Text = String.Format("Score = {0:D2}", player1.Score = 0);
-                scoreLabel1.Text = String.Format("Score = {0:D2}", player2.Score = 0);
+                scoreLabel.Text = String.Format("SCORE : {0:D2}", player1.Score = 0);
+                scoreLabel1.Text = String.Format("SCORE : {0:D2}", player2.Score = 0);
 
                 //reset ammo 
-                missleAmmoLabel1.Text = String.Format("Missle Ammo = {0}", missleAmmo1);
-                laserAmmoLabel1.Text = String.Format("Laser Ammo = {0}", laserAmmo1);
-                missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
-                laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
+                missleAmmoLabel1.Text = Convert.ToString(missleAmmo1 = 20);
+                laserAmmoLabel1.Text = Convert.ToString(laserAmmo1 = 5);
+                missleAmmoLabel2.Text = Convert.ToString(missleAmmo2 = 20);
+                laserAmmoLabel2.Text = Convert.ToString(laserAmmo2 = 5);
 
-                // re-display
+
+                #region re-display
                 Controls.Add(numberOfLivesLabel);  // number of lives for player 1
                 Controls.Add(numberOfLivesLabel1); // number of lives for player 2
                 Controls.Add(scoreLabel);          // score label for player 1
@@ -318,6 +355,17 @@ namespace SpaceInvaders
                 Controls.Add(laserAmmoLabel1);
                 Controls.Add(missleAmmoLabel2);
                 Controls.Add(laserAmmoLabel2);
+                Controls.Add(live1);
+                Controls.Add(live2);
+                Controls.Add(missle1);
+                Controls.Add(missle2);
+                Controls.Add(laser1);
+                Controls.Add(laser2);
+                Controls.Add(nuke1);
+                Controls.Add(nuke2);
+                Controls.Add(label2);
+                Controls.Add(label3);
+                #endregion
 
 
                 timer.Start(); // restart timer
@@ -382,6 +430,7 @@ namespace SpaceInvaders
                 ammodrop = new Ammo(ammoDropSize, ammoSpeed, this.Width, this.Height);
                 ammodrop.InitializeSprite();
                 ammodrop.SetLocation(ammodrop.RandomizeX(), ammodrop.RandomizeY());
+                ammodrop.RandomMove();
                 ammodrop.PositionSprite();
                 ammunition.Add(ammodrop);
                 Controls.Add(ammodrop.Sprite);
@@ -396,20 +445,16 @@ namespace SpaceInvaders
                 {
                     Controls.Remove(ammunition[a].Sprite);
                     ammunition.RemoveAt(a);
-                    missleAmmo1 += 20;
-                    laserAmmo1 += 5;
-                    missleAmmoLabel1.Text = String.Format("Missle Ammo = {0}", missleAmmo1);
-                    laserAmmoLabel1.Text = String.Format("Laser Ammo = {0}", laserAmmo1);
+                    missleAmmoLabel1.Text = Convert.ToString(missleAmmo1 += 20);
+                    laserAmmoLabel1.Text = Convert.ToString(laserAmmo1 += 5);
                 }
 
                 else if (ammunition[a].Sprite.Bounds.IntersectsWith(player2.Sprite.Bounds))
                 {
                     Controls.Remove(ammunition[a].Sprite);
                     ammunition.RemoveAt(a);
-                    missleAmmo2 += 20;
-                    laserAmmo2 += 5;
-                    missleAmmoLabel2.Text = String.Format("Missle Ammo = {0}", missleAmmo2);
-                    laserAmmoLabel2.Text = String.Format("Laser Ammo = {0}", laserAmmo2);
+                    missleAmmoLabel2.Text = Convert.ToString(missleAmmo2 += 20);
+                    laserAmmoLabel2.Text = Convert.ToString(laserAmmo2 += 5);
                 }
             }
         }
@@ -438,7 +483,7 @@ namespace SpaceInvaders
                     Controls.Remove(extralives[v].Sprite);
                     extralives.RemoveAt(v);
                     player1.Lives++;
-                    numberOfLivesLabel.Text = String.Format("Number of lives = {0}", player1.Lives);
+                    numberOfLivesLabel.Text = String.Format("x {0}", player1.Lives);
                 }
 
                 else if (extralives[v].Sprite.Bounds.IntersectsWith(player2.Sprite.Bounds))
@@ -446,7 +491,7 @@ namespace SpaceInvaders
                     Controls.Remove(extralives[v].Sprite);
                     extralives.RemoveAt(v);
                     player2.Lives++;
-                    numberOfLivesLabel1.Text = String.Format("Number of lives = {0}", player2.Lives);
+                    numberOfLivesLabel1.Text = String.Format("x {0}", player2.Lives);
                 }
             }
         }
@@ -459,7 +504,10 @@ namespace SpaceInvaders
                 // both players died
                 if (player1.Lives == 0 && player2.Lives == 0)
                 {
-                    numberOfLivesLabel1.Text = "Game over, press enter to restart...";
+                    Controls.Clear();
+                    numberOfLivesLabel1.Text = String.Format("GAME OVER\nTOTAL SCORE : {0}\n\npress Esc to return to MAIN MENU\n\nOR press ENTER to restart...", player2.Score + player1.Score);
+                    numberOfLivesLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.4), Convert.ToInt32((double)this.Height * 0.4));
+
                     Controls.Add(numberOfLivesLabel1);
                     timer.Enabled = false;
                     break;
@@ -486,7 +534,7 @@ namespace SpaceInvaders
                         player1.Reposition(this.Width, this.Height, 1);  // reposition Player 1
                         player1.PositionSprite();
 
-                        numberOfLivesLabel.Text = String.Format("Lives = {0}", player1.Lives);
+                        numberOfLivesLabel.Text = String.Format("x {0}", player1.Lives);
                         Controls.Add(numberOfLivesLabel);
                         Controls.Add(scoreLabel);
                         Controls.Add(player1.Sprite);
@@ -498,8 +546,6 @@ namespace SpaceInvaders
                         {
                             Controls.Remove(asteroids[j].Sprite);
                         }
-                        //Controls.Remove(numberOfLivesLabel);
-                       // Controls.Remove(scoreLabel);
                         Controls.Remove(player1.Sprite);
                         asteroids.Clear();
                         player1.Lives--;
@@ -525,7 +571,7 @@ namespace SpaceInvaders
                         player2.Reposition(this.Width, this.Height, 2);
                         player2.PositionSprite();
 
-                        numberOfLivesLabel1.Text = String.Format("Lives = {0}", player2.Lives);
+                        numberOfLivesLabel1.Text = String.Format("x {0}", player2.Lives);
                         Controls.Add(numberOfLivesLabel1);
                         Controls.Add(scoreLabel1);
                         Controls.Add(player2.Sprite);
@@ -595,11 +641,12 @@ namespace SpaceInvaders
                                 player1.Score += asteroids[j].astScore;
                                 player1.Energy += asteroids[j].astScore;
                             }
-                            else { 
+                            else
+                            {
                                 player2.Score += asteroids[j].astScore;
                                 player2.Energy += asteroids[j].astScore;
                             }
-                            asteroids[j].Hit = true;   
+                            asteroids[j].Hit = true;
                         }
                         missles[i].Hit = true;
                     }
@@ -612,9 +659,9 @@ namespace SpaceInvaders
                         Controls.Remove(asteroids[j].Sprite);
                         asteroids.RemoveAt(j);
                         if (missles[i].PlayerNo == 1)
-                            scoreLabel.Text = String.Format("Score = {0:D2}", ++player1.Score);
+                            scoreLabel.Text = String.Format("SCORE : {0:D2}", ++player1.Score);
                         else
-                            scoreLabel1.Text = String.Format("Score = {0:D2}", ++player2.Score);
+                            scoreLabel1.Text = String.Format("SCORE : {0:D2}", ++player2.Score);
                     }
                 }
                 // remove ammo that hit the asteroids
@@ -628,9 +675,9 @@ namespace SpaceInvaders
         #endregion
 
         #region extra methods
-        private void scoreLabel_Click(object sender, EventArgs e) {}
+        private void scoreLabel_Click(object sender, EventArgs e) { }
 
-        private void numberOfLivesLabel_Click(object sender, EventArgs e) {}
+        private void numberOfLivesLabel_Click(object sender, EventArgs e) { }
 
         private void missleAmmorLabel1_Click(object sender, EventArgs e) { }
 
@@ -644,18 +691,24 @@ namespace SpaceInvaders
         {
             // PLAYER 2
             label2.Location = new Point(1, 2);
-            numberOfLivesLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.1));
+            numberOfLivesLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.05), Convert.ToInt32((double)this.Height * 0.07));
+            live2.Location = new Point(Convert.ToInt32((double)this.Width * 0.01), Convert.ToInt32((double)this.Height * 0.07));
             scoreLabel1.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.15));
-            missleAmmoLabel2.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.25));
-            laserAmmoLabel2.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.3));
-            nuke2.Location = new Point(1, Convert.ToInt32((double)this.Height * 0.92));
+            missleAmmoLabel2.Location = new Point(Convert.ToInt32((double)this.Width * 0.03), Convert.ToInt32((double)this.Height * 0.965));
+            laserAmmoLabel2.Location = new Point(Convert.ToInt32((double)this.Width * 0.08), Convert.ToInt32((double)this.Height * 0.965));
+            nuke2.Location = new Point(Convert.ToInt32((double)this.Width * 0.11), Convert.ToInt32((double)this.Height * 0.92));
+            laser2.Location = new Point(Convert.ToInt32((double)this.Width * 0.06), Convert.ToInt32((double)this.Height * 0.92));
+            missle2.Location = new Point(Convert.ToInt32((double)this.Width * 0.01), Convert.ToInt32((double)this.Height * 0.92));
 
             // PLAYER 1
-            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.85), 2);
-            numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.85), Convert.ToInt32((double)this.Height * 0.1));
-            scoreLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.85), Convert.ToInt32((double)this.Height * 0.15));
-            missleAmmoLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.85), Convert.ToInt32((double)this.Height * 0.25));
-            laserAmmoLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.85), Convert.ToInt32((double)this.Height * 0.3));
+            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.895), 2);
+            numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.94), Convert.ToInt32((double)this.Height * 0.07));
+            live1.Location = new Point(Convert.ToInt32((double)this.Width * 0.9), Convert.ToInt32((double)this.Height * 0.07));
+            scoreLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.895), Convert.ToInt32((double)this.Height * 0.15));
+            missleAmmoLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.96), Convert.ToInt32((double)this.Height * 0.965));
+            laserAmmoLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.91), Convert.ToInt32((double)this.Height * 0.965));
+            missle1.Location = new Point(Convert.ToInt32((double)this.Width * 0.94), Convert.ToInt32((double)this.Height * 0.92));
+            laser1.Location = new Point(Convert.ToInt32((double)this.Width * 0.89), Convert.ToInt32((double)this.Height * 0.92));
             nuke1.Location = new Point(Convert.ToInt32((double)this.Width * 0.84), Convert.ToInt32((double)this.Height * 0.92));
 
 
