@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceInvaders.Windows_Form;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,10 +27,13 @@ namespace SpaceInvaders
         {
             if (textBox1.Text != "")
             {
-                Client c = new Client(textBox1.Text);
-                c.Show();
-                pictureBox1.Show();
-                c.FormClosing += new FormClosingEventHandler(Close);
+                
+
+                InstructionSinglePlayer mode1 = new InstructionSinglePlayer(textBox1.Text);
+                mode1.Show();
+                
+                mode1.FormClosing += new FormClosingEventHandler(Close);
+                
             }
         }
 

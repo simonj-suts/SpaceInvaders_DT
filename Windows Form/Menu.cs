@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceInvaders.Windows_Form;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,16 +29,17 @@ namespace SpaceInvaders
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Versus v = new Versus();
-            v.Show();
+            
+            InstructionMultiplayer mode2 = new InstructionMultiplayer();
+            mode2.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Cooperative c = new Cooperative();
-            blackbackground.Show();
-            c.Show();
-            c.FormClosing += new FormClosingEventHandler(HideBlackBackground);
+
+            InstructionCoop mode3 = new InstructionCoop();
+            mode3.Show();
+           
         }
 
         private void button4_Click(object sender, EventArgs e)

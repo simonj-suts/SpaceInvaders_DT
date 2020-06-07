@@ -149,3 +149,6 @@ C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.x
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.xml
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources

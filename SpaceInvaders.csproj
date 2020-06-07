@@ -101,6 +101,24 @@
     <Compile Include="Windows Form\Cooperative.Designer.cs">
       <DependentUpon>Cooperative.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows Form\InstructionCoop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Form\InstructionCoop.Designer.cs">
+      <DependentUpon>InstructionCoop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Form\InstructionMultiplayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Form\InstructionMultiplayer.Designer.cs">
+      <DependentUpon>InstructionMultiplayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows Form\InstructionSinglePlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows Form\InstructionSinglePlayer.Designer.cs">
+      <DependentUpon>InstructionSinglePlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows Form\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +157,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Form\Cooperative.resx">
       <DependentUpon>Cooperative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Form\InstructionCoop.resx">
+      <DependentUpon>InstructionCoop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Form\InstructionMultiplayer.resx">
+      <DependentUpon>InstructionMultiplayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows Form\InstructionSinglePlayer.resx">
+      <DependentUpon>InstructionSinglePlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows Form\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

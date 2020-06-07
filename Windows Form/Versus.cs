@@ -31,6 +31,7 @@ namespace SpaceInvaders
         #region Constructors factory methods
         public Versus()
         {
+
             InitializeComponent();
 
             missles = new List<Weapon>();
@@ -286,7 +287,7 @@ namespace SpaceInvaders
 
         private void numberOfLivesLabel_Click(object sender, EventArgs e)
         {
-            //
+            
         }
 
         private void Versus_Load(object sender, EventArgs e)
@@ -296,6 +297,12 @@ namespace SpaceInvaders
 
             // relatively position Player 1 Number of Lives Label
             numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.87), 2);
+
+        }
+
+
+        private void Versus_Load_1(object sender, EventArgs e)
+        {
 
         }
     }
