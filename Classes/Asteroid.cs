@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SpaceInvaders
 {
@@ -97,6 +98,7 @@ namespace SpaceInvaders
 
         public bool IsCollision(Rectangle rect)
         {
+            
             return Sprite.Bounds.IntersectsWith(rect);
         } 
         #endregion

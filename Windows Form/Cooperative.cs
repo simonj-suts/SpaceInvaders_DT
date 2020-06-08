@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SpaceInvaders
 {
@@ -21,6 +22,8 @@ namespace SpaceInvaders
         List<Ammo> ammunition;
         AsteroidFactory asteroidFactory;
         List<Live> extralives;
+        SoundPlayer winSound = new SoundPlayer(Properties.Resources.victory);
+        SoundPlayer bgm = new SoundPlayer(Properties.Resources.bgmusic);
         #endregion
 
         #region Settings
@@ -295,6 +298,7 @@ namespace SpaceInvaders
                     }
                     missleAmmoLabel1.Text = Convert.ToString(missleAmmo1);
                     laserAmmoLabel1.Text = Convert.ToString(laserAmmo1);
+                    
                 }
             }
 
@@ -303,9 +307,16 @@ namespace SpaceInvaders
             if (e.KeyCode == Keys.P)
                 timer.Enabled = !timer.Enabled;
 
+
+
             // exit
             if (e.KeyCode == Keys.Escape)
+            {
+
                 this.Close();
+                bgm.Stop();
+            }
+            
 
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
@@ -316,6 +327,10 @@ namespace SpaceInvaders
                 Controls.Clear();
                 asteroids.Clear();
                 missles.Clear();
+
+                //Replay background music
+                winSound.Stop();
+                bgm.Play();
 
                 // retrieve new number of lives
                 player1.Lives = numberOfLives;
@@ -504,7 +519,9 @@ namespace SpaceInvaders
                 // both players died
                 if (player1.Lives == 0 && player2.Lives == 0)
                 {
+                    bgm.Stop();
                     Controls.Clear();
+                    winSound.Play();
                     numberOfLivesLabel1.Text = String.Format("GAME OVER\nTOTAL SCORE : {0}\n\npress Esc to return to MAIN MENU\n\nOR press ENTER to restart...", player2.Score + player1.Score);
                     numberOfLivesLabel1.Location = new Point(Convert.ToInt32((double)this.Width * 0.4), Convert.ToInt32((double)this.Height * 0.4));
 
@@ -711,6 +728,8 @@ namespace SpaceInvaders
             laser1.Location = new Point(Convert.ToInt32((double)this.Width * 0.89), Convert.ToInt32((double)this.Height * 0.92));
             nuke1.Location = new Point(Convert.ToInt32((double)this.Width * 0.84), Convert.ToInt32((double)this.Height * 0.92));
 
+            //Background music
+            bgm.Play();
 
         }
 

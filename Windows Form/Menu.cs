@@ -49,13 +49,13 @@ namespace SpaceInvaders
 
         private void HideBlackBackground(object sender, EventArgs e)
         {
-            blackbackground.Hide();
+           // blackbackground.Hide();
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            blackbackground.Location = new Point(0, 0);
-            blackbackground.Size = new Size(this.Width, this.Height);
+            //blackbackground.Location = new Point(0, 0);
+            //blackbackground.Size = new Size(this.Width, this.Height);
 
             label1.Location = new Point(Convert.ToInt32((double)this.Width * 0.20), Convert.ToInt32((double)this.Height * 0.15));
             

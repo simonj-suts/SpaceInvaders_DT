@@ -21,7 +21,7 @@ namespace SpaceInvaders.Windows_Form
         {
             label1.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.10));
             label2.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.20));
-            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.30));
+            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.25));
             label4.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.72));
 
 
@@ -31,15 +31,15 @@ namespace SpaceInvaders.Windows_Form
             label7.Location = new Point(Convert.ToInt32((double)this.Width * 0.80), Convert.ToInt32((double)this.Height * 0.80));
 
             pictureBox1.Location = new Point(Convert.ToInt32((double)this.Width * 0.30), Convert.ToInt32((double)this.Height * 0.72));
-            pictureBox1.Size = new Size(65, 65);
+            pictureBox1.Size = new Size(this.Width/30, this.Width/30);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pictureBox2.Location = new Point(Convert.ToInt32((double)this.Width * 0.55), Convert.ToInt32((double)this.Height * 0.72));
-            pictureBox2.Size = new Size(65, 65); ;
+            pictureBox2.Size = new Size(this.Width / 30, this.Width / 30); ;
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pictureBox3.Location = new Point(Convert.ToInt32((double)this.Width * 0.80), Convert.ToInt32((double)this.Height * 0.72));
-            pictureBox3.Size = new Size(65, 65);
+            pictureBox3.Size = new Size(this.Width / 30, this.Width / 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
 
 

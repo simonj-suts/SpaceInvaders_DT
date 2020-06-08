@@ -39,7 +39,6 @@ E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceI
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
-E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Versus.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CopyComplete
@@ -155,3 +154,7 @@ E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windo
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
+E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.Versus.resources

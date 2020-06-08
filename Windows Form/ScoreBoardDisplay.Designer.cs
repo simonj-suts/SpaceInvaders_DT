@@ -36,6 +36,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(310, 32);
@@ -47,11 +48,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(490, 188);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 52);
+            this.label2.Size = new System.Drawing.Size(197, 51);
             this.label2.TabIndex = 1;
             this.label2.Text = "=======";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -72,6 +74,8 @@
             // ScoreBoardDisplay
             // 
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::SpaceInvaders.Properties.Resources.giphy;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1178, 465);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);

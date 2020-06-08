@@ -124,15 +124,16 @@ Player 1- ARROW KEYS
 Player 2- WASD KEYS
 
 Switch weapon - NUMBER KEYS 
-   Player 1: (8 - Missile, 9- Laser)
-   Player 2:  (1 - Missile, 2- Laser)
+   Player 1: (8 - Missile, 9- Laser, 0- Nuke)
+   Player 2:  (1 - Missile, 2- Laser, 3- Nuke)
 
 Fire weapon - 
     Player 1: SPACEBAR
     Player 2: F KEY
 
-Return to Main Menu - ESCAPE (during gameplay)
-                                    - E KEY (during game over)
+Return to Main Menu - ESCAPE 
+
+Pause- P  KEY
 
 Replay game - ENTER KEY
                            

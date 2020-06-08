@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SpaceInvaders
 {
@@ -16,6 +17,8 @@ namespace SpaceInvaders
         Player Player2; // Player 2
         List<Weapon> missles;
         List<Weapon> missles2;
+        SoundPlayer winSound = new SoundPlayer(Properties.Resources.victory);
+        SoundPlayer bgm = new SoundPlayer(Properties.Resources.bgmusic);
         #endregion
 
         #region Settings
@@ -101,6 +104,8 @@ namespace SpaceInvaders
                     missles.Add(Weapon);
                     Controls.Add(Weapon.Sprite);
                 }
+
+                
             }
 
             if (timer.Enabled && Player2.Lives != 0) // player 2 still alive
@@ -143,7 +148,10 @@ namespace SpaceInvaders
 
             // exit
             if (e.KeyCode == Keys.Escape)
+            {
+                bgm.Stop();
                 this.Close();
+            }
 
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
@@ -151,7 +159,11 @@ namespace SpaceInvaders
                 // clear everything on screen
                 Controls.Clear();
                 missles.Clear();
-                
+
+                //Replay background music
+                winSound.Stop();
+                bgm.Play();
+
                 // retrieve new number of lives
                 Player1.Lives = numberOfLives;
                 Player2.Lives = numberOfLives;
@@ -229,8 +241,10 @@ namespace SpaceInvaders
                     }
                     else
                     {
+                        bgm.Stop();
                         this.Close();
                         VersusGameOverScreen g = new VersusGameOverScreen();
+                        winSound.Play();
                         g.winner(1);
                         g.Show();
                         Controls.Remove(numberOfLivesLabel);
@@ -267,9 +281,11 @@ namespace SpaceInvaders
                     }
                     else
                     {
+                        bgm.Stop();
                         this.Close();
                         VersusGameOverScreen g = new VersusGameOverScreen();
                         g.winner(2);
+                        winSound.Play();
                         g.Show();
                         Controls.Remove(numberOfLivesLabel);
                         Controls.Remove(numberOfLivesLabel1);
@@ -292,6 +308,7 @@ namespace SpaceInvaders
 
         private void Versus_Load(object sender, EventArgs e)
         {
+            bgm.Play();
             // relatively position Player 2 Number of Lives Label
             numberOfLivesLabel1.Location = new Point(1, 2);
 
@@ -305,5 +322,7 @@ namespace SpaceInvaders
         {
 
         }
+
+        
     }
 }

@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 
 namespace SpaceInvaders
 {
@@ -21,6 +23,8 @@ namespace SpaceInvaders
         AsteroidFactory asteroidFactory;
         List<Ammo> ammunition;
         List<Live> extralives;
+        SoundPlayer winSound = new SoundPlayer(Properties.Resources.victory);
+        SoundPlayer bgm = new SoundPlayer(Properties.Resources.bgmusic);
         #endregion
 
         #region Settings
@@ -80,115 +84,123 @@ namespace SpaceInvaders
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            // move right
-            if (timer.Enabled && e.KeyCode == Keys.Right)
+            if (timer.Enabled && player.Lives != 0)
             {
-                player.MoveRight();
-                player.MoveSprite();
-            }
-
-            // move left
-            if (timer.Enabled && e.KeyCode == Keys.Left)
-            {
-                player.MoveLeft();
-                player.MoveSprite();
-            }
-
-            // move up
-            if (timer.Enabled && e.KeyCode == Keys.Up)
-            {
-                player.MoveUp();
-                player.MoveSprite();
-            }
-
-            // move down
-            if (timer.Enabled && e.KeyCode == Keys.Down)
-            {
-                player.MoveDown();
-                player.MoveSprite();
-            }
-
-            // select missile
-            if (timer.Enabled && e.KeyCode == Keys.D1)
-            {
-                player.weaponType = WeaponType.missle;
-                laserImg.BorderStyle = BorderStyle.None;
-                nukeImg.BorderStyle = BorderStyle.None;
-                missleImg.BorderStyle = BorderStyle.Fixed3D;
-            }
-
-            // select laser
-            if (timer.Enabled && e.KeyCode == Keys.D2)
-            {
-                player.weaponType = WeaponType.laser;
-                laserImg.BorderStyle = BorderStyle.Fixed3D;
-                nukeImg.BorderStyle = BorderStyle.None;
-                missleImg.BorderStyle = BorderStyle.None;
-            }
-
-
-            // select nuke
-            if (timer.Enabled && e.KeyCode == Keys.D3 && nuke)
-            {
-                player.weaponType = WeaponType.nuke;
-                laserImg.BorderStyle = BorderStyle.None;
-                missleImg.BorderStyle = BorderStyle.None;
-                nukeImg.BorderStyle = BorderStyle.Fixed3D;
-            }
-
-            // shoot
-            if (timer.Enabled && e.KeyCode == Keys.Space)
-            {
-                if (player.weaponType == WeaponType.missle && missleAmmo > 0)
+                // move right
+                if (e.KeyCode == Keys.Right)
                 {
-                    Weapon weapon = player.CreateWeapon(missleSpeed, 1);
-                    weapon.InitializeSprite();
-                    weapon.PositionSprite();
-                    ammo.Add(weapon);
-                    Controls.Add(weapon.Sprite);
-                    missleAmmo--;
+                    player.MoveRight();
+                    player.MoveSprite();
                 }
 
-                else if (player.weaponType == WeaponType.laser && laserAmmo > 0)
+                // move left
+                if ( e.KeyCode == Keys.Left)
                 {
-                    Weapon weapon = player.CreateWeapon(missleSpeed, 1);
-                    weapon.InitializeSprite();
-                    weapon.PositionSprite();
-                    ammo.Add(weapon);
-                    Controls.Add(weapon.Sprite);
-                    laserAmmo--;
+                    player.MoveLeft();
+                    player.MoveSprite();
                 }
 
-                else if (player.weaponType == WeaponType.nuke)
+                // move up
+                if (e.KeyCode == Keys.Up)
                 {
-                    timer.Enabled = !timer.Enabled; // stop time
-                    BackColor = Color.White; // simulate explosion
+                    player.MoveUp();
+                    player.MoveSprite();
+                }
 
-                    // fade out effect after explosion
-                    nukeAnimationTime.Tick += new EventHandler(fadeOut);
-                    nukeAnimationTime.Start();
+                // move down
+                if (e.KeyCode == Keys.Down)
+                {
+                    player.MoveDown();
+                    player.MoveSprite();
+                }
 
-                    // reset energy
-                    player.Energy = 0;
-
-                    int total = 0;
-                    for (int i = 0; i < asteroids.Count; i++) // remove all asteroids
-                    {
-                        total += asteroids[i].astScore;
-                        Controls.Remove(asteroids[i].Sprite);
-                    }
-                    asteroids.Clear();
-                    nuke = false;
-                    nukeImg.Hide();
-                    player.weaponType = WeaponType.missle; // set to default weapon
+                // select missile
+                if ( e.KeyCode == Keys.D1)
+                {
+                    player.weaponType = WeaponType.missle;
                     laserImg.BorderStyle = BorderStyle.None;
                     nukeImg.BorderStyle = BorderStyle.None;
                     missleImg.BorderStyle = BorderStyle.Fixed3D;
                 }
-                missleAmmoLabel.Text = Convert.ToString(missleAmmo);
-                laserAmmoLabel.Text = Convert.ToString(laserAmmo);
-            }
 
+                // select laser
+                if (e.KeyCode == Keys.D2)
+                {
+                    player.weaponType = WeaponType.laser;
+                    laserImg.BorderStyle = BorderStyle.Fixed3D;
+                    nukeImg.BorderStyle = BorderStyle.None;
+                    missleImg.BorderStyle = BorderStyle.None;
+                }
+
+
+                // select nuke
+                if ( e.KeyCode == Keys.D3 && nuke)
+                {
+                    player.weaponType = WeaponType.nuke;
+                    laserImg.BorderStyle = BorderStyle.None;
+                    missleImg.BorderStyle = BorderStyle.None;
+                    nukeImg.BorderStyle = BorderStyle.Fixed3D;
+                }
+
+                // shoot
+                if (e.KeyCode == Keys.Space)
+                {
+                    if (player.weaponType == WeaponType.missle && missleAmmo > 0)
+                    {
+                        Weapon weapon = player.CreateWeapon(missleSpeed, 1);
+                        weapon.InitializeSprite();
+                        weapon.PositionSprite();
+                        ammo.Add(weapon);
+                        Controls.Add(weapon.Sprite);
+                        missleAmmo--;
+                    }
+
+                    else if (player.weaponType == WeaponType.laser && laserAmmo > 0)
+                    {
+                        Weapon weapon = player.CreateWeapon(missleSpeed, 1);
+                        weapon.InitializeSprite();
+                        weapon.PositionSprite();
+                        ammo.Add(weapon);
+                        Controls.Add(weapon.Sprite);
+                        laserAmmo--;
+                    }
+
+                    else if (player.weaponType == WeaponType.nuke)
+                    {
+                        timer.Enabled = !timer.Enabled; // stop time
+                        BackColor = Color.White; // simulate explosion
+
+                        // fade out effect after explosion
+                        nukeAnimationTime.Tick += new EventHandler(fadeOut);
+                        nukeAnimationTime.Start();
+
+                        // reset energy
+                        player.Energy = 0;
+
+                        int total = 0;
+                        for (int i = 0; i < asteroids.Count; i++) // remove all asteroids
+                        {
+                            total += asteroids[i].astScore;
+                            Controls.Remove(asteroids[i].Sprite);
+                        }
+                        asteroids.Clear();
+                        nuke = false;
+                        nukeImg.Hide();
+                        player.weaponType = WeaponType.missle; // set to default weapon
+                        laserImg.BorderStyle = BorderStyle.None;
+                        nukeImg.BorderStyle = BorderStyle.None;
+                        missleImg.BorderStyle = BorderStyle.Fixed3D;
+                    }
+                    missleAmmoLabel.Text = Convert.ToString(missleAmmo);
+                    laserAmmoLabel.Text = Convert.ToString(laserAmmo);
+                }
+                if (e.KeyCode == Keys.Escape)
+                {
+                    bgm.Stop();
+                    this.Close();
+                    return;
+                }
+            }
             // pause
             if (e.KeyCode == Keys.P)
                 timer.Enabled = !timer.Enabled;
@@ -196,11 +208,16 @@ namespace SpaceInvaders
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)
             {
-
+                //Clear screen
                 Controls.Clear();
                 asteroids.Clear();
                 ammo.Clear();
 
+                //Replay background music
+                winSound.Stop();
+                bgm.Play();
+
+                // reset player lives and position
                 player.Lives = numberOfLives;
                 player.Reposition(this.Width, this.Height, 1);
                 player.InitializeSprite();
@@ -215,14 +232,13 @@ namespace SpaceInvaders
                 timer.Start();
             }
 
-            //exit
-            if (timer.Enabled && e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            
 
-            if (!timer.Enabled && e.KeyCode == Keys.E)
+            //exit and view scoreboard
+            if (e.KeyCode == Keys.Escape)
             {
+                bgm.Stop();
+                winSound.Stop();
                 Scoreboard scr = new Scoreboard();
                 scr.updateScoreboard(player);
                 scr.updateFile();
@@ -365,9 +381,12 @@ namespace SpaceInvaders
                     }
                     else
                     {
+                        bgm.Stop();
                         Controls.Clear();
-                        numberOfLivesLabel.Text = "Game over, press enter to restart, or 'e' to return to MAIN MENU...";
-                        Controls.Add(numberOfLivesLabel);
+                        winSound.Play();
+                        numberOfLivesLabel2.Text = "Game over, press enter to RESTART, Esc to return to MAIN MENU...";
+                        numberOfLivesLabel2.Location = new Point(Convert.ToInt32((double)this.Width * 0.30), Convert.ToInt32((double)this.Height * 0.45));
+                        Controls.Add(numberOfLivesLabel2);
                         timer.Enabled = false;
                         break;
                     }
@@ -430,6 +449,7 @@ namespace SpaceInvaders
                 {
                     if (asteroids[j].Hit)
                     {
+                        
                         Controls.Remove(asteroids[j].Sprite);
                         asteroids.RemoveAt(j);
                         scoreLabel.Text = String.Format("SCORE : {0:D2}", ++player.Score);
@@ -447,6 +467,8 @@ namespace SpaceInvaders
         #endregion
         private void Client_Load(object sender, EventArgs e)
         {
+
+            bgm.Play();
             // relatively position Player 1 Number of Lives Label
             numberOfLivesLabel.Location = new Point(Convert.ToInt32((double)this.Width * 0.8), Convert.ToInt32((double)this.Height * 0.94));
             liveImg.Location = new Point(Convert.ToInt32((double)this.Width * 0.75), Convert.ToInt32((double)this.Height * 0.92));
