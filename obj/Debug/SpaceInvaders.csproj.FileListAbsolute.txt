@@ -32,7 +32,6 @@ E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Numerics.Vectors.xml
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Resources.Extensions.xml
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csprojAssemblyReference.cache
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Client.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Cooperative.resources
 E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Menu.resources

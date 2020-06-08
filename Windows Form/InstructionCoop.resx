@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label3.Text" xml:space="preserve">
-    <value>CONTROLS
+    <value>Destroy the asteroids TOGETHER. 
+Collect as many lives and ammo that pops up randomly throughout the game. 
+
+CONTROLS
 
 Player 1- ARROW KEYS
 Player 2- WASD KEYS

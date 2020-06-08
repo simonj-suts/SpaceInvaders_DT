@@ -384,8 +384,8 @@ namespace SpaceInvaders
                         bgm.Stop();
                         Controls.Clear();
                         winSound.Play();
-                        numberOfLivesLabel2.Text = "Game over, press enter to RESTART, Esc to return to MAIN MENU...";
-                        numberOfLivesLabel2.Location = new Point(Convert.ToInt32((double)this.Width * 0.30), Convert.ToInt32((double)this.Height * 0.45));
+                        numberOfLivesLabel2.Text = String.Format("GAME OVER\nYour score is {0}.\n Press enter to RESTART, Esc to return to MAIN MENU...", player.Score);
+                        numberOfLivesLabel2.Location = new Point(Convert.ToInt32((double)this.Width * 0.25), Convert.ToInt32((double)this.Height * 0.45));
                         Controls.Add(numberOfLivesLabel2);
                         timer.Enabled = false;
                         break;

@@ -25,9 +25,9 @@ namespace SpaceInvaders.Windows_Form
         private void InstructionMultiplayer_Load(object sender, EventArgs e)
         {
             label1.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.10));
-            label2.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.20));
-            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.30));
-            label4.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.50));
+            
+            label3.Location = new Point(Convert.ToInt32((double)this.Width * 0.15), Convert.ToInt32((double)this.Height * 0.20));
+            
 
 
 

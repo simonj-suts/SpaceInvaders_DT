@@ -20,17 +20,7 @@ namespace SpaceInvaders
                 scoreboardPlyr.Add(p);
             }
 
-            /*if (aScoreBoard.players.Count >= 5)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    label2.Text += String.Format("\n{0,-10}\t{1,10}", scoreboardPlyr[i].Name, scoreboardPlyr[i].Score);
-
-                }
-            }
-            else { 
-                  foreach
-            }*/
+            
             int i = 0;
             foreach (Player p in aScoreBoard.players)
             {
