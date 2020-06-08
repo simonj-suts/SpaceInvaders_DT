@@ -140,30 +140,12 @@ namespace SpaceInvaders.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream laserSound {
-            get {
-                return ResourceManager.GetStream("laserSound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap live {
             get {
                 object obj = ResourceManager.GetObject("live", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream missileSound {
-            get {
-                return ResourceManager.GetStream("missileSound", resourceCulture);
             }
         }
         
@@ -184,15 +166,6 @@ namespace SpaceInvaders.Properties {
             get {
                 object obj = ResourceManager.GetObject("nuke", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream nukeSound {
-            get {
-                return ResourceManager.GetStream("nukeSound", resourceCulture);
             }
         }
         

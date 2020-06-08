@@ -9,9 +9,9 @@ sda 14
 sadasd 10
 sasd 9
 asdas 6
+asd 4
 sddsa 3
 ad 1
-asd 0
 sad 0
 sadas 0
 asds 0
