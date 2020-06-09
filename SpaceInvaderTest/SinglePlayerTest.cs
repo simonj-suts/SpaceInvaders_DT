@@ -256,5 +256,63 @@ namespace SpaceInvaderTest
             
 
         }
+
+        [TestMethod]
+        public void TestReceivedAmmo()
+        {        
+            Size playerSize = new Size(75, 75);
+            Size ammoSize = new Size(75, 75);
+            Rectangle playerArea;
+            Rectangle ammoArea;
+
+            int numberOfPositions = 10;
+            int numberOfLives = 3;
+            int ammoSpeed = 40;
+            string username1 = "Johanna";
+
+            Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
+            playerArea = new Rectangle((int)p1.X, (int)p1.Y, 75, 75);         
+
+            Ammo a1 = new Ammo(ammoSize, ammoSpeed, ammoSize.Width, ammoSize.Height);
+            ammoArea = new Rectangle((int)a1.X, (int)a1.Y, 75, 75);         
+
+            bool receivedAmmo = false;
+
+            if (ammoArea.IntersectsWith(playerArea))
+            {
+                receivedAmmo = true;
+            }
+
+            Assert.AreEqual(true, receivedAmmo);
+        }
+
+        [TestMethod]
+        public void TestReceivedExtraLive()
+        {
+            Rectangle playerArea;
+            Rectangle extraLiveArea;
+
+            Size playerSize = new Size(75, 75);
+            Size extraLiveSize = new Size(75, 75);
+
+            int numberOfPositions = 10;
+            int numberOfLives = 3;
+            int extraLiveSpeed = 40;
+            string username1 = "Johanna";
+
+            Player p1 = new Player(playerSize, numberOfPositions, numberOfLives, username1);
+            playerArea = new Rectangle((int)p1.X, (int)p1.Y, 75, 75);
+
+            Live l1 = new Live(extraLiveSize, extraLiveSpeed, extraLiveSize.Width, extraLiveSize.Height);
+            extraLiveArea = new Rectangle((int)l1.X, (int)l1.Y, 75, 75);
+
+            bool receivedLive = false;
+            if (extraLiveArea.IntersectsWith(playerArea))
+            {
+                receivedLive = true;
+            }
+
+            Assert.AreEqual(true, receivedLive);
+        }
     }
 }
