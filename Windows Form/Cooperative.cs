@@ -296,9 +296,9 @@ namespace SpaceInvaders
                         nuke2.BorderStyle = BorderStyle.None;
                         missle2.BorderStyle = BorderStyle.Fixed3D;
                     }
-                    missleAmmoLabel1.Text = Convert.ToString(missleAmmo1);
-                    laserAmmoLabel1.Text = Convert.ToString(laserAmmo1);
-                    
+                    missleAmmoLabel2.Text = Convert.ToString(missleAmmo2);
+                    laserAmmoLabel2.Text = Convert.ToString(laserAmmo2);
+
                 }
             }
 
@@ -316,7 +316,7 @@ namespace SpaceInvaders
                 this.Close();
                 bgm.Stop();
             }
-            
+
 
             // restart
             if (!timer.Enabled && e.KeyCode == Keys.Enter)

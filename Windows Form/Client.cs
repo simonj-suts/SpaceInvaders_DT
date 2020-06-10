@@ -94,7 +94,7 @@ namespace SpaceInvaders
                 }
 
                 // move left
-                if ( e.KeyCode == Keys.Left)
+                if (e.KeyCode == Keys.Left)
                 {
                     player.MoveLeft();
                     player.MoveSprite();
@@ -115,7 +115,7 @@ namespace SpaceInvaders
                 }
 
                 // select missile
-                if ( e.KeyCode == Keys.D1)
+                if (e.KeyCode == Keys.D1)
                 {
                     player.weaponType = WeaponType.missle;
                     laserImg.BorderStyle = BorderStyle.None;
@@ -134,7 +134,7 @@ namespace SpaceInvaders
 
 
                 // select nuke
-                if ( e.KeyCode == Keys.D3 && nuke)
+                if (e.KeyCode == Keys.D3 && nuke)
                 {
                     player.weaponType = WeaponType.nuke;
                     laserImg.BorderStyle = BorderStyle.None;
@@ -168,6 +168,7 @@ namespace SpaceInvaders
                     else if (player.weaponType == WeaponType.nuke)
                     {
                         timer.Enabled = !timer.Enabled; // stop time
+                        BackgroundImage = null;
                         BackColor = Color.White; // simulate explosion
 
                         // fade out effect after explosion
@@ -232,7 +233,7 @@ namespace SpaceInvaders
                 timer.Start();
             }
 
-            
+
 
             //exit and view scoreboard
             if (e.KeyCode == Keys.Escape)
@@ -449,7 +450,7 @@ namespace SpaceInvaders
                 {
                     if (asteroids[j].Hit)
                     {
-                        
+
                         Controls.Remove(asteroids[j].Sprite);
                         asteroids.RemoveAt(j);
                         scoreLabel.Text = String.Format("SCORE : {0:D2}", ++player.Score);
@@ -496,7 +497,7 @@ namespace SpaceInvaders
             if (Opacity <= 0)
             {
                 nukeAnimationTime.Stop();
-                BackColor = Color.Black;
+                BackgroundImage = Properties.Resources.giphy;
                 Opacity = 1;
                 timer.Enabled = !timer.Enabled;
             }

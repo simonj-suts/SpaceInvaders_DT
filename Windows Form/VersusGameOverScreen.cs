@@ -43,7 +43,7 @@ namespace SpaceInvaders
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Versus v = new Versus();
+            VersusPVP v = new VersusPVP();
             v.Show();
             this.Close();
         }

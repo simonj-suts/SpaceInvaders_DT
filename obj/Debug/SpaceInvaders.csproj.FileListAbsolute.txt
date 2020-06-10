@@ -128,7 +128,6 @@ C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Menu.resour
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Properties.Resources.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.ScoreBoardDisplay.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.SinglePlayerMenu.resources
-C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.Versus.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.GenerateResource.cache
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.exe
@@ -161,3 +160,4 @@ E:\DEGREE YEAR 2 SEM 1\DP1\GITHUB\GitHubClones\SpaceInvaders_DT\obj\Debug\SpaceI
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionCoop.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
+C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.VersusPVP.resources
