@@ -125,21 +125,21 @@ CONTROLS
 
 Player 1- ARROW KEYS
 Player 2- WASD KEYS
-
 Switch weapon - NUMBER KEYS 
-   Player 1: (8 - Missile, 9- Laser, 0- Nuke)
-   Player 2:  (1 - Missile, 2- Laser, 3- Nuke)
-
+      Player 1: (8 - Missile, 9- Laser, 0- Nuke)
+      Player 2:  (1 - Missile, 2- Laser, 3- Nuke)
 Fire weapon - 
-    Player 1: SPACEBAR
-    Player 2: F KEY
-
+       Player 1: SPACEBAR
+       Player 2: F KEY
 Return to Main Menu - ESCAPE 
-
-Pause- P  KEY
-
+Pause / Resume- P  KEY
 Replay game - ENTER KEY
                            
-</value>
+WEAPON
+Missile - Default weapon
+Laser- Strikes every asteroid in the same row by 1 damage per hit
+Nuke - Destroys all asteroids and can be deployed after reaching a certain score 
+
+ASTEROIDS</value>
   </data>
 </root>

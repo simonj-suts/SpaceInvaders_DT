@@ -118,19 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label6.Text" xml:space="preserve">
-    <value>CONTROLS
+    <value>Refrain from getting hit by the asteroids, instead destroy them. 
+Collect as many lives and ammo that pop up randomly throughout the game. 
+
+CONTROLS
 
 Player - ARROW KEYS
-Switch weapon - NUMBER KEYS 
-                           (1 - Missile, 2- Laser, 3- Nuke)
- 
+Switch weapon - NUMBER KEYS  (1 - Missile, 2- Laser, 3- Nuke)
 Fire weapon - SPACEBAR
-
-Pause- P KEY
-
+Pause / Resume- P KEY
 Return to Main Menu - ESCAPE 
-                                    
 Replay game - ENTER KEY
-                           </value>
+
+WEAPON
+
+Missile - Default weapon
+Laser- Strikes every asteroid in the same row by 1 damage per hit
+Nuke - Destroys all asteroids and can be deployed after reaching a certain score 
+
+
+ASTEROID</value>
   </data>
 </root>

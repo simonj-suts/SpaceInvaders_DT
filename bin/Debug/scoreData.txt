@@ -5,13 +5,13 @@ sd 30
 sdasd 20
 asdsd 19
 qwe 15
-sda 14
 sadasd 10
 sasd 9
 asdas 6
 asd 4
 sddsa 3
 ad 1
+sda 0
 sad 0
 sadas 0
 asds 0
@@ -33,3 +33,4 @@ oijoioji 0
 oijo 0
 asda 0
 sadd 0
+ww 0

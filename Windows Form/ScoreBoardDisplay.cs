@@ -26,7 +26,7 @@ namespace SpaceInvaders
             {
                 
                 label2.Text += String.Format("\n{0,-10}\t{1,10}", scoreboardPlyr[i].Name, scoreboardPlyr[i].Score);
-                if (i++ >= 5) break;
+                if (i++ >= 4) break;
             }
         }
 

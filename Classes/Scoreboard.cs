@@ -72,16 +72,7 @@ namespace SpaceInvaders
             score.Close();
         }
 
-      /* public void DisplayScoreboard()
-        {
-            foreach (Player p in players)
-            {       
-                //Console.SetCursorPosition(3, i);
-                //Console.WriteLine(j + ". " + p.Name + " - " +  p.Score);
-                
-            }
-        }*/
-        
+      
         private void InsertionSort()
         {
             int j;
