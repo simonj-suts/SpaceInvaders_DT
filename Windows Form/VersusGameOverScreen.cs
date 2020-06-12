@@ -58,7 +58,7 @@ namespace SpaceInvaders
                 Bitmap image = new Bitmap(Properties.Resources.player1);
                 player1.Image = image;
                 Controls.Add(player1);
-                player1.Location = new Point(Convert.ToInt32((double)this.Width * 0.60), Convert.ToInt32((double)this.Height * 0.65));
+                player1.Location = new Point(Convert.ToInt32((double)this.Width * 0.45), Convert.ToInt32((double)this.Height * 0.45));
                 player1.BringToFront();
                 button1.BringToFront();
                 button2.BringToFront();
@@ -71,7 +71,7 @@ namespace SpaceInvaders
                 Bitmap image2 = new Bitmap(Properties.Resources.playervs2);
                 player2.Image = image2;
                 Controls.Add(player2);
-                player2.Location = new Point(Convert.ToInt32((double)this.Width * 0.60), Convert.ToInt32((double)this.Height * 0.65));
+                player2.Location = new Point(Convert.ToInt32((double)this.Width * 0.45), Convert.ToInt32((double)this.Height * 0.45));
                 player2.BringToFront();
                 button1.BringToFront();
                 button2.BringToFront();

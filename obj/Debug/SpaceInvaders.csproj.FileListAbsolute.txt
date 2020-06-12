@@ -161,3 +161,4 @@ C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionMultiplayer.resources
 C:\Users\Joey Tan\Desktop\SpaceInvaders_DT\obj\Debug\SpaceInvaders.Windows_Form.InstructionSinglePlayer.resources
 C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.VersusPVP.resources
+C:\Users\Asus\Documents\Git\SpaceInvaders_DT\obj\Debug\SpaceInvaders.VersusGameOverScreen.resources

@@ -191,6 +191,9 @@
     <EmbeddedResource Include="Windows Form\Versus.resx">
       <DependentUpon>Versus.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows Form\VersusGameOverScreen.resx">
+      <DependentUpon>VersusGameOverScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

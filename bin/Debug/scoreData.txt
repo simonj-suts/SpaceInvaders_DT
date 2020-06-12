@@ -1,6 +1,7 @@
 qds 70
 dasd 60
 sdfs 42
+asd 38
 sd 30
 sdasd 20
 asdsd 19
@@ -8,7 +9,6 @@ qwe 15
 sadasd 10
 sasd 9
 asdas 6
-asd 4
 sddsa 3
 ad 1
 sda 0

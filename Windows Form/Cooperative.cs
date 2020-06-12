@@ -173,6 +173,8 @@ namespace SpaceInvaders
                     else if (player1.weaponType == WeaponType.nuke)
                     {
                         timer.Enabled = !timer.Enabled; // stop time
+
+                        BackgroundImage = null;
                         BackColor = Color.White; // simulate explosion
 
                         // fade out effect after explosion
@@ -273,6 +275,8 @@ namespace SpaceInvaders
                     else if (player2.weaponType == WeaponType.nuke)
                     {
                         timer.Enabled = !timer.Enabled; // stop time
+
+                        BackgroundImage = null;
                         BackColor = Color.White; // simulate explosion
 
                         // fade out effect after explosion
@@ -563,9 +567,11 @@ namespace SpaceInvaders
                         {
                             Controls.Remove(asteroids[j].Sprite);
                         }
+                        Controls.Remove(numberOfLivesLabel);
                         Controls.Remove(player1.Sprite);
                         asteroids.Clear();
-                        player1.Lives--;
+                        numberOfLivesLabel.Text = String.Format("x {0}", player1.Lives-=1);
+                        Controls.Add(numberOfLivesLabel);
                         break;
                     }
                 }
@@ -600,11 +606,11 @@ namespace SpaceInvaders
                         {
                             Controls.Remove(asteroids[j].Sprite);
                         }
-                        //Controls.Remove(numberOfLivesLabel1);
-                        //Controls.Remove(scoreLabel1);
+                        Controls.Remove(numberOfLivesLabel1);
                         Controls.Remove(player2.Sprite);
                         asteroids.Clear();
-                        player2.Lives--;
+                        numberOfLivesLabel1.Text = String.Format("x {0}", player2.Lives-=1);
+                        Controls.Add(numberOfLivesLabel1);
                         break;
                     }
                 }
@@ -738,7 +744,7 @@ namespace SpaceInvaders
             if (Opacity <= 0)
             {
                 nukeAnimationTime.Stop();
-                BackColor = Color.Black;
+                BackgroundImage = Properties.Resources.giphy;
                 Opacity = 1;
                 timer.Enabled = !timer.Enabled;
             }

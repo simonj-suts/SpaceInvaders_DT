@@ -41,7 +41,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(310, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(598, 107);
+            this.label1.Size = new System.Drawing.Size(718, 129);
             this.label1.TabIndex = 0;
             this.label1.Text = "SCOREBOARD";
             // 
@@ -53,7 +53,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(490, 188);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(322, 51);
+            this.label2.Size = new System.Drawing.Size(385, 59);
             this.label2.TabIndex = 1;
             this.label2.Text = "============";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -80,6 +80,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ScoreBoardDisplay";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ScoreBoardDisplay_Load);
